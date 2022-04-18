@@ -1,4 +1,4 @@
 package MeuRemedio.app.repository;
 
-public class teste {
+public class UsuarioRepository {
 }
