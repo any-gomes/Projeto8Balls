@@ -3,6 +3,9 @@ package MeuRemedio.app.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.bytebuddy.implementation.bind.annotation.Empty;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +20,6 @@ import java.util.Date;
 public class Usuario {
     private static long serialVersionUID = 1L;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long US_ID;
@@ -26,14 +28,14 @@ public class Usuario {
     private String US_Sobrenome;
     private String US_Email;
     private String US_Senha;
-    private Date US_DataNascimento;
-    private char US_Sexo;
+    private String US_DataNascimento;
+    private String US_Sexo;
 
     public Usuario(){
 
     }
 
-    public Usuario(long US_ID, String US_Nome, String US_Sobrenome, String US_Email, String US_Senha, Date US_DataNascimento, char US_Sexo) {
+    public Usuario(String US_Nome, String US_Sobrenome, String US_Email, String US_Senha, String US_DataNascimento, String US_Sexo) {
         this.US_ID = US_ID;
         this.US_Nome = US_Nome;
         this.US_Sobrenome = US_Sobrenome;
