@@ -13,15 +13,17 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
+@Controller
 public class EmailController {
 @Autowired
     EmailService emailService;
 
+/*Setar as email model com os atributos que virão do front para envio de email, @RequistParam
+* para pegar os dados*/
 @RequestMapping(value = "/sending-email", method = RequestMethod.POST)
-    public ResponseEntity<EmailModel> sendingEmail(@RequestBody EmailDto emaildto){
-    EmailModel emailModel = new EmailModel();
-    BeanUtils.copyProperties(emaildto, emailModel);
+    public ResponseEntity<EmailModel> sendingEmail(@RequestBody EmailModel emailModel){
+   // EmailModel emailModel = new EmailModel();
+   // BeanUtils.copyProperties(emaildto, emailModel);
     emailService.sendEmail(emailModel);
 
     return new ResponseEntity<>(emailModel, HttpStatus.CREATED);

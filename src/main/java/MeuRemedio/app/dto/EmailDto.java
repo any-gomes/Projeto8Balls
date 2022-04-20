@@ -7,17 +7,17 @@ import javax.validation.constraints.Email;
 
 public class EmailDto {
 
-//    @NotBlank
+    @NotBlank
     private String ownerRef;
- //   @NotBlank
- ///   @Email
+    @NotBlank
+    @Email
     private String emailFrom;
-  //  @NotBlank
-   // @Email
+    @NotBlank
+    @Email
     private String emailTo;
-  //  @NotBlank
+    @NotBlank
     private String subject;
-  //  @NotBlank
+    @NotBlank
     private String text;
 
 }
