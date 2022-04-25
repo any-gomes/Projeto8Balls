@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     @RequestMapping(value = "/")
-    public String index() {
-        return "login";
+    public String login() {
+        return "Login";
+    }
+
+    @RequestMapping(value = "/Logout")
+    public String logout() {
+        return "Login";
     }
 
 }
