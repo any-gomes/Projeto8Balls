@@ -30,7 +30,7 @@ public class CadastroUsuarioController {
 /*   @RequestMapping(value = "/Cadastro")
     public String telaCadasUsuario(){
 
-        return "cadastro";
+        return "/Cadastro";
     }*/
 
 
@@ -49,13 +49,14 @@ public class CadastroUsuarioController {
         UsuarioRepository.save(usuario);
         emailCadastro(usuario);
 
-        return "redirect:/";
+        return "/Cadastro";
     }
 
+/*
     @RequestMapping(value = "/Cadastro", method = RequestMethod.POST)
     public String CadastrarUsuario(@RequestParam("US_Nome") String US_Nome, @RequestParam("US_Sobrenome") String US_Sobrenome,
                                    @RequestParam("US_Email") String US_Email, @RequestParam("US_Senha") String US_Senha,
-                                   @RequestParam("US_DataNascimento") String US_DataNascimento, @RequestParam("US_Sexo") String US_Sexo){
+                                   @RequestParam("US_DataNascimento") String US_DataNascimento, @RequestParam("US_Sexo") String US_Sexo) {
 
         Usuario usuarioCadastro  = new Usuario (US_Nome,US_Sobrenome,US_Email,
         new BCryptPasswordEncoder().encode(US_Senha),US_DataNascimento, US_Sexo);
@@ -66,6 +67,7 @@ public class CadastroUsuarioController {
 
         return "redirect:/";
     }
+*/
 
     public void emailCadastro(Usuario usuario){
         String link = "www.youtube.com.br";
