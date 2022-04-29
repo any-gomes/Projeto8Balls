@@ -27,32 +27,17 @@ public class CadastroUsuarioController {
     EmailService emailService;
 
 
-/*   @RequestMapping(value = "/Cadastro")
+  @RequestMapping(value = "/Cadastro")
     public String telaCadasUsuario(){
-
-        return "/Cadastro";
-    }*/
-
-
-    //   Método de teste de inserção via banco direto, sem front
-        @RequestMapping(value = "/Cadastro")
-        public String formCadastrarUsuario() throws ParseException {
-        String str = "22/05/2006";
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = formatador.parse(str);
-
-
-        Usuario usuario = new Usuario("Guilherme", "Lima",
-                "Guilherme.logus@gmail.com", new BCryptPasswordEncoder().encode("123"),
-                "2021/12/12", "Masculino");
-
-        UsuarioRepository.save(usuario);
-        emailCadastro(usuario);
 
         return "/Cadastro";
     }
 
-/*
+
+    //   Método de teste de inserção via banco direto, sem front
+
+
+
     @RequestMapping(value = "/Cadastro", method = RequestMethod.POST)
     public String CadastrarUsuario(@RequestParam("US_Nome") String US_Nome, @RequestParam("US_Sobrenome") String US_Sobrenome,
                                    @RequestParam("US_Email") String US_Email, @RequestParam("US_Senha") String US_Senha,
@@ -67,7 +52,7 @@ public class CadastroUsuarioController {
 
         return "redirect:/";
     }
-*/
+
 
     public void emailCadastro(Usuario usuario){
         String link = "www.youtube.com.br";

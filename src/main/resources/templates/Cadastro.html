@@ -21,10 +21,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="login_teste.html">Login</a>
+                    <a class="nav-link" href="/">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Cadastro.html">Cadastro</a>
+                    <a class="nav-link" href="/Cadastro">Cadastro</a>
                 </li>
             </ul>
 
@@ -37,7 +37,7 @@
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-auto">
 
-            <form>
+            <form method="post">
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -72,30 +72,24 @@
                     <label>Sexo</label>
                     <div class="col-md-4">
                         <label required="" class="radio-inline">
-                            <input name="sexo" id="US_SexoFeminino" value="feminino" type="radio" required>
-                            Feminino
+                            <input name="sexo" id="US_Sexo" type="text" required>
+
                         </label>
-                        <label class="radio-inline">
-                            <input name="sexo" id="US_SexoMasculino" value="masculino" type="radio">
-                            Masculino
-                        </label>
-                        <label class="radio-inline">
-                            <input name="sexo" id="US_SexoOutro" value="outro" type="radio">
-                            Outro
-                        </label>
+
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Cadastrar"></label>
                         <div class="col-md-8">
-                            <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+                            <button id="Cadastrar" name="action" class="btn btn-success" type="submit">Cadastrar</button>
                             <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-
+    </div>
+</div>
 
 
         <!-- Link do bootstrap (JS) bolado -->
