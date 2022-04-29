@@ -1,36 +1,35 @@
-/*
+
 package MeuRemedio.app.security;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    public void configure (HttpSecurity http) throws Exception{
-        http.csrf().disable()
-                .authorizeRequests()
-                    .antMatchers(HttpMethod.GET, "/Login", "/Cadastro").permitAll()
+   @Override
+    public void configure (HttpSecurity http) throws Exception {
+       http.csrf().disable()
+                    .authorizeRequests()
+                    .antMatchers("/Login", "/Cadastro").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                .formLogin()
+           .formLogin()
                     .loginPage("/Login") //Passar dentro do método o arquivo customizado dá página de login e descomentar
-                    .defaultSuccessUrl("/Home")
+                    .defaultSuccessUrl("/Home", true)
                     .and()
-                .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("Logout"))
-                    .logoutSuccessUrl("/Logout");
+           .logout()
+               .logoutRequestMatcher(new AntPathRequestMatcher("/Logout"));
+
     }
 
     @Override
@@ -38,13 +37,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                     .withUser("ADMIN")
-                    .password("{noop}ADMIN")
+                    .password(passwordEncoder().encode("{noop}ADMIN"))
                     .roles("ADMIN");
     }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override //Método para não bloquear as páginas Staticas
     public void configure (WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/static/**", "/template/**");
 
     }
 }
-*/

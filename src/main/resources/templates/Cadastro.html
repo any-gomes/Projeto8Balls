@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +32,7 @@
     </div>
 </nav>
 
-<!-- FormulÃ¡rio do Login -->
+<!-- Formulario do Login -->
 <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-auto">
@@ -86,35 +86,30 @@
                 <div class="form-group">
                     <div class="form-group col-md-6">
                        Data Nascimento:  <input
-                                          type="text"
+                                          type="date"
                                           id="US_DataNascimento"
                                           name="US_DataNascimento"
                                           placeholder="DD/MM/AAAA"
                                           class="form-control input-md"
-                                          required=""
                                           maxlength="10"
-                                          OnKeyPress="formatar('##/##/####', this)"
                                           onBlur="showhide()"
+                                          required=""
                        >
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-4">
-                        Sexo:  <input type="text"
-                                      id="US_Sexo"
-                                      name="US_Sexo"
-                                      required=""
-                                      class="radio-inline"
-                        >
-
+                        Sexo:  <select id="US_Sexo" name="US_Sexo">
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                    </select>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Cadastrar"></label>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <button id="Cadastrar" name="action" class="btn btn-success" type="submit">Cadastrar</button>
-                            <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
                         </div>
                     </div>
                 </div>
