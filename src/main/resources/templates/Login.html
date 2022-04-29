@@ -24,7 +24,7 @@
                     <a class="nav-link" href="/">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Cadastro">Cadastro</a>
+                    <a class="nav-link" href="/cadastro">Cadastro</a>
                 </li>
             </ul>
 
@@ -37,9 +37,9 @@
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-auto">
 
-            <form name="form" th:action="@{/Login}" method="post">
+            <form name="form" th:action="@{/login}" method="post">
                 <div th:if="${param.error}" class="alert alert-error">
-                    Usuário ou Senha Inválido.
+                    E-mail e/ou senha inválidos.
                 </div>
                 <div th:if="${param.logout}" class="alert alert-sucess">
                     Você se deslogou com sucesso.
@@ -70,7 +70,7 @@
                         <button class="btn btn-primary" id="logar">Logar</button>
                     </div>
                     <div>
-                        <a class="btn btn-primary" href="/Cadastro" role="button" id="cadastro">Cadastrar-se</a>
+                        <a class="btn btn-primary" href="/cadastro" role="button" id="cadastro">Cadastrar-se</a>
                     </div>
                 </div>
             </form>

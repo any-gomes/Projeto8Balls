@@ -25,28 +25,33 @@ public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long US_ID;
+    @Column(name = "US_ID")
+    private long id;
 
-    private String US_Nome;
-    private String US_Sobrenome;
+    @Column(name = "US_Nome")
+    private String nome;
+    @Column(name = "US_Sobrenome")
+    private String sobrenome;
     @Column(name = "US_Email")
     private String email;
-    private String US_Senha;
-    private String US_DataNascimento;
-    private String US_Sexo;
+    @Column(name = "US_Senha")
+    private String senha;
+    @Column(name = "US_DataNascimento")
+    private String dataNascimento;
+    @Column(name = "US_Sexo")
+    private String sexo;
 
     public Usuario(){
 
     }
 
-    public Usuario(String US_Nome, String US_Sobrenome, String US_Email, String US_Senha, String US_DataNascimento, String US_Sexo) {
-        this.US_ID = US_ID;
-        this.US_Nome = US_Nome;
-        this.US_Sobrenome = US_Sobrenome;
-        this.email = US_Email;
-        this.US_Senha = US_Senha;
-        this.US_DataNascimento = US_DataNascimento;
-        this.US_Sexo = US_Sexo;
+    public Usuario(String nome, String sobrenome, String email, String senha, String dataNascimento, String sexo) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
     }
 
     @Override
@@ -56,7 +61,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.getUS_Senha();
+        return this.getSenha();
     }
 
     @Override

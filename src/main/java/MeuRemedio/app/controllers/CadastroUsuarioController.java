@@ -27,13 +27,13 @@ public class CadastroUsuarioController {
     EmailService emailService;
 
 
-  @RequestMapping(value = "/Cadastro")
+  @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario(){
-        return "/Cadastro";
+        return "/cadastro";
     }
 
 
-   @RequestMapping(value = "/Cadastro", method = RequestMethod.POST)
+   @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
     public String CadastrarUsuario(@RequestParam("US_Nome") String US_Nome, @RequestParam("US_Sobrenome") String US_Sobrenome,
                                    @RequestParam("US_Email") String US_Email, @RequestParam("US_Senha") String US_Senha,
                                    @RequestParam("US_DataNascimento") String US_DataNascimento, @RequestParam("US_Sexo") String US_Sexo) {
@@ -49,7 +49,7 @@ public class CadastroUsuarioController {
 
     public void emailCadastro(Usuario usuario){
         String link = "www.youtube.com.br";
-        String nomeCompleto = usuario.getUS_Nome() + " " + usuario.getUS_Sobrenome();
+        String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
 
         EmailModel emailModel = new EmailModel();
         emailModel.setEM_Destinatario(usuario.getEmail());

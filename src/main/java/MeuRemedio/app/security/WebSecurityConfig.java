@@ -23,15 +23,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (HttpSecurity http) throws Exception {
        http.csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/Login", "/Cadastro").permitAll()
+                    .antMatchers("/login", "/cadastro").permitAll()
                     .anyRequest().authenticated()
                     .and()
            .formLogin()
-                    .loginPage("/Login") //Passar dentro do método o arquivo customizado dá página de login e descomentar
-                    .defaultSuccessUrl("/Home", true)
+                    .loginPage("/login") //Passar dentro do método o arquivo customizado dá página de login e descomentar
+                    .defaultSuccessUrl("/home", true)
                     .and()
            .logout()
-               .logoutRequestMatcher(new AntPathRequestMatcher("/Logout")).logoutSuccessUrl("/Login")
+               .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                .and().rememberMe();
 
     }
