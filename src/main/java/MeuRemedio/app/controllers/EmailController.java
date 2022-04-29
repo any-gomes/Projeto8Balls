@@ -1,7 +1,7 @@
 package MeuRemedio.app.controllers;
 
 
-import MeuRemedio.app.dto.EmailDto;
+
 import MeuRemedio.app.model.EmailModel;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.BeanUtils;

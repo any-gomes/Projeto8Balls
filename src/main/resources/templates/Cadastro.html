@@ -32,7 +32,7 @@
     </div>
 </nav>
 
-<!-- Formulário do Login -->
+<!-- FormulÃ¡rio do Login -->
 <div class="container">
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-auto">
@@ -41,40 +41,72 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Nome</label>
-                        <input type="text" class="form-control" id="US_Nome" placeholder="" required>
+                        Nome: <input type="text"
+                                 class="form-control"
+                                 id="US_Nome"
+                                 name="US_Nome"
+                                 placeholder="Nome"
+                                 required
+                        >
                     </div>
+
                     <div class="form-group col-md-6">
-                        <label>Sobrenome</label>
-                        <input type="text" class="form-control" id="US_Sobrenome" placeholder="" required>
+                        Sobrenome: <input type="text"
+                                    class="form-control"
+                                    id="US_Sobrenome"
+                                    name="US_Sobrenome"
+                                    placeholder="Sobrenome"
+                                    required
+                    >
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>E-mail</label>
-                        <input type="email" class="form-control" id="US_Email" placeholder="E-mail" required>
+                       E-mail: <input type="email"
+                                      name="US_Email"
+                                      class="form-control"
+                                      id="US_Email"
+                                      placeholder="E-mail"
+                                      required
+                    >
                     </div>
                     <div class="form-group col-md-6">
-                        <label>Senha</label>
-                        <input type="password" class="form-control" minlength="8" id="US_Senha" placeholder="Senha" required>
+                        Senha: <input type="password"
+                                      id="US_Senha"
+                                      name="US_Senha"
+                                      class="form-control"
+                                      minlength="8"
+                                      placeholder="Senha"
+                                      required
+                    >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Nascimento</label>
                     <div class="form-group col-md-6">
-                        <input id="US_DataNascimento" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+                       Data Nascimento:  <input
+                                          type="text"
+                                          id="US_DataNascimento"
+                                          name="US_DataNascimento"
+                                          placeholder="DD/MM/AAAA"
+                                          class="form-control input-md"
+                                          required=""
+                                          maxlength="10"
+                                          OnKeyPress="formatar('##/##/####', this)"
+                                          onBlur="showhide()"
+                       >
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Sexo</label>
                     <div class="col-md-4">
-                        <label required="" class="radio-inline">
-                            <input name="sexo" id="US_Sexo" type="text" required>
-
-                        </label>
+                        Sexo:  <input type="text"
+                                      id="US_Sexo"
+                                      name="US_Sexo"
+                                      required=""
+                                      class="radio-inline"
+                        >
 
                     </div>
 
@@ -92,9 +124,9 @@
 </div>
 
 
-        <!-- Link do bootstrap (JS) bolado -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Link do bootstrap (JS) bolado -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

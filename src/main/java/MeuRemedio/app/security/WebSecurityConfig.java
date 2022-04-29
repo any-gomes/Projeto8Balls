@@ -1,3 +1,4 @@
+/*
 package MeuRemedio.app.security;
 
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (HttpSecurity http) throws Exception{
         http.csrf().disable()
                 .authorizeRequests()
-                    .antMatchers(HttpMethod.GET, "/", "/Cadastro").permitAll()
+                    .antMatchers(HttpMethod.GET, "/Login", "/Cadastro").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -28,10 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/Home")
                     .and()
                 .logout()
-                    .permitAll()
                     .logoutRequestMatcher(new AntPathRequestMatcher("Logout"))
-                    .logoutSuccessUrl("/Logout")
-        ;
+                    .logoutSuccessUrl("/Logout");
     }
 
     @Override
@@ -42,9 +41,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .password("{noop}ADMIN")
                     .roles("ADMIN");
     }
-
     @Override //Método para não bloquear as páginas Staticas
     public void configure (WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/static/**", "/style/**");
+        web.ignoring().antMatchers("/static/**", "/template/**");
+
     }
 }
+*/
