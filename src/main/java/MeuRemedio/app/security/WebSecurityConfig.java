@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    //.loginPage("") Passar dentro do método o arquivo customizado dá página de login e descomentar
+                    .loginPage("/Login") //Passar dentro do método o arquivo customizado dá página de login e descomentar
                     .defaultSuccessUrl("/Home")
                     .and()
                 .logout()

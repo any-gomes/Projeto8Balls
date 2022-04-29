@@ -1,18 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en">
 <head>
-    <title>Cadastrar</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
+    <!-- Link do bootstrap (CSS) bolado -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+
 <body>
-<h1 id="tituloPagina"> Cadastro de Usuários</h1>
+<!-- Menu Simples -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+    <div class="container">
+        <a class="navbar-brand" href="#">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="login_teste.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Formulário do Login -->
+<div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-auto">
+
+            <form>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" id="US_Nome" placeholder="" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control" id="US_Sobrenome" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" id="US_Email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" minlength="8" id="US_Senha" placeholder="Senha" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nascimento</label>
+                    <div class="form-group col-md-6">
+                        <input id="US_DataNascimento" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Sexo</label>
+                    <div class="col-md-4">
+                        <label required="" class="radio-inline">
+                            <input name="sexo" id="US_SexoFeminino" value="feminino" type="radio" required>
+                            Feminino
+                        </label>
+                        <label class="radio-inline">
+                            <input name="sexo" id="US_SexoMasculino" value="masculino" type="radio">
+                            Masculino
+                        </label>
+                        <label class="radio-inline">
+                            <input name="sexo" id="US_SexoOutro" value="outro" type="radio">
+                            Outro
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="Cadastrar"></label>
+                        <div class="col-md-8">
+                            <button id="Cadastrar" name="Cadastrar" class="btn btn-success" type="Submit">Cadastrar</button>
+                            <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
 
 
 
+        <!-- Link do bootstrap (JS) bolado -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
-<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </html>
