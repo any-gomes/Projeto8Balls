@@ -52,7 +52,7 @@ public class CadastroUsuarioController {
         String nomeCompleto = usuario.getUS_Nome() + " " + usuario.getUS_Sobrenome();
 
         EmailModel emailModel = new EmailModel();
-        emailModel.setEM_Destinatario(usuario.getUS_Email());
+        emailModel.setEM_Destinatario(usuario.getEmail());
         emailModel.setEM_Assunto("Cadastro Realizado");
         emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu remedio. Acesse a platafor em  " + link);
 

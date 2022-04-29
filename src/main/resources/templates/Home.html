@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
 <h1 style="text-align: center"> Pagina inicial da aplicação</h1>
+
+    <form class="logout" method="post" th:action="@{/Logout}">
+        <button type="submit" class="btn btn-primary"> Sair </button>
+    </form>
 </body>
 </html>

@@ -1,6 +1,7 @@
 
 package MeuRemedio.app.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private ImplementsUserDetailsService implementsUserDetailsService;
    @Override
     public void configure (HttpSecurity http) throws Exception {
        http.csrf().disable()
@@ -28,17 +31,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/Home", true)
                     .and()
            .logout()
-               .logoutRequestMatcher(new AntPathRequestMatcher("/Logout"));
+               .logoutRequestMatcher(new AntPathRequestMatcher("/Logout")).logoutSuccessUrl("/Login")
+               .and().rememberMe();
 
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .inMemoryAuthentication()
-                    .withUser("ADMIN")
-                    .password(passwordEncoder().encode("{noop}ADMIN"))
-                    .roles("ADMIN");
+                .userDetailsService(implementsUserDetailsService)
+                .passwordEncoder(passwordEncoder());
+//                .inMemoryAuthentication()
+//                    .withUser("ADMIN")
+//                    .password(passwordEncoder().encode("{noop}ADMIN"))
+//                    .roles("ADMIN");
     }
 
     @Bean

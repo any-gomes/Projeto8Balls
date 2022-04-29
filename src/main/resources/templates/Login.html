@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,22 +37,29 @@
     <div class="row justify-content-center align-items-center vh-100">
         <div class="col-auto">
 
-            <form>
+            <form name="form" th:action="@{/Login}" method="post">
+                <div th:if="${param.error}" class="alert alert-error">
+                    Usuário ou Senha Inválido.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-sucess">
+                    Você se deslogou com sucesso.
+                </div>
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="email"
                            class="form-control"
-                           id="US_Email"
+                           id="username"
+                           name="username"
                            aria-describedby="emailHelp"
                            placeholder="Digite o e-mail" required>
 
                 </div>
                 <div class="form-group">
                     <label>Senha</label>
-                    <input type="password" class="form-control" minlength="8" id="US_Senha"  placeholder="Digite a senha" required>
+                    <input type="password" class="form-control" minlength="8" id="password" name="password"  placeholder="Digite a senha" required>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="lembrar" id="lembrar">
+                    <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me">
                     <label class="form-check-label">Manter Conectado</label>
                 </div>
                 <div class="form-group form-check">
@@ -60,7 +67,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <a class="btn btn-primary" href="/Home" role="button" id="logar">Logar</a>
+                        <button class="btn btn-primary" id="logar">Logar</button>
                     </div>
                     <div>
                         <a class="btn btn-primary" href="/Cadastro" role="button" id="cadastro">Cadastrar-se</a>
