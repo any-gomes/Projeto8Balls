@@ -38,12 +38,6 @@
         <div class="col-auto">
 
             <form name="form" th:action="@{/login}" method="post">
-                <div th:if="${param.error}" class="alert alert-error">
-                    E-mail e/ou senha inválidos.
-                </div>
-                <div th:if="${param.logout}" class="alert alert-sucess">
-                    Você se deslogou com sucesso.
-                </div>
                 <div class="form-group">
                     <label>E-mail</label>
                     <input type="email"
@@ -72,6 +66,12 @@
                     <div>
                         <a class="btn btn-primary" href="/cadastro" role="button" id="cadastro">Cadastrar-se</a>
                     </div>
+                </div>
+                <div th:if="${param.error}" class="alert alert-error">
+                    E-mail e/ou senha inválidos.
+                </div>
+                <div th:if="${param.logout}" class="alert alert-sucess">
+                    Você se deslogou com sucesso.
                 </div>
             </form>
         </div>
