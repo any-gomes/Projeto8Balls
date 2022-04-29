@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DataConfiguration {
 
-/*    @Bean
+   @Bean
     public DataSource datasource() {
         try {
             DriverManagerDataSource driver = new DriverManagerDataSource();
@@ -28,7 +28,7 @@ public class DataConfiguration {
         } catch (Exception e) {
             throw new IllegalStateException("Erro de conexão com o banco" + e);
         }
-    }*/
+    }
 
     @Bean
     public JpaVendorAdapter JpaVendorAdapter() {
