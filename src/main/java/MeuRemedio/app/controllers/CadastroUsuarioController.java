@@ -54,7 +54,7 @@ public class CadastroUsuarioController {
         EmailModel emailModel = new EmailModel();
         emailModel.setEM_Destinatario(usuario.getEmail());
         emailModel.setEM_Assunto("Cadastro Realizado");
-        emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu remedio. Acesse a platafor em  " + link);
+        emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu remedio. \n Acesse a plataforma em  " + link);
 
         emailService.sendEmail(emailModel);
     }
