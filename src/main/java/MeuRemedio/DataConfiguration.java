@@ -14,15 +14,15 @@ import javax.sql.DataSource;
 @Configuration
 public class DataConfiguration {
 
-
+/*
    @Bean
     public DataSource datasource() {
         try {
             DriverManagerDataSource driver = new DriverManagerDataSource();
             driver.setDriverClassName("org.postgresql.Driver");
-            driver.setUrl("jdbc:postgresql://<ec2-52-86-56-90.compute-1.amazonaws.com>:<5432>/<dgiqcipblns01>?sslmode=require&user=<flwjxtugljoktu>&password=<2388799cf32e5267930270d9ca53b630eb08df68dd6f51782014e256a0af8742>");
-            driver.setUsername("flwjxtugljoktu");
-            driver.setPassword("2388799cf32e5267930270d9ca53b630eb08df68dd6f51782014e256a0af8742");
+            driver.setUrl("jdbc:postgresql://localhost:5432/meuremediobd");
+            driver.setUsername("postgres");
+            driver.setPassword("root");
 
             return driver;
 
@@ -30,10 +30,10 @@ public class DataConfiguration {
             throw new IllegalStateException("Erro de conexão com o banco" + e);
         }
     }
+*/
 
 
-
-    /*@Bean
+    @Bean
     public JpaVendorAdapter JpaVendorAdapter() {
         try {
             HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
@@ -48,5 +48,5 @@ public class DataConfiguration {
         } catch (Exception e) {
             throw new IllegalArgumentException("Hibernate error " + e);
         }
-    }*/
+    }
 }
