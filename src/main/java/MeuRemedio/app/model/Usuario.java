@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Date;
 
@@ -28,17 +29,17 @@ public class Usuario implements UserDetails {
     @Column(name = "US_ID")
     private long id;
 
-    @Column(name = "US_Nome")
+    @Column(name = "US_Nome") @NotNull
     private String nome;
-    @Column(name = "US_Sobrenome")
+    @Column(name = "US_Sobrenome")  @NotNull
     private String sobrenome;
-    @Column(name = "US_Email")
+    @Column(name = "US_Email") @NotNull
     private String email;
-    @Column(name = "US_Senha")
+    @Column(name = "US_Senha") @NotNull
     private String senha;
-    @Column(name = "US_DataNascimento")
+    @Column(name = "US_DataNascimento") @NotNull
     private String dataNascimento;
-    @Column(name = "US_Sexo")
+    @Column(name = "US_Sexo") @NotNull
     private String sexo;
 
     public Usuario(){

@@ -5,20 +5,16 @@ import MeuRemedio.app.model.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Controller
 public class CadastroUsuarioController {
+    EmailController emailCadastro = new EmailController();
 
     @Autowired
     private UsuarioRepository UsuarioRepository;
@@ -29,7 +25,7 @@ public class CadastroUsuarioController {
 
   @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario(){
-        return "/cadastro";
+        return "Cadastro";
     }
 
 
@@ -42,21 +38,11 @@ public class CadastroUsuarioController {
         new BCryptPasswordEncoder().encode(US_Senha), US_DataNascimento, US_Sexo);
 
         UsuarioRepository.save(usuarioCadastro);
-        emailCadastro(usuarioCadastro);
+        emailCadastro.emailCadastro(usuarioCadastro);
 
         return "redirect:/";
     }
 
-    public void emailCadastro(Usuario usuario){
-        String link = "www.youtube.com.br";
-        String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
 
-        EmailModel emailModel = new EmailModel();
-        emailModel.setEM_Destinatario(usuario.getEmail());
-        emailModel.setEM_Assunto("Cadastro Realizado");
-        emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu remedio. Acesse a platafor em  " + link);
-
-        emailService.sendEmail(emailModel);
-    }
 
 }

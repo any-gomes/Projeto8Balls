@@ -3,6 +3,7 @@ package MeuRemedio.app.controllers;
 
 
 import MeuRemedio.app.model.EmailModel;
+import MeuRemedio.app.model.Usuario;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,17 @@ public class EmailController {
         emailModel.setEM_Destinatario(email);
         emailModel.setEM_Assunto("Recuperação de senha");
         emailModel.setText( "Olá, vimos que perdeu sua senha, acesse o link para criar uma nova"+ link);
+
+        emailService.sendEmail(emailModel);
+    }
+    public void emailCadastro(Usuario usuario){
+        String link = "www.youtube.com.br";
+        String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
+
+        EmailModel emailModel = new EmailModel();
+        emailModel.setEM_Destinatario(usuario.getEmail());
+        emailModel.setEM_Assunto("Cadastro Realizado");
+        emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu remedio. Acesse a platafor em  " + link);
 
         emailService.sendEmail(emailModel);
     }
