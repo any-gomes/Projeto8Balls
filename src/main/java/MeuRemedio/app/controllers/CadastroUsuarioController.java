@@ -48,7 +48,7 @@ public class CadastroUsuarioController {
     }
 
     public void emailCadastro(Usuario usuario){
-        String link = "www.youtube.com.br";
+        String link = "https://meuremedioapp.herokuapp.com/login";
         String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
 
         EmailModel emailModel = new EmailModel();
