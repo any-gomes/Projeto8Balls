@@ -29,7 +29,7 @@ public class CadastroUsuarioController {
 
   @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario(){
-        return "/cadastro";
+        return "Cadastro";
     }
 
 
