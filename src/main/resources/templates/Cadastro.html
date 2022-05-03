@@ -6,122 +6,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
 
-    <!-- Link do bootstrap (CSS) bolado -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+    <!-- Link do bootstrap (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style/cadastroStyle.css">
+</head>
 
 <body>
-<!-- Menu Simples -->
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="#">Inicio</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<header>
+    <!-- Menu Simples -->
+    <nav class="">
+        <div class="">
+            <a class="" href="#">Inicio</a>
+            <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Cadastro">Cadastro</a>
-                </li>
-            </ul>
+            <div class="" id="navbarSupportedContent">
+                <ul class="">
+                    <li class="">
+                        <a class="" href="/Cadastro">Cadastrar</a>
+                    </li>
+                    <li class="">
+                        <a class="" href="/">Entrar</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"><img class="formulario-icon" src="../static/assets/cadastro-form-icon.svg" alt="Ícone Meu Remédio"></a>
+            <div class="d-flex nav-botoes">
+                <button>Cadastrar</button>
+                <button>Entrar</button>
+            </div>
 
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 <!-- Formulario do Login -->
-<div class="container">
-    <div class="row justify-content-center align-items-center vh-100">
-        <div class="col-auto">
+<div class="card  mb-3 formulario-card" style="max-width: 18rem;">
+    <div class="card-body ">
+        <img class="formulario-icon" src="assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio">
+        <h3 >Crie sua conta</h3>
+        <h5>Preencha seus dados</h5>
+        <form method="post">
 
-            <form method="post">
+            <div class="">
+                <input type="text"
+                       class=""
+                       id="US_Nome"
+                       name="US_Nome"
+                       placeholder="Nome*"
+                       required
+                >
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        Nome: <input type="text"
-                                 class="form-control"
-                                 id="US_Nome"
-                                 name="US_Nome"
-                                 placeholder="Nome"
-                                 required
-                        >
-                    </div>
+            <div class="">
+                <input type="text"
+                       class=""
+                       id="US_Sobrenome"
+                       name="US_Sobrenome"
+                       placeholder="Sobrenome*"
+                       required
+                >
+            </div>
 
-                    <div class="form-group col-md-6">
-                        Sobrenome: <input type="text"
-                                    class="form-control"
-                                    id="US_Sobrenome"
-                                    name="US_Sobrenome"
-                                    placeholder="Sobrenome"
-                                    required
-                    >
-                    </div>
+            <div class="">
+                <input type="email"
+                       name="US_Email"
+                       class=""
+                       id="US_Email"
+                       placeholder="E-mail*"
+                       required
+                >
+            </div>
+
+            <div class="">
+                <select id="US_Sexo" name="US_Sexo">
+                    <option value="Feminino">Feminino</option>
+                    <option value="Masculino">Masculino</option>
+                </select>
+            </div>
+
+            <div class="">
+                <input
+                        type="date"
+                        id="US_DataNascimento"
+                        name="US_DataNascimento"
+                        placeholder="Data de Nascimento*"
+                        class=""
+                        maxlength="10"
+                        onBlur="showhide()"
+                        required=""
+                >
+            </div>
+
+            <div class="">
+                <input type="password"
+                       id="US_Senha"
+                       name="US_Senha"
+                       class=""
+                       minlength="8"
+                       placeholder="Senha*"
+                       required
+                >
+            </div>
+
+            <div class="">
+                <label class="" for="cadastrar"></label>
+                <div class="">
+                    <button id="cadastrar" name="action" class="" type="submit">Cadastrar</button>
                 </div>
+            </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                       E-mail: <input type="email"
-                                      name="US_Email"
-                                      class="form-control"
-                                      id="US_Email"
-                                      placeholder="E-mail"
-                                      required
-                    >
-                    </div>
-                    <div class="form-group col-md-6">
-                        Senha: <input type="password"
-                                      id="US_Senha"
-                                      name="US_Senha"
-                                      class="form-control"
-                                      minlength="8"
-                                      placeholder="Senha"
-                                      required
-                    >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-group col-md-6">
-                       Data Nascimento:  <input
-                                          type="date"
-                                          id="US_DataNascimento"
-                                          name="US_DataNascimento"
-                                          placeholder="DD/MM/AAAA"
-                                          class="form-control input-md"
-                                          maxlength="10"
-                                          onBlur="showhide()"
-                                          required=""
-                       >
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-4">
-                        Sexo:  <select id="US_Sexo" name="US_Sexo">
-                        <option value="Feminino">Feminino</option>
-                        <option value="Masculino">Masculino</option>
-                    </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="cadastrar"></label>
-                        <div class="col-md-12">
-                            <button id="cadastrar" name="action" class="btn btn-success" type="submit">Cadastrar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+        </form>
     </div>
 </div>
-
-
-<!-- Link do bootstrap (JS) bolado -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Link do bootstrap (JS)-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
