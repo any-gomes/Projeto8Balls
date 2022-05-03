@@ -32,6 +32,7 @@ public class DataConfiguration {
     }
 */
 
+
     @Bean
     public JpaVendorAdapter JpaVendorAdapter() {
         try {

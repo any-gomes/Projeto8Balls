@@ -29,7 +29,7 @@ public class CadastroUsuarioController {
 
   @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario(){
-        return "/cadastro";
+        return "Cadastro";
     }
 
 
@@ -48,13 +48,13 @@ public class CadastroUsuarioController {
     }
 
     public void emailCadastro(Usuario usuario){
-        String link = "www.youtube.com.br";
+        String link = "https://meuremedioapp.herokuapp.com/login";
         String nomeCompleto = usuario.getNome() + " " + usuario.getSobrenome();
 
         EmailModel emailModel = new EmailModel();
         emailModel.setEM_Destinatario(usuario.getEmail());
         emailModel.setEM_Assunto("Cadastro Realizado");
-        emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu remedio. Acesse a platafor em  " + link);
+        emailModel.setText("Olá " + nomeCompleto + ". Queremos agradecer por ter se registrado na plataforma Meu Remédio. \n Acesse a plataforma em  " + link);
 
         emailService.sendEmail(emailModel);
     }
