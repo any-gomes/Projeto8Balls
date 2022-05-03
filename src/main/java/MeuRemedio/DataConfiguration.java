@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 @Configuration
 public class DataConfiguration {
 
-/*
-   @Bean
+
+  @Bean
     public DataSource datasource() {
         try {
             DriverManagerDataSource driver = new DriverManagerDataSource();
@@ -30,7 +30,6 @@ public class DataConfiguration {
             throw new IllegalStateException("Erro de conexão com o banco" + e);
         }
     }
-*/
 
     @Bean
     public JpaVendorAdapter JpaVendorAdapter() {
@@ -41,7 +40,6 @@ public class DataConfiguration {
             adapter.setGenerateDdl(true);
             adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL10Dialect");
             adapter.setPrepareConnection(true);
-
 
             return adapter;
         } catch (Exception e) {

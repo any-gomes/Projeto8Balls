@@ -3,8 +3,6 @@ package MeuRemedio.app.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.bytebuddy.implementation.bind.annotation.Empty;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,13 +11,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 
-
 @Getter
 @Setter
+
 @Entity
 public class Usuario implements UserDetails {
     private static long serialVersionUID = 1L;
@@ -29,18 +27,20 @@ public class Usuario implements UserDetails {
     @Column(name = "US_ID")
     private long id;
 
-    @Column(name = "US_Nome") @NotNull
+    @Column(name = "US_Nome")
     private String nome;
-    @Column(name = "US_Sobrenome")  @NotNull
+    @Column(name = "US_Sobrenome")
     private String sobrenome;
-    @Column(name = "US_Email") @NotNull
+    @Column(name = "US_Email")
     private String email;
-    @Column(name = "US_Senha") @NotNull
+    @Column(name = "US_Senha")
     private String senha;
-    @Column(name = "US_DataNascimento") @NotNull
+    @Column(name = "US_DataNascimento")
     private String dataNascimento;
-    @Column(name = "US_Sexo") @NotNull
+    @Column(name = "US_Sexo")
     private String sexo;
+    @Column(name = "Cadastrado_em")
+    private LocalDate dataCadastro;
 
     public Usuario(){
 
@@ -53,6 +53,7 @@ public class Usuario implements UserDetails {
         this.senha = senha;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
+        this.dataCadastro = LocalDate.now();
     }
 
     @Override

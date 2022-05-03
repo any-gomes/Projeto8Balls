@@ -1,12 +1,9 @@
 package MeuRemedio.app.controllers;
 
-import MeuRemedio.app.model.EmailModel;
 import MeuRemedio.app.model.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CadastroUsuarioController {
-    EmailController emailCadastro = new EmailController();
+    @Autowired
+    EmailController emailCadastro;
 
     @Autowired
     private UsuarioRepository UsuarioRepository;
@@ -38,11 +36,9 @@ public class CadastroUsuarioController {
         new BCryptPasswordEncoder().encode(US_Senha), US_DataNascimento, US_Sexo);
 
         UsuarioRepository.save(usuarioCadastro);
-        emailCadastro.emailCadastro(usuarioCadastro);
+        emailCadastro.emailConfirmCadastro(usuarioCadastro);
 
         return "redirect:/";
     }
-
-
 
 }
