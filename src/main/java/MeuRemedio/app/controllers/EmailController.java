@@ -1,42 +1,44 @@
 package MeuRemedio.app.controllers;
 
-
-
-import MeuRemedio.app.model.EmailModel;
+import MeuRemedio.app.enums.MensagemEmail;
+import MeuRemedio.app.model.Usuario;
 import MeuRemedio.app.service.EmailService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class EmailController {
-@Autowired
+    @Autowired
     EmailService emailService;
 
 /*Setar as email model com os atributos que virão do front para envio de email, @RequistParam
 * para pegar os dados*/
-@RequestMapping(value = "/sending-email", method = RequestMethod.POST)
-    public ResponseEntity<EmailModel> sendingEmail(@RequestBody EmailModel emailModel){
-   // EmailModel emailModel = new EmailModel();
-   // BeanUtils.copyProperties(emaildto, emailModel);
-    emailService.sendEmail(emailModel);
 
-    return new ResponseEntity<>(emailModel, HttpStatus.CREATED);
-}
+/*@RequestMapping(value = "/sending-email", method = RequestMethod.POST)
+    public ResponseEntity<EmailModel> sendingEmail(@RequestBody Usuario usuario){
+    emailService.sendEmail(usuario);
+
+    return new ResponseEntity<T>(usuario, HttpStatus.CREATED);
+}*/
 
     @RequestMapping(value = "/recuperar_senha", method = RequestMethod.POST)
-    public void RecuperarSenha(String email){
-        String link = "https://localhost:8080/Cadastro";
-        EmailModel emailModel = new EmailModel();
-        emailModel.setEM_Destinatario(email);
-        emailModel.setEM_Assunto("Recuperação de senha");
-        emailModel.setText( "Olá, vimos que perdeu sua senha, acesse o link para criar uma nova"+ link);
+    public void emailRecuperarSenha (Usuario usuario){
+        String link = "https://meuremedioapp.herokuapp.com/cadastro";
+        String msgRecuperacao = usuario.getNome() + " " + usuario.getSobrenome();
+        String assunto = MensagemEmail.RECUPERACAO_SENHA.getDescricao();;
+        String mensagem = msgRecuperacao + MensagemEmail.RECUPERACAO_MENSAGEM.getDescricao() + link;
 
-        emailService.sendEmail(emailModel);
+        emailService.sendEmail(usuario, assunto, mensagem );
+    }
+
+    public void emailConfirmCadastro (Usuario usuario){
+        String link = "https://meuremedioapp.herokuapp.com/login";
+        String msgBoasVindas = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome();
+        String assunto = MensagemEmail.CADASTRO_REALIZADO.getDescricao();
+        String mensagem = msgBoasVindas + MensagemEmail.CADASTRO_MENSAGEM.getDescricao() + link;
+
+        emailService.sendEmail(usuario, assunto, mensagem );
     }
 }
