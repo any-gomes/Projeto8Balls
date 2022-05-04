@@ -8,6 +8,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 
 @Controller
 public class CadastroUsuarioController {
@@ -15,7 +20,7 @@ public class CadastroUsuarioController {
     EmailController emailCadastro;
 
     @Autowired
-    private UsuarioRepository UsuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     EmailService emailService;
@@ -27,18 +32,39 @@ public class CadastroUsuarioController {
     }
 
 
+
    @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-    public String CadastrarUsuario(@RequestParam("US_Nome") String US_Nome, @RequestParam("US_Sobrenome") String US_Sobrenome,
-                                   @RequestParam("US_Email") String US_Email, @RequestParam("US_Senha") String US_Senha,
-                                   @RequestParam("US_DataNascimento") String US_DataNascimento, @RequestParam("US_Sexo") String US_Sexo) {
+    public String CadastrarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
+                                   @RequestParam("US_Email") String email, @RequestParam("US_Senha") String senha,
+                                   @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo) {
 
-        Usuario usuarioCadastro  = new Usuario (US_Nome,US_Sobrenome,US_Email,
-        new BCryptPasswordEncoder().encode(US_Senha), US_DataNascimento, US_Sexo);
+       if(usuarioRepository.findByEmail(email) != null)
+            return "/cadastro";
 
-        UsuarioRepository.save(usuarioCadastro);
-        emailCadastro.emailConfirmCadastro(usuarioCadastro);
+       boolean dataValida = validaData(dataNascimento);
+       if(!dataValida){
+           return "/cadastro";
+       }
 
-        return "redirect:/";
+       Usuario usuarioCadastro  = new Usuario (nome,sobrenome,email,
+               new BCryptPasswordEncoder().encode(senha), dataNascimento, sexo);
+
+       usuarioRepository.save(usuarioCadastro);
+       emailCadastro.emailConfirmCadastro(usuarioCadastro);
+
+       return "redirect:/";
+    }
+
+    public boolean validaData(String dataNascimento){
+        try {
+            SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+            Date data = sdformat.parse(dataNascimento);
+            Date dataAtual = sdformat.parse(String.valueOf(LocalDate.now()));
+            if(data.after(dataAtual)){
+                return false;
+            }
+        } catch (ParseException e) {}
+        return true;
     }
 
 }
