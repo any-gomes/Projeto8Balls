@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
             <div class="" id="navbarSupportedContent">
                 <ul class="">
                     <li class="">
-                        <a class="" href="/Cadastro">Cadastrar</a>
+                        <a class="" href="/cadastro">Cadastrar</a>
                     </li>
                     <li class="">
                         <a class="" href="/">Entrar</a>
@@ -116,14 +116,18 @@
                        required
                 >
             </div>
-
             <div class="">
                 <label class="" for="cadastrar"></label>
                 <div class="">
                     <button id="cadastrar" name="action" class="" type="submit">Cadastrar</button>
                 </div>
             </div>
-
+            <div th:if="${param.emailExistente}" class="alert alert-error">
+                O email informado já está em uso.
+            </div>
+            <div th:if="${param.dataInvalida}" class="alert alert-error">
+                A data de nascimento informada não é válida.
+            </div>
         </form>
     </div>
 </div>
