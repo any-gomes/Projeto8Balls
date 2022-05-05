@@ -10,123 +10,90 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style/cadastroStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <header>
     <!-- Menu Simples -->
-    <nav class="">
-        <div class="">
-            <a class="" href="#">Inicio</a>
-            <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class=""></span>
-            </button>
-
-            <div class="" id="navbarSupportedContent">
-                <ul class="">
-                    <li class="">
-                        <a class="" href="/Cadastro">Cadastrar</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="/">Entrar</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand"><img class="formulario-icon" src="../static/assets/cadastro-form-icon.svg" alt="Ícone Meu Remédio"></a>
-            <div class="d-flex nav-botoes">
-                <button>Cadastrar</button>
-                <button>Entrar</button>
-            </div>
-
-        </div>
+    <nav class="navbar d-flex justify-content-end">
+        <ul class="d-flex justify-content-around align-item-center nav-lista">
+            <li class="nav-lista-item">
+                <a class="" href="#">Início</a>
+            </li>
+            <li class="nav-lista-item">
+                <a class="" href="/Cadastro">Entrar</a>
+            </li>
+        </ul>
     </nav>
 </header>
+<main class="container d-flex justify-content-center">
+    <!-- Formulario do Login -->
+    <div class="card formulario-card">
+        <div class="card-body d-flex flex-wrap justify-content-center">
+            <img class="formulario-icon" src="../static/assets/cadastro-form-icon.svg" alt="Ícone Meu Remédio">
+            <h3>Crie sua conta</h3>
+            <h5>Preencha seus dados</h5>
+            <form method="post">
 
-<!-- Formulario do Login -->
-<div class="card  mb-3 formulario-card" style="max-width: 18rem;">
-    <div class="card-body ">
-        <img class="formulario-icon" src="assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio">
-        <h3 >Crie sua conta</h3>
-        <h5>Preencha seus dados</h5>
-        <form method="post">
-
-            <div class="">
                 <input type="text"
-                       class=""
+                       class="formulario-input"
                        id="US_Nome"
                        name="US_Nome"
                        placeholder="Nome*"
                        required
                 >
-            </div>
 
-            <div class="">
                 <input type="text"
-                       class=""
+                       class="formulario-input"
                        id="US_Sobrenome"
                        name="US_Sobrenome"
                        placeholder="Sobrenome*"
                        required
                 >
-            </div>
 
-            <div class="">
                 <input type="email"
                        name="US_Email"
-                       class=""
+                       class="formulario-input"
                        id="US_Email"
                        placeholder="E-mail*"
                        required
                 >
-            </div>
 
-            <div class="">
-                <select id="US_Sexo" name="US_Sexo">
+                <select id="US_Sexo" name="US_Sexo" class="formulario-input">
                     <option value="Feminino">Feminino</option>
                     <option value="Masculino">Masculino</option>
                 </select>
-            </div>
 
-            <div class="">
                 <input
                         type="date"
+                        class="formulario-input"
                         id="US_DataNascimento"
                         name="US_DataNascimento"
                         placeholder="Data de Nascimento*"
-                        class=""
                         maxlength="10"
                         onBlur="showhide()"
                         required=""
                 >
-            </div>
 
-            <div class="">
                 <input type="password"
                        id="US_Senha"
                        name="US_Senha"
-                       class=""
+                       class="formulario-input"
                        minlength="8"
                        placeholder="Senha*"
                        required
                 >
-            </div>
 
-            <div class="">
-                <label class="" for="cadastrar"></label>
-                <div class="">
-                    <button id="cadastrar" name="action" class="" type="submit">Cadastrar</button>
-                </div>
-            </div>
+                <button id="cadastrar" name="action" class="formulario-button" type="submit">Finalizar</button>
 
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+</main>
+
 <!-- Link do bootstrap (JS)-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
