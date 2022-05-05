@@ -4,8 +4,12 @@ import MeuRemedio.app.model.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -28,22 +32,27 @@ public class CadastroUsuarioController {
 
   @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario(){
-        return "Cadastro";
+
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+      if (authentication == null || authentication instanceof AnonymousAuthenticationToken){
+          return "Cadastro";
+      }
+      return "redirect:/home";
     }
-
-
 
    @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
     public String CadastrarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
                                    @RequestParam("US_Email") String email, @RequestParam("US_Senha") String senha,
-                                   @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo) {
+                                   @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo, ModelMap modelMap) {
 
-       if(usuarioRepository.findByEmail(email) != null)
-            return "/cadastro";
+       if(usuarioRepository.findByEmail(email) != null) {
+           return "redirect:/cadastro?emailExistente";
+       }
 
        boolean dataValida = validaData(dataNascimento);
        if(!dataValida){
-           return "/cadastro";
+           return "redirect:/cadastro?dataInvalida";
        }
 
        Usuario usuarioCadastro  = new Usuario (nome,sobrenome,email,
@@ -58,13 +67,12 @@ public class CadastroUsuarioController {
     public boolean validaData(String dataNascimento){
         try {
             SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
-            Date data = sdformat.parse(dataNascimento);
+            Date dataInformada = sdformat.parse(dataNascimento);
             Date dataAtual = sdformat.parse(String.valueOf(LocalDate.now()));
-            if(data.after(dataAtual)){
+            if(dataInformada.after(dataAtual)){
                 return false;
             }
         } catch (ParseException e) {}
         return true;
     }
-
 }

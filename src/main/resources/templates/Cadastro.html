@@ -122,9 +122,12 @@
                     <button id="cadastrar" name="action" class="" type="submit">Cadastrar</button>
                 </div>
             </div>
-<!--            <div th:if="${emailValido}" class="alert alert-error">-->
-<!--                emailInvalido-->
-<!--            </div>-->
+            <div th:if="${param.emailExistente}" class="alert alert-error">
+                O email informado já está em uso.
+            </div>
+            <div th:if="${param.dataInvalida}" class="alert alert-error">
+                A data de nascimento informada não é válida.
+            </div>
         </form>
     </div>
 </div>
