@@ -24,23 +24,17 @@ body{
 }
 .formulario-icon{
     width: 124px;
-    height: 80.29px;
-    background: url(4.png);
 }
 .formulario-card h3{
     width: 100%;
     font-style: normal;
     font-weight: 400;
-    font-size: 33px;
-    line-height: 39px;
     text-align: center;
     color: #081816;
 }
 .formulario-card h5{
     font-style: normal;
     font-weight: 400;
-    font-size: 23px;
-    line-height: 27px;
     text-align: center;
     color: rgba(24, 26, 25, 0.5);
 }
