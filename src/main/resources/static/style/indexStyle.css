@@ -19,7 +19,7 @@ header{
   position: fixed;
     z-index: 1;
   background: #ffffff;
-  padding: 40px;
+  padding: 35px;
   width: calc(100% - 0%);
   top: 0;
   height: 30px;
@@ -38,7 +38,7 @@ header{
   width: 166px;
   height: 32px;
   left: 136px;
-  top: 41px;
+  top: -10px;
 
   /* H4 - Regular */
   font-family: 'Roboto';
@@ -49,6 +49,7 @@ header{
   text-align: justify;
   color: #181A19;
   margin-left: 60px;
+  margin-top: -15px;
 }
 
 
@@ -189,7 +190,7 @@ header{
   color: #1D3D39;
   position: absolute;
   top: 1131px;
-  left: 130px;
+  left: 145px;
   font-family: 'Roboto';
   font-weight: 700;
   font-size: 27px;
@@ -202,7 +203,7 @@ header{
   color: rgba(0,0,0,1);
   position: absolute;
   top: 1173px;
-  left: 140px;
+  left: 155px;
   font-family: Roboto;
   font-weight: Regular;
   font-size: 16px;
@@ -210,7 +211,126 @@ header{
   text-align: center;
 }
 
+.notifi-home-2 {
+  width: 281px;
+  height: 32px;
+  color: #1D3D39;
+  position: absolute;
+  top: 1131px;
+  left: 445px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 27px;
+  opacity: 1;
+  text-align: center;
+  line-height: 32px;
+}
+.text-notifi-home-2 {
+  width: 258px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1173px;
+  left: 455px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+
+.notifi-home-3 {
+  width: 281px;
+  height: 32px;
+  color: #1D3D39;
+  position: absolute;
+  top: 1131px;
+  left: 745px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 27px;
+  opacity: 1;
+  text-align: center;
+  line-height: 32px;
+}
+.text-notifi-home-3 {
+  width: 258px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1173px;
+  left: 755px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+
+.notifi-home-4 {
+  width: 281px;
+  height: 32px;
+  color: #1D3D39;
+  position: absolute;
+  top: 1131px;
+  left: 1045px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 27px;
+  opacity: 1;
+  text-align: center;
+  line-height: 32px;
+}
+.text-notifi-home-4 {
+  width: 258px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1173px;
+  left: 1055px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+
+.entrar-btn {
+background-color: #4FF4DB;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 27px;
+text-align: center;
+margin: 5px;
+color: #081816;
+padding: 5px;
+height: 40px;
+width: 95px;
+border-radius: 117px;
+right: 5px;
+top: 10px;
+position: absolute;
+}
+
+.cadastrar-btn {
 
 
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 27px;
+text-align: center;
+margin: 5px;
+color: #081816;
+padding: 5px;
+height: 40px;
+width: 95px;
+border-radius: 117px;
+right: 120px;
+top: 10px;
+position: absolute;
+border: 3px solid #4FF4DB;
 
+}
 
