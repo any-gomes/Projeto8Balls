@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -64,6 +65,11 @@ public class CadastroUsuarioController {
        return "redirect:/";
     }
 
+    @RequestMapping("/")
+    public String cadastro() {
+        return "cadastro";
+    }
+    
     public boolean validaData(String dataNascimento){
         try {
             SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
