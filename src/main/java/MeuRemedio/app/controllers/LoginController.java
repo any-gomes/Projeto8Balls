@@ -17,10 +17,6 @@ public class LoginController {
         }
         return "redirect:/home";
     }
-    @RequestMapping(value = "/")
-    public String loginA() {
-        return "Home";
-    }
 
     @RequestMapping(value = "/logout")
     public String logout() {
