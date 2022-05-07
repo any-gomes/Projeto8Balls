@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,7 +54,7 @@
                        required="required"
                 >
 
-                <input type="email"
+                <input type=""
                        name="US_Email"
                        class="formulario-input"
                        id="US_Email"
@@ -62,7 +62,7 @@
                        required="required"
                        onblur="checarEmail();"
                 >
-                <span id="error-email"></span>
+
                 <select id="US_Sexo" name="US_Sexo" class="formulario-input">
                     <option value="Feminino">Feminino</option>
                     <option value="Masculino">Masculino</option>
@@ -75,7 +75,7 @@
                         name="US_DataNascimento"
                         placeholder="Data de Nascimento*"
                         maxlength="10"
-                        onBlur="showhide()"
+                        onBlur="validadata()"
                         required=""
                 >
 
@@ -88,52 +88,20 @@
                        required
                 >
 
+                <span id="error-email" style="color:#FF8A8A; display:block"></span>
+                <span id="error-date" style="color:#FF8A8A; display:block"></span>
+
                 <button id="cadastrar" name="action" class="formulario-button" type="submit">Cadastrar</button>
 
                 <div th:if="${param.emailExistente}" class="alert alert-error">
                     O email informado já está em uso.
-                </div>
-                <div th:if="${param.dataInvalida}" class="alert alert-error">
-                    A data de nascimento informada não é válida.
                 </div>
 
             </form>
         </div>
     </div>
 </main>
-
-<script>
-    function checarEmail(){
-      const error = document.getElementById('error-email');
-      const email = document.getElementById('US_Email').value;
-
-      const dominios = ['gmail', 'ifsp', 'yahoo', 'live', 'hotmail', 'bol'];
-      const regex = "[A-Za-z0-9._%+-]+@gmail.com";
-
-      let gmail = email.includes("gmail");
-      let yahoo = email.includes("yahoo");
-      let ifsp = email.includes("ifsp");
-      let hotmail = email.includes("hotmail");
-
-      console.log(email);
-      console.log(gmail)
-/*
-        if(!email.checkValidity()){
-            error.innerHTML = "Email invalido";
-        }*/
-        if ((gmail !== true) && (yahoo !== true) && (ifsp !== true) && (hotmail !== true)) {
-            alert("Email inválido");
-        }else{
-            console.log("Passou")
-        }
-
-
-      /*console.log(email)
-      console.log(resultado);*/
-
-    }
-</script>
-
+<script src="/script/cadastro.js"></script>
 <!-- Link do bootstrap (JS)-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

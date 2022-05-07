@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override //Método para não bloquear as páginas Staticas
     public void configure (WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/static/**", "/template/**","/style/**","/assets/**");
+        web.ignoring().antMatchers("/static/**", "/template/**","/style/**","/assets/**","/script/**");
 
     }
 }
