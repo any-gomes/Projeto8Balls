@@ -25,13 +25,6 @@ header{
   height: 30px;
 }
 
-.left_area h3{
-  color: #fff;
-  margin: 0;
-  font-size: 22px;
-  font-weight: 900;
-	
-}
 
 /* Meu Remédio */
 .title-home {
@@ -40,7 +33,7 @@ header{
   left: 136px;
   top: -10px;
 
-  /* H4 - Regular */
+/* H4 - Regular */
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -48,22 +41,22 @@ header{
   line-height: 32px;
   text-align: justify;
   color: #181A19;
-  margin-left: 60px;
+  margin-left: 40px;
   margin-top: -15px;
 }
 
 
 .icon-home {
-  width: 124px;
-  height: 80.29px;
+  width: 100px;
+  height: 60.29px;
   background: url("../images/icon-home.png");
   background-size: cover;
   opacity: 1;
   position: absolute;
   overflow: hidden;
   margin-left: 0px;
-  left: -20px;
-  top: -5px;
+  left: -10px;
+  top: 4px;
 }
 
 .banner-home {
@@ -184,7 +177,7 @@ header{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.notifi-home {
+.func-1{
   width: 281px;
   height: 32px;
   color: #1D3D39;
@@ -198,7 +191,7 @@ header{
   text-align: center;
   line-height: 32px;
 }
-.text-notifi-home {
+.text-func-home {
   width: 258px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -211,7 +204,7 @@ header{
   text-align: center;
 }
 
-.notifi-home-2 {
+.func-2 {
   width: 281px;
   height: 32px;
   color: #1D3D39;
@@ -225,7 +218,7 @@ header{
   text-align: center;
   line-height: 32px;
 }
-.text-notifi-home-2 {
+.text-func-home-2 {
   width: 258px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -238,7 +231,7 @@ header{
   text-align: center;
 }
 
-.notifi-home-3 {
+.func-3 {
   width: 281px;
   height: 32px;
   color: #1D3D39;
@@ -252,7 +245,7 @@ header{
   text-align: center;
   line-height: 32px;
 }
-.text-notifi-home-3 {
+.text-func-home-3 {
   width: 258px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -265,7 +258,7 @@ header{
   text-align: center;
 }
 
-.notifi-home-4 {
+.func-4 {
   width: 281px;
   height: 32px;
   color: #1D3D39;
@@ -279,7 +272,7 @@ header{
   text-align: center;
   line-height: 32px;
 }
-.text-notifi-home-4 {
+.text-func-home-4 {
   width: 258px;
   color: rgba(0,0,0,1);
   position: absolute;
@@ -293,44 +286,40 @@ header{
 }
 
 .entrar-btn {
-background-color: #4FF4DB;
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 17px;
-line-height: 27px;
-text-align: center;
-margin: 5px;
-color: #081816;
-padding: 5px;
-height: 40px;
-width: 95px;
-border-radius: 117px;
-right: 5px;
-top: 10px;
-position: absolute;
+    background-color: #4FF4DB;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 95px;
+    border-radius: 117px;
+    right: 5px;
+    top: 10px;
+    position: absolute;
 }
 
 .cadastrar-btn {
-
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 17px;
-line-height: 27px;
-text-align: center;
-margin: 5px;
-color: #081816;
-padding: 5px;
-height: 40px;
-width: 95px;
-border-radius: 117px;
-right: 120px;
-top: 10px;
-position: absolute;
-border: 3px solid #4FF4DB;
-
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 95px;
+    border-radius: 117px;
+    right: 120px;
+    top: 10px;
+    position: absolute;
+    border: 3px solid #4FF4DB;
 }
 
