@@ -65,10 +65,7 @@ public class CadastroUsuarioController {
        return "redirect:/";
     }
 
-    @RequestMapping("/")
-    public String cadastro() {
-        return "cadastro";
-    }
+  
     
     public boolean validaData(String dataNascimento){
         try {
