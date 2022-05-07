@@ -1,0 +1,216 @@
+@media only screen and (max-device-width: 700px) {
+  /* .menu { width:400px; } */
+  }
+
+/*{
+  box-sizing: border-box;
+}*/
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+header{
+  position: fixed;
+    z-index: 1;
+  background: #ffffff;
+  padding: 40px;
+  width: calc(100% - 0%);
+  top: 0;
+  height: 30px;
+}
+
+.left_area h3{
+  color: #fff;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+	
+}
+
+/* Meu Remédio */
+.title-home {
+  width: 166px;
+  height: 32px;
+  left: 136px;
+  top: 41px;
+
+  /* H4 - Regular */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 32px;
+  text-align: justify;
+  color: #181A19;
+  margin-left: 60px;
+}
+
+
+.icon-home {
+  width: 124px;
+  height: 80.29px;
+  background: url("../images/icon-home.png");
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  overflow: hidden;
+  margin-left: 0px;
+  left: -20px;
+  top: -5px;
+}
+
+.banner-home {
+  width: 1720px;
+  height: 657px;
+  background: url("../images/banner-home.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position:relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  overflow: hidden;
+  
+}
+
+.btn-sus-home-back {
+  width: 1720px;
+  height: 69px;
+  background: rgba(55,206,183,1);
+  opacity: 1;
+  position: absolute;
+  top: 657px;
+  left: 0px;
+  overflow: hidden;
+}
+.btn-sus-home {
+  width: 488px;
+  color: #F2FFFD;
+  position: absolute;
+  top: 683px;
+  left: 500px;
+  height: 32px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 32px;
+  opacity: 1;
+  text-align: center;
+}
+
+.title-func-home {
+  width: 357px;
+  height: 47px;
+  color: #38CFB8;
+  position: absolute;
+  top: 792px;
+  left: 570px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+  line-height: 47px;
+}
+
+.linha-func-home {
+  width: 851px;
+  height: 6px;
+  background:#C4C4C4;
+  opacity: 1;
+  position: absolute;
+  top: 855px;
+  left: 330px;
+  border-top-left-radius: 73px;
+  border-top-right-radius: 73px;
+  border-bottom-left-radius: 73px;
+  border-bottom-right-radius: 73px;
+  overflow: hidden;
+}
+
+.func-home-1 {
+  width: 165px;
+  height: 165px;
+  background: rgba(242,255,253,1);
+  opacity: 1;
+  position: absolute;
+  top: 931px;
+  left: 200px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.func-home-2 {
+  width: 165px;
+  height: 165px;
+  background: rgba(242,255,253,1);
+  opacity: 1;
+  position: absolute;
+  top: 931px;
+  left: 500px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.func-home-3 {
+  width: 165px;
+  height: 165px;
+  background: rgba(242,255,253,1);
+  opacity: 1;
+  position: absolute;
+  top: 931px;
+  left: 800px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.func-home-4 {
+  width: 165px;
+  height: 165px;
+  background: rgba(242,255,253,1);
+  opacity: 1;
+  position: absolute;
+  top: 931px;
+  left: 1100px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.notifi-home {
+  width: 281px;
+  height: 32px;
+  color: #1D3D39;
+  position: absolute;
+  top: 1131px;
+  left: 130px;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 27px;
+  opacity: 1;
+  text-align: center;
+  line-height: 32px;
+}
+.text-notifi-home {
+  width: 258px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 1173px;
+  left: 140px;
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+
+
+
+
+
