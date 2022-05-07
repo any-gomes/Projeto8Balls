@@ -1,4 +1,3 @@
-
 package MeuRemedio.app.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +19,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private ImplementsUserDetailsService implementsUserDetailsService;
 
-   @Override
+    @Override
     public void configure (HttpSecurity http) throws Exception {
-       http.csrf().disable()
-                    .authorizeRequests()
-                    .antMatchers("/login", "/cadastro", "/").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-           .formLogin()
-                    .loginPage("/login") //Passar dentro do método o arquivo customizado dá página de login e descomentar
-                    .defaultSuccessUrl("/home", true)
-                    .and()
-           .logout()
-               .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
-               .and().rememberMe();
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login", "/cadastro", "//").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login") //Passar dentro do método o arquivo customizado dá página de login e descomentar
+                .defaultSuccessUrl("/home", true)
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
+                .and().rememberMe();
 
     }
 
