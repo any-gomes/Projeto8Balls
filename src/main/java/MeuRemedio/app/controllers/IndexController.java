@@ -1,6 +1,9 @@
 package MeuRemedio.app.controllers;
 
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,6 +17,11 @@ public class IndexController {
 
     @RequestMapping(value = "/")
     public String Index(){
-        return "Index";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken){
+            return "Index";
+        }
+
+        return "redirect:/home";
     }
 }
