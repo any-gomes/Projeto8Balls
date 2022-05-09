@@ -1,3 +1,5 @@
+
+
 function checarEmail() {
     const error = document.getElementById('error-email');
     const email = document.getElementById('US_Email').value;
@@ -58,3 +60,12 @@ function validadata() {
     // se for maior que 60 não vai acontecer nada!
     return false;
 }
+
+$(document).ready(function () {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != '') {
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
