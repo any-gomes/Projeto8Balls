@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-  <meta charset="UTF-8">
-  <title>Meu Remédio</title>
-  <link rel="icon" href="/images/icon.svg" />
-  <!-- Link do bootstrap (CSS) bolado -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="/style/indexStyle.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title indextitle.text></title>
+        <link rel="icon" href="/images/icon.svg" />
+        <!-- Link do bootstrap (CSS) bolado -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/style/indexStyle.css">
+    </head>
 
-<body>
-<header>
-  <a class="icon-home" href="/"></a>
-  <div class="title-home">Meu Remédio</div>
+    <body>
+        <header>
+            
 
-  <a class="entrar-btn" href="/login">Entrar</a>
-  <a class="cadastrar-btn" href="/cadastro">Cadastrar</a>
-</header>
+            
+            <a class="icon-home" href="/"></a>
+            <div th:text="#{indextitle.text}" class="title-home"></div>
+            <a th:text="#{indexbutton.login}" class="entrar-btn" href="/login"></a>
+            <a th:text="#{indexbutton.signup}" class="cadastrar-btn" href="/cadastro"></a>
 
-<div class="class-home">
+            <select class= "inter" id="locales">
+                <option value="" th:text="#{alllanguage.change}"></option>
+                <option value="en" th:text="#{alllanguage.english}"></option>
+                <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+            </select>
 
-  <div class="banner-home" src="/images/banner-home.png"></div>
+        </header>
 
-  <div class="btn-sus-home-back"></div>
-  <span class="btn-sus-home">VERIFIQUE A DISPONIBILIDADE NO SUS</span>
+        <div class="class-home">
 
+            <div class="banner-home" src="/images/banner-home.png"></div>
 
-  <span class="title-func-home">FUNCIONALIDADES</span>
-
-  <div class="linha-func-home"></div>
-  <div class="func-home-1"></div>
-  <span class="func-1">Central de notificações</span>
-  <span class="text-func-home">Mantém você sempre informado sobre os horários de seus remédio.</span>
-
-  <div class="func-home-2"></div>
-  <span class="func-2">Controle de Gastos</span>
-  <span class="text-func-home-2">Permite que você controle seus gastos com remédios.</span>
-
-  <div class="func-home-3"></div>
-  <span class="func-3">Calendário</span>
-  <span class="text-func-home-3">Para você visualizar seus agendamentos no calendário.</span>
-
-  <div class="func-home-4"></div>
-  <span class="func-4">Categorização</span>
-  <span class="text-func-home-4">Permite que você categorize seus remédios.</span>
-</div>
+            <div class="btn-sus-home-back"></div>
+            <span th:text="#{indexbutton.sus}" class="btn-sus-home"></span>
 
 
+            <span th:text="#{indexfunctions.title}" class="title-func-home"></span>
 
+            <div class="linha-func-home"></div>
+            <div class="func-home-1"></div>
+            <span th:text="#{indexfunctions.notifications}" class="func-1"></span>
+            <span th:text="#{indexnotifications.text}" class="text-func-home"></span>
 
-</body>
+            <div class="func-home-2"></div>
+            <span th:text="#{indexfunctions.balance}" class="func-2"></span>
+            <span th:text="#{indexbalance.text}" class="text-func-home-2"></span>
+
+            <div class="func-home-3"></div>
+            <span th:text="#{indexfunctions.calendar}" class="func-3"></span>
+            <span th:text="#{indexcalendar.text}" class="text-func-home-3"></span>
+
+            <div class="func-home-4"></div>
+            <span th:text="#{indexfunctions.categories}" class="func-4"></span>
+            <span th:text="#{indexcategories.text}" class="text-func-home-4"></span>
+        </div>
+
+        <!-- Estes scripts tratam dos arquivos .jsp correspondentes a cada página html -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="/script/cadastro.jsp"></script>
+
+    </body>
 
 
 </html>
