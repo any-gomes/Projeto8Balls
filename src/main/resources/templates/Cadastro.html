@@ -21,19 +21,19 @@
             <nav class="navbar d-flex justify-content-end">
                 <ul class="d-flex justify-content-around align-item-center nav-lista">
                     <li class="nav-lista-item">
+                        <select id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
+                    </li>
+                    <li class="nav-lista-item">
                         <a th:text="#{cadnavbar.index}" class="" href="/"></a>
                     </li>
                     <li class="nav-lista-item">
                         <a th:text="#{cadnavbar.login}" class="" href="/login"></a>
                     </li>
-                    <li>
-                        <span th:text="#{alllanguage.change}"></span>:
-                        <select id="locales">
-                            <option value=""></option>
-                            <option value="en" th:text="#{alllanguage.english}"></option>
-                            <option value="de" th:text="#{alllanguage.portuguese}"></option>
-                        </select>
-                    </li>
+
                 </ul>
             </nav>
         </header>

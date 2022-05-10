@@ -19,17 +19,12 @@
             <div th:text="#{indextitle.text}" class="title-home"></div>
             <a th:text="#{indexbutton.login}" class="entrar-btn" href="/login"></a>
             <a th:text="#{indexbutton.signup}" class="cadastrar-btn" href="/cadastro"></a>
-            <span class="inter">
-                <span th:text="#{alllanguage.change}"></span>:
-                <select id="locales">
-                    <option value=""></option>
-                    <option value="en" th:text="#{alllanguage.english}"></option>
-                    <option value="de" th:text="#{alllanguage.portuguese}"></option>
-                </select>
-            </span>
-            
-            
 
+            <select class= "inter" id="locales">
+                <option value="" th:text="#{alllanguage.change}"></option>
+                <option value="en" th:text="#{alllanguage.english}"></option>
+                <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+            </select>
 
         </header>
 

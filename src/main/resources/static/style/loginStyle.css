@@ -8,11 +8,19 @@ body{
     list-style: none;
 }
 .nav-lista-item{
-    width: 40%;
+    width: 85%;
+    color: #181A19;
+    font-family: 'Roboto';
+    font-style: normal;
+    text-align:center;
 }
 .nav-lista-item a {
     text-decoration: none;
     color: #181A19;
+    font-family: 'Roboto';
+    font-style: normal;
+
+
 }
 /* Main */
 .pillbox-img{

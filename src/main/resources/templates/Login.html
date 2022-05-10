@@ -19,30 +19,20 @@
     <body>
         <!-- Menu Simples -->
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <nav class="navbar d-flex justify-content-end">
+                <ul class="d-flex justify-content-around align-item-center nav-lista">
+                    <li class="nav-lista-item">
+                        <select id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
+                    </li>
+                    <li class="nav-lista-item">
+                        <a th:text="#{cadnavbar.index}" class="" href="/"></a>
+                    </li>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a th:text="#{loginnavbar.index}" class="nav-link" href="/"></a>
-                            </li>
-                            <li>
-                                <span th:text="#{alllanguage.change}"></span>:
-                                <select id="locales">
-                                    <option value=""></option>
-                                    <option value="en" th:text="#{alllanguage.english}"></option>
-                                    <option value="de" th:text="#{alllanguage.portuguese}"></option>
-                                </select>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
+                </ul>
             </nav>
         </header>
         <!-- Formulário do Login -->

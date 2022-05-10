@@ -8,11 +8,19 @@ body{
     list-style: none;
 }
 .nav-lista-item{
-    width: 40%;
+    width: 85%;
+    color: #181A19;
+    font-family: 'Roboto';
+    font-style: normal;
+    text-align:center;
 }
 .nav-lista-item a {
     text-decoration: none;
     color: #181A19;
+    font-family: 'Roboto';
+    font-style: normal;
+
+
 }
 /* Main */
 .formulario-card{
@@ -61,4 +69,22 @@ body{
     font-weight: bold;
     border:none;
     border-radius: 8px;
+}
+
+.inter {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    right: 300px;
+    top: 10px;
+    position: absolute;
+
 }

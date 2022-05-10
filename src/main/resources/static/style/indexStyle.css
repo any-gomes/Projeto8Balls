@@ -297,7 +297,7 @@ header{
     color: #081816;
     padding: 5px;
     height: 40px;
-    width: 95px;
+    width: 115px;
     border-radius: 117px;
     right: 5px;
     top: 10px;
@@ -315,11 +315,29 @@ header{
     color: #081816;
     padding: 5px;
     height: 40px;
-    width: 95px;
+    width: 115px;
     border-radius: 117px;
-    right: 120px;
+    right: 130px;
     top: 10px;
     position: absolute;
     border: 3px solid #4FF4DB;
 }
 
+.inter {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    border-radius: 117px;
+    right: 255px;
+    top: 10px;
+    position: absolute;
+    border: 3px solid #4FF4DB;
+}
