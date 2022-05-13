@@ -5,23 +5,28 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Time;
+import java.util.Date;
 
 
 @Getter
 @Setter
 @Entity
 @Table(name = "Recorrencia")
-public class Recorrencia implements Serializable {
+@PrimaryKeyJoinColumn(referencedColumnName = "AG_ID")
+public class Recorrencia extends Agendamento implements Serializable {
 
     private static long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "RE_ID")
-    private long RE_ID;
 
     @Column(name = "RE_Dias_Semana")
     private long RE_DiasSemana;
 
-    @OneToOne
-    private Agendamento FK_AG_ID;
+    public Recorrencia(long id, Date AG_DataInicio, Time AG_horaInicio, Date AG_DataFinal, long AG_Periodicidade, long RE_DiasSemana) {
+        super(id, AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade);
+        this.RE_DiasSemana = RE_DiasSemana;
+    }
+
+    public Recorrencia() {
+
+    }
 }

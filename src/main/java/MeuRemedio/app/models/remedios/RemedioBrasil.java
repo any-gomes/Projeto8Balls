@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -25,6 +26,8 @@ public class RemedioBrasil implements Serializable  {
     private String RB_CodigoATC;
     @NotNull
     private String RB_Componente;
+
+    private LocalDate Cadastrado_em = LocalDate.now();
 
     public RemedioBrasil(long CT_ID, String RB_Nome, String RB_FormaFarmaceutica, String RB_CodigoATC, String RB_Componente) {
         this.CT_ID = CT_ID;

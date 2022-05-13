@@ -1,28 +1,32 @@
 package MeuRemedio.app.models.remedios.agendamentos;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Time;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "Intervalo_Dias")
-public class IntervaloDias implements Serializable {
-    private static long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "IT_ID")
-    private long id;
+@PrimaryKeyJoinColumn(referencedColumnName = "AG_ID")
+@Table(name = "Intervalo_Dias")
+public class IntervaloDias extends Agendamento implements Serializable {
+    private static long serialVersionUID = 1L;
 
     @Column(name = "IT_Intervalo_Dias")
     private long IT_IntervaloDias;
 
-    @OneToOne
-    @JoinColumn(name = "fk_AG_ID")
-    private Agendamento FK_AG_ID;
+    public IntervaloDias (long id, Date AG_DataInicio, Time AG_horaInicio, Date AG_DataFinal, long AG_Periodicidade, long IT_IntervaloDias) {
+        super(id, AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade);
+        this.IT_IntervaloDias = IT_IntervaloDias;
+    }
 
+    public IntervaloDias() {
+
+    }
 }

@@ -1,6 +1,7 @@
 package MeuRemedio.app.models.remedios;
 
 import MeuRemedio.app.models.remedios.MedidaDosagem;
+import MeuRemedio.app.models.remedios.agendamentos.Agendamento;
 import MeuRemedio.app.models.usuarios.Usuario;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -40,4 +42,25 @@ public class Remedio implements Serializable {
     @ManyToOne
     @JoinColumn(name = "FK_Usuario")
     private Usuario FK_US_ID;
+
+    @ManyToOne
+    @JoinColumn(name = "AG_ID")
+    private Agendamento FK_Agendamento;
+
+    private LocalDate Cadastrado_em = LocalDate.now();
+
+    public Remedio (Long RM_ID, String RM_Nome, String RM_Dosagem, Boolean RM_RetiradoSus,
+                   MedidaDosagem FK_MD_ID, Categoria FK_CT_ID, Usuario FK_US_ID, Agendamento FK_Agendamento) {
+        this.RM_ID = RM_ID;
+        this.RM_Nome = RM_Nome;
+        this.RM_Dosagem = RM_Dosagem;
+        this.RM_RetiradoSus = RM_RetiradoSus;
+        this.FK_MD_ID = FK_MD_ID;
+        this.FK_CT_ID = FK_CT_ID;
+        this.FK_US_ID = FK_US_ID;
+        this.FK_Agendamento = FK_Agendamento;
+    }
+    public Remedio (){
+
+    }
 }

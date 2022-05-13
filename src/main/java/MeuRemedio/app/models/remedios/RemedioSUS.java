@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -25,6 +26,9 @@ public class RemedioSUS implements Serializable {
     private String RS_CodigoATC;
     @NotNull
     private String RS_Componente;
+
+    private LocalDate Cadastrado_em = LocalDate.now();
+
 
     public RemedioSUS (){
 

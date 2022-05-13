@@ -1,5 +1,6 @@
 package MeuRemedio.app.models.remedios.agendamentos;
 
+import MeuRemedio.app.models.remedios.Remedio;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,12 +9,14 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
 @Setter
 @Entity
 @Table(name = "Agendamento")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Agendamento implements Serializable {
     private static long serialVersionUID = 1L;
 
@@ -31,7 +34,12 @@ public class Agendamento implements Serializable {
     @Column(name = "AG_Data_Final_Agendamento")
     private Date AG_DataFinal;
 
+    private LocalDate Cadastrado_em = LocalDate.now();
+
     private long AG_Periodicidade;
+
+    @OneToMany
+    private List<Remedio> remedio;
 
     public Agendamento(long id, Date AG_DataInicio, Time AG_horaInicio, Date AG_DataFinal, long AG_Periodicidade) {
         this.id = id;
@@ -40,7 +48,6 @@ public class Agendamento implements Serializable {
         this.AG_DataFinal = AG_DataFinal;
         this.AG_Periodicidade = AG_Periodicidade;
     }
-
     public Agendamento() {
 
     }

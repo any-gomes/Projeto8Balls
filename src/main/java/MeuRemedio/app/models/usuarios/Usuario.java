@@ -41,14 +41,14 @@ public class Usuario implements UserDetails {
 
     @OneToMany
     private List<Remedio>remedios;
-
-    public Usuario(String nome, String sobrenome, String email, String encode, String dataNascimento, String sexo){
-
-    }
+    @OneToMany
+    private List<Gasto> gasto;
 
 
-    /*Contrutor de teste, esse deverá ser usado ao fim do programa*/
-    public Usuario(long id, String nome, String sobrenome, String email, String senha, String dataNascimento, String sexo, LocalDate dataCadastro, List<Remedio> remedios) {
+    /*Contrutor de teste, esse deverá ser usado ao fim do programa
+    public Usuario (long id, String nome, String sobrenome, String email, String senha, String dataNascimento,
+                   String sexo, LocalDate dataCadastro, List<Remedio> remedios, List<Gasto> gasto) {
+
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -58,10 +58,15 @@ public class Usuario implements UserDetails {
         this.sexo = sexo;
         this.dataCadastro = dataCadastro;
         this.remedios = remedios;
+        this.gasto = gasto;
     }
+
+     */
 
     /*Esse contrutor está sendo usado para não quebrar o progrma, NÂO APAGAR o método*/
-    public Usuario(long id, String nome, String sobrenome, String email, String senha, String dataNascimento, String sexo, LocalDate dataCadastro) {
+
+    public Usuario (String nome, String sobrenome, String email,
+                    String senha, String dataNascimento, String sexo /*List<Remedio> remedios*/) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -69,8 +74,11 @@ public class Usuario implements UserDetails {
         this.senha = senha;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.dataCadastro = dataCadastro;
-        this.remedios = remedios;
+        /*this.remedios = remedios;*/
+    }
+
+    public Usuario() {
+
     }
 
     @Override
