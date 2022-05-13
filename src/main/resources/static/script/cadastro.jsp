@@ -1,5 +1,3 @@
-
-
 function checarEmail() {
     const error = document.getElementById('error-email');
     const email = document.getElementById('US_Email').value;
@@ -10,23 +8,16 @@ function checarEmail() {
     let yahoo = email.includes("yahoo");
     let ifsp = email.includes("ifsp");
     let hotmail = email.includes("hotmail");
+    let outlook = email.includes("outlook");
 
-    console.log(email);
-    console.log(gmail)
-    /*
-            if(!email.checkValidity()){
-                error.innerHTML = "Email invalido";
-            }*/
-    if ((gmail !== true) && (yahoo !== true) && (ifsp !== true) && (hotmail !== true)) {
+    if ((gmail !== true) && (yahoo !== true) && (ifsp !== true)
+        && (hotmail !== true) && (outlook !== true) ) {
+
         error.innerHTML = "E-mail inválido";
+
     } else {
         error.innerHTML = "";
     }
-
-
-    /*console.log(email)
-    console.log(resultado);*/
-
 }
 
 function validadata() {
