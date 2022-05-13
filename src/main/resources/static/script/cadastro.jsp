@@ -1,3 +1,21 @@
+
+
+//Esta funcao se encarrega de trocar o idioma da p�gina
+$(document).ready(function () {
+        
+        //id do elemento html = "#locales" (� um select)
+        $("#locales").change(function () {
+            
+            //Variavel armazena o value do elemento "#locales"
+            var selectedOption = $('#locales').val();
+            
+            // Verifica e seta o idioma escolhido
+            if (selectedOption != '') {
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+
 function checarEmail() {
     const error = document.getElementById('error-email');
     const email = document.getElementById('US_Email').value;
@@ -20,7 +38,7 @@ function checarEmail() {
     }
 }
 
-function validadata() {
+function validaData() {
     let data = document.getElementById("US_DataNascimento").value; // pega o valor do input
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
     let data_array = data.split("-"); // quebra a data em array
@@ -52,11 +70,3 @@ function validadata() {
     return false;
 }
 
-$(document).ready(function () {
-        $("#locales").change(function () {
-            var selectedOption = $('#locales').val();
-            if (selectedOption != '') {
-                window.location.replace('?lang=' + selectedOption);
-            }
-        });
-    });

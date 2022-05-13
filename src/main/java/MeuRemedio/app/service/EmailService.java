@@ -1,7 +1,7 @@
 package MeuRemedio.app.service;
 
 import MeuRemedio.app.enums.StatusEmail;
-import MeuRemedio.app.model.Usuario;
+import MeuRemedio.app.models.usuarios.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;

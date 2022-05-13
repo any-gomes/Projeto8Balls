@@ -1,7 +1,7 @@
 package MeuRemedio.app.controllers;
 
 import MeuRemedio.app.enums.MensagemEmail;
-import MeuRemedio.app.model.Usuario;
+import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

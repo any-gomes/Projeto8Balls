@@ -1,6 +1,6 @@
 package MeuRemedio.app.controllers;
 
-import MeuRemedio.app.model.Usuario;
+import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;

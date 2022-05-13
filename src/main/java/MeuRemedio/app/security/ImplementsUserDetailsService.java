@@ -1,6 +1,6 @@
 package MeuRemedio.app.security;
 
-import MeuRemedio.app.model.Usuario;
+import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

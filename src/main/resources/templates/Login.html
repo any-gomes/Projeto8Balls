@@ -1,100 +1,100 @@
 <!-- Arquivo HTML para a página de login de usuários -->
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="icon" href="/images/icon.svg"/>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="#{logintitle.text}"></title>
+        <link rel="icon" href="/images/icon.svg"/>
 
 
-    <!-- Link do bootstrap (CSS) bolado -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+        <!-- Link do bootstrap (CSS) bolado -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
     <link rel="stylesheet" href="/style/loginStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-<body>
-<!-- Menu Simples -->
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Início</a>
+    <body>
+        <!-- Menu Simples -->
+        <header>
+            <nav class="navbar d-flex justify-content-end">
+                <ul class="d-flex justify-content-around align-item-center nav-lista">
+                    <li class="nav-lista-item">
+                        <select id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
                     </li>
+                    <li class="nav-lista-item">
+                        <a th:text="#{cadnavbar.index}" class="" href="/"></a>
+                    </li>
+
                 </ul>
+            </nav>
+        </header>
+        <!-- Formulário do Login -->
+        <main class="container d-flex justify-content-end">
+            <img class="pillbox-img" src="/images/pills-box-green-login.svg">
+            <div class="card formulario-card">
+                <div class="card-body d-flex flex-wrap justify-content-center">
+                    <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio">
+                    <h3 th:text="#{loginsignin.text}"></h3>
+                    <form name="form" th:action="@{/login}" method="post" class="form-body">
+                        <div class="form-group">
+                            <label th:text="#{loginlabel.email}"></label>
+                            <input type="email"
+                                   class="form-control formulario-input"
+                                   id="username"
+                                   name="username"
+                                   aria-describedby="emailHelp"
+                                   placeholder="email@exemplo.com" required>
 
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{loginlabel.password}"></label>
+                            <input type="password" class="form-control formulario-input" minlength="8" id="password"
+                                   name="password"
+                                   placeholder="********" required>
+                        </div>
+                        <div class="form-group">
+                            <button th:text="#{loginlogin.text}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
+                            <p th:text="#{loginforget.password}" style="font-size:12px"><a href=""></a></p>
+                            <div class="line-break">
+                                <span th:text="#{loginor.text}">
+
+                                </span>
+                            </div>
+                            <p th:text="#{loginunsigned.text}"><a th:text="#{loginsingup.text}" href="/cadastro"></a></p>
+                        </div>
+
+                        <!--
+                       <div th:text="#{logininvalid.text}" th:if="${param.error}" class="alert alert-error">
+                       </div>
+                       <div th:text="#{loginlogout.text}" th:if="${param.logout}" class="alert alert-sucess">
+                       </div>
+                        -->
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-<!-- Formulário do Login -->
-<main class="container d-flex justify-content-end">
-    <img class="pillbox-img" src="/images/pills-box-green-login.svg">
-    <div class="card formulario-card">
-        <div class="card-body d-flex flex-wrap justify-content-center">
-            <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio">
-            <h3>Acesse sua conta</h3>
-            <form name="form" th:action="@{/login}" method="post" class="form-body">
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email"
-                           class="form-control formulario-input"
-                           id="username"
-                           name="username"
-                           aria-describedby="emailHelp"
-                           placeholder="email@exemplo.com" required>
+        </main>
 
-                </div>
-                <div class="form-group">
-                    <label>Senha</label>
-                    <input type="password" class="form-control formulario-input" minlength="8" id="password"
-                           name="password"
-                           placeholder="********" required>
-                </div>
-                <div class="form-group">
-                    <button id="cadastrar" name="action" class="formulario-button" type="submit">Entrar</button>
-                    <p style="font-size:12px"><a href="">Esqueci minha senha</a></p>
-                    <div class="line-break">
-                          <span>
-                            Ou
-                          </span>
-                    </div>
-                    <p>Ainda não tem cadastro ? <a href="/cadastro">Inscreva-se aqui </a></p>
-                </div>
 
-                <!--
-               <div th:if="${param.error}" class="alert alert-error">
-                   E-mail e/ou senha inválidos.
-               </div>
-               <div th:if="${param.logout}" class="alert alert-sucess">
-                   Você se deslogou com sucesso.
-               </div>
-               -->
-            </form>
-        </div>
-    </div>
-</main>
-
-<!-- Link do bootstrap (JS) bolado -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        <!-- Estes scripts tratam dos arquivos .jsp correspondentes a cada página html -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="/script/login.jsp"></script>
+        <!-- Link do bootstrap (JS) bolado -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-</body>
+    </body>
 </html>

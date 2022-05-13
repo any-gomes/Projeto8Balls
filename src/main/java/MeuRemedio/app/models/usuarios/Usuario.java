@@ -1,19 +1,16 @@
-package MeuRemedio.app.model;
+package MeuRemedio.app.models.usuarios;
 
 
+import MeuRemedio.app.models.remedios.Remedio;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +20,7 @@ public class Usuario implements UserDetails {
     private static long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "US_ID")
     private long id;
 
@@ -42,18 +39,38 @@ public class Usuario implements UserDetails {
     @Column(name = "Cadastrado_em")
     private LocalDate dataCadastro;
 
-    public Usuario(){
+    @OneToMany
+    private List<Remedio>remedios;
+
+    public Usuario(String nome, String sobrenome, String email, String encode, String dataNascimento, String sexo){
 
     }
 
-    public Usuario(String nome, String sobrenome, String email, String senha, String dataNascimento, String sexo) {
+
+    /*Contrutor de teste, esse deverá ser usado ao fim do programa*/
+    public Usuario(long id, String nome, String sobrenome, String email, String senha, String dataNascimento, String sexo, LocalDate dataCadastro, List<Remedio> remedios) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
         this.senha = senha;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.dataCadastro = LocalDate.now();
+        this.dataCadastro = dataCadastro;
+        this.remedios = remedios;
+    }
+
+    /*Esse contrutor está sendo usado para não quebrar o progrma, NÂO APAGAR o método*/
+    public Usuario(long id, String nome, String sobrenome, String email, String senha, String dataNascimento, String sexo, LocalDate dataCadastro) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.dataCadastro = dataCadastro;
+        this.remedios = remedios;
     }
 
     @Override
