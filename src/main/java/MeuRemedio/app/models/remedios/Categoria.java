@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,14 +22,11 @@ public class Categoria implements Serializable {
 
     private String descricao;
 
-    @OneToMany
-    private List<Remedio> remedio;
-
-    public Categoria(long CT_ID, String descricao, List<Remedio> remedio) {
-        this.CT_ID = CT_ID;
+    public Categoria(String descricao) {
+      //  this.CT_ID = CT_ID;
         this.descricao = descricao;
-        this.remedio = remedio;
     }
+
     public Categoria (){
 
     }

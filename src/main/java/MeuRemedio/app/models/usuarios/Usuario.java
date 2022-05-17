@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -24,32 +26,35 @@ public class Usuario implements UserDetails {
     @Column(name = "US_ID")
     private long id;
 
-    @Column(name = "US_Nome")
+    @Column(name = "US_Nome") @NotNull @NotBlank
     private String nome;
-    @Column(name = "US_Sobrenome")
+    @Column(name = "US_Sobrenome") @NotNull @NotBlank
     private String sobrenome;
-    @Column(name = "US_Email")
+    @Column(name = "US_Email") @NotNull @NotBlank
     private String email;
-    @Column(name = "US_Senha")
+    @Column(name = "US_Senha") @NotNull @NotBlank
     private String senha;
-    @Column(name = "US_DataNascimento")
+    @Column(name = "US_DataNascimento") @NotNull @NotBlank
     private String dataNascimento;
-    @Column(name = "US_Sexo")
+    @Column(name = "US_Sexo") @NotNull @NotBlank
     private String sexo;
-    @Column(name = "Cadastrado_em")
+
+    @Column(name = "GA_Cadastrado_Em")
     private LocalDate dataCadastro;
 
-    @OneToMany
-    private List<Remedio>remedios;
-    @OneToMany
-    private List<Gasto> gasto;
+    @OneToMany @NotNull @NotBlank
+    @JoinColumn(name = "USUARIO_FK_US_ID")
+    private List <Gasto> gasto;
+
+    @OneToMany @NotNull @NotBlank
+    @JoinColumn(name = "USUARIO_FK_US_ID")
+    private List <Remedio> remedio;
 
 
-    /*Contrutor de teste, esse deverá ser usado ao fim do programa
-    public Usuario (long id, String nome, String sobrenome, String email, String senha, String dataNascimento,
+    public Usuario (String nome, String sobrenome, String email, String senha, String dataNascimento,
                    String sexo, LocalDate dataCadastro, List<Remedio> remedios, List<Gasto> gasto) {
 
-        this.id = id;
+
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
@@ -57,17 +62,16 @@ public class Usuario implements UserDetails {
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.dataCadastro = dataCadastro;
-        this.remedios = remedios;
+       // this.remedios = remedios;
         this.gasto = gasto;
     }
 
-     */
 
     /*Esse contrutor está sendo usado para não quebrar o progrma, NÂO APAGAR o método*/
 
     public Usuario (String nome, String sobrenome, String email,
                     String senha, String dataNascimento, String sexo /*List<Remedio> remedios*/) {
-        this.id = id;
+
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;

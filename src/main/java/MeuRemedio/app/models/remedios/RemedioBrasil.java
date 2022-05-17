@@ -13,6 +13,8 @@ import java.time.LocalDate;
 @Setter
 @Table(name = "Remedio_Brasil")
 public class RemedioBrasil implements Serializable  {
+
+    private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "RB_ID", nullable = false)

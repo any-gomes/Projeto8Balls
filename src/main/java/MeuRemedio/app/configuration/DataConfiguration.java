@@ -1,4 +1,4 @@
-package MeuRemedio;
+package MeuRemedio.app.configuration;
 
 
 import org.hibernate.Hibernate;
