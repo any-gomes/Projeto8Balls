@@ -8,38 +8,48 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
 @Getter
 @Setter
-
 @Entity
 public class Usuario implements UserDetails {
     private static long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "US_ID")
+    @Column(name = "US_ID", nullable = false)
     private long id;
 
-    @Column(name = "US_Nome") 
+    @Column(name = "US_Nome", nullable = false)
+    @NotNull @NotEmpty @NotBlank
     private String nome;
-    @Column(name = "US_Sobrenome")
+
+    @Column(name = "US_Sobrenome", nullable = false)
+    @NotNull @NotEmpty @NotBlank
     private String sobrenome;
-    @Column(name = "US_Email")
+
+    @Column(name = "US_Email", nullable = false)
+    @NotNull @NotEmpty @NotBlank @Email
     private String email;
-    @Column(name = "US_Senha")
+
+    @Column(name = "US_Senha", nullable = false)
+    @NotNull @NotBlank @Size(min = 8)
     private String senha;
-    @Column(name = "US_DataNascimento")
+
+    @Column(name = "US_DataNascimento", nullable = false)
+    @NotNull @NotEmpty @NotBlank
     private String dataNascimento;
-    @Column(name = "US_Sexo")
+
+    @Column(name = "US_Sexo", nullable = false)
+    @NotNull @NotBlank @NotEmpty
     private String sexo;
 
     @Column(name = "Criado_em")
+    @NotNull
     private LocalDate Criado_em;
 
     @OneToMany

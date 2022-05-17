@@ -21,7 +21,6 @@ public class IndexController {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken){
             return "Index";
         }
-
         return "redirect:/home";
     }
 }
