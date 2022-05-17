@@ -1,6 +1,5 @@
-package MeuRemedio.app.models.remedios.agendamentos;
+package MeuRemedio.app.models.agendamentos;
 
-import MeuRemedio.app.models.remedios.Remedio;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +7,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 
 
 @Getter

@@ -38,7 +38,7 @@ public class CadastroUsuarioController {
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
     public String CadastrarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
                                    @RequestParam("US_Email") String email, @RequestParam("US_Senha") String senha,
-                                   @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo, ModelMap modelMap) {
+                                   @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo) {
 
         if (usuarioRepository.findByEmail(email) != null) {
             return "redirect:/cadastro?emailExistente";

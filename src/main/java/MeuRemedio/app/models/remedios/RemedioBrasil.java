@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -29,14 +30,17 @@ public class RemedioBrasil implements Serializable  {
     @NotNull
     private String RB_Componente;
 
-    private LocalDate Cadastrado_em = LocalDate.now();
+    @NotBlank
+    private LocalDate Criado_em = LocalDate.now();
 
-    public RemedioBrasil(long CT_ID, String RB_Nome, String RB_FormaFarmaceutica, String RB_CodigoATC, String RB_Componente) {
+    public RemedioBrasil(long CT_ID, String RB_Nome, String RB_FormaFarmaceutica,
+                         String RB_CodigoATC, String RB_Componente) {
         this.CT_ID = CT_ID;
         this.RB_Nome = RB_Nome;
         this.RB_FormaFarmaceutica = RB_FormaFarmaceutica;
         this.RB_CodigoATC = RB_CodigoATC;
         this.RB_Componente = RB_Componente;
+        this.Criado_em = LocalDate.now();
     }
 
     public RemedioBrasil() {

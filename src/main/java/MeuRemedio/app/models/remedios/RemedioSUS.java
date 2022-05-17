@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -20,27 +21,29 @@ public class RemedioSUS implements Serializable {
     @Column(name = "RS_ID", nullable = false)
     private long RS_ID;
 
-    @NotNull
+    @NotNull @NotBlank
     private String RS_Nome;
-    @NotNull
+    @NotNull @NotBlank
     private String RS_FormaFarmaceutica;
-    @NotNull
+    @NotNull @NotBlank
     private String RS_CodigoATC;
-    @NotNull
+    @NotNull @NotBlank
     private String RS_Componente;
 
-    private LocalDate Cadastrado_em = LocalDate.now();
+    @NotBlank
+    private LocalDate Criado_em = LocalDate.now();
 
 
     public RemedioSUS (){
 
     }
 
-    public RemedioSUS(long RS_ID, String RS_Nome, String RS_FormaFarmaceutica, String RS_CodigoATC, String RS_Componente) {
+    public RemedioSUS (long RS_ID, String RS_Nome, String RS_FormaFarmaceutica, String RS_CodigoATC, String RS_Componente) {
         this.RS_ID = RS_ID;
         this.RS_Nome = RS_Nome;
         this.RS_FormaFarmaceutica = RS_FormaFarmaceutica;
         this.RS_CodigoATC = RS_CodigoATC;
         this.RS_Componente = RS_Componente;
+        this.Criado_em = LocalDate.now();
     }
 }

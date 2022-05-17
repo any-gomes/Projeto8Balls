@@ -1,6 +1,5 @@
 package MeuRemedio.app.models.remedios;
 
-import MeuRemedio.app.models.remedios.agendamentos.Agendamento;
 import MeuRemedio.app.models.usuarios.Usuario;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,14 +38,15 @@ public class Remedio implements Serializable {
 
     private List<Categoria> categoria = new ArrayList <Categoria> () ;
 
+
 /*    @ManyToOne @NotNull @NotBlank
     @JoinColumn(name = "Usuario_FK_Usuario")
     private Usuario usuario;*/
 
-    private LocalDate Cadastrado_em = LocalDate.now();
+    private LocalDate Criado_em = LocalDate.now();
 
-    public Remedio ( String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Boolean RM_RetiradoSus, List<Categoria> FK_CT_ID,
-                   /*Usuario FK_US_ID,*/ LocalDate cadastrado_em) {
+    public Remedio ( String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Boolean RM_RetiradoSus, List<Categoria> FK_CT_ID
+                   /*Usuario FK_US_ID,*/) {
 
         this.RM_Nome = RM_Nome;
         this.RM_Dosagem = RM_Dosagem;
@@ -54,18 +54,18 @@ public class Remedio implements Serializable {
         this.RM_UnidadeDosagem = RM_UnidadeDosagem;
         this.categoria = FK_CT_ID;
         /*this.usuario = FK_US_ID;*/
-        this.Cadastrado_em = cadastrado_em;
+        this.Criado_em = LocalDate.now();
     }
 
-    public Remedio (String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Boolean RM_RetiradoSus,
-                    /*Usuario FK_US_ID,*/ LocalDate cadastrado_em) {
+    public Remedio (String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Boolean RM_RetiradoSus
+                    /*Usuario FK_US_ID,*/) {
 
         this.RM_Nome = RM_Nome;
         this.RM_Dosagem = RM_Dosagem;
         this.RM_RetiradoSus = RM_RetiradoSus;
         this.RM_UnidadeDosagem = RM_UnidadeDosagem;
         /*this.usuario = FK_US_ID;*/
-        this.Cadastrado_em = cadastrado_em;
+        this.Criado_em = LocalDate.now();
     }
 
     public Remedio (){

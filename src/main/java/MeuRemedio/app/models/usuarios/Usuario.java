@@ -22,38 +22,37 @@ public class Usuario implements UserDetails {
     private static long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "US_ID")
     private long id;
 
-    @Column(name = "US_Nome") @NotNull @NotBlank
+    @Column(name = "US_Nome") 
     private String nome;
-    @Column(name = "US_Sobrenome") @NotNull @NotBlank
+    @Column(name = "US_Sobrenome")
     private String sobrenome;
-    @Column(name = "US_Email") @NotNull @NotBlank
+    @Column(name = "US_Email")
     private String email;
-    @Column(name = "US_Senha") @NotNull @NotBlank
+    @Column(name = "US_Senha")
     private String senha;
-    @Column(name = "US_DataNascimento") @NotNull @NotBlank
+    @Column(name = "US_DataNascimento")
     private String dataNascimento;
-    @Column(name = "US_Sexo") @NotNull @NotBlank
+    @Column(name = "US_Sexo")
     private String sexo;
 
-    @Column(name = "GA_Cadastrado_Em")
-    private LocalDate dataCadastro;
+    @Column(name = "Criado_em")
+    private LocalDate Criado_em;
 
-    @OneToMany @NotNull @NotBlank
+    @OneToMany
     @JoinColumn(name = "USUARIO_FK_US_ID")
     private List <Gasto> gasto;
 
-    @OneToMany @NotNull @NotBlank
+    @OneToMany
     @JoinColumn(name = "USUARIO_FK_US_ID")
     private List <Remedio> remedio;
 
 
     public Usuario (String nome, String sobrenome, String email, String senha, String dataNascimento,
-                   String sexo, LocalDate dataCadastro, List<Remedio> remedios, List<Gasto> gasto) {
-
+                   String sexo,/* List<Remedio> remedios,*/ List<Gasto> gasto) {
 
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -61,7 +60,7 @@ public class Usuario implements UserDetails {
         this.senha = senha;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        this.dataCadastro = dataCadastro;
+        this.Criado_em = LocalDate.now();
        // this.remedios = remedios;
         this.gasto = gasto;
     }
@@ -78,7 +77,8 @@ public class Usuario implements UserDetails {
         this.senha = senha;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
-        /*this.remedios = remedios;*/
+        this.Criado_em = LocalDate.now();
+
     }
 
     public Usuario() {

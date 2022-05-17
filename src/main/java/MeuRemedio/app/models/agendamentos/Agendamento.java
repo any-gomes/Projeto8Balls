@@ -1,4 +1,4 @@
-package MeuRemedio.app.models.remedios.agendamentos;
+package MeuRemedio.app.models.agendamentos;
 
 import MeuRemedio.app.models.remedios.Categoria;
 import MeuRemedio.app.models.remedios.Remedio;
@@ -45,7 +45,7 @@ public class Agendamento implements Serializable {
     private long AG_Periodicidade;
 
     @NotNull @NotBlank
-    private LocalDate AG_Cadastrado_em ;
+    private LocalDate AG_Criado_em ;
 
     @ManyToMany(cascade = CascadeType.ALL) @NotNull @NotBlank
     @JoinTable(name="AgendamentoRemedio",
@@ -60,27 +60,18 @@ public class Agendamento implements Serializable {
         this.AG_horaInicio = AG_horaInicio;
         this.AG_DataFinal = AG_DataFinal;
         this.AG_Periodicidade = AG_Periodicidade;
-        this.AG_Cadastrado_em = LocalDate.now();
+        this.AG_Criado_em = LocalDate.now();
     }
 
-    public Agendamento (long AG_ID, Date AG_DataInicio, Time AG_horaInicio, Date AG_DataFinal, long AG_Periodicidade, LocalDate cadastrado_em, List<Remedio> remedio) {
-        this.AG_ID = AG_ID;
+    public Agendamento (Date AG_DataInicio, Time AG_horaInicio,
+                        Date AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio) {
+
         this.AG_DataInicio = AG_DataInicio;
         this.AG_horaInicio = AG_horaInicio;
         this.AG_DataFinal = AG_DataFinal;
         this.AG_Periodicidade = AG_Periodicidade;
-        this.AG_Cadastrado_em = cadastrado_em;
+        this.AG_Criado_em = LocalDate.now();
         this.remedio = remedio;
-    }
-
-    public Agendamento (long AG_ID, Date AG_DataInicio, Time AG_horaInicio, Date AG_DataFinal, long AG_Periodicidade, LocalDate cadastrado_em) {
-        this.AG_ID = AG_ID;
-        this.AG_DataInicio = AG_DataInicio;
-        this.AG_horaInicio = AG_horaInicio;
-        this.AG_DataFinal = AG_DataFinal;
-        this.AG_Periodicidade = AG_Periodicidade;
-        this.AG_Cadastrado_em = cadastrado_em;
-
     }
 
     public Agendamento() {

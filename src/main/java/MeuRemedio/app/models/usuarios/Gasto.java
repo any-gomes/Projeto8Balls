@@ -27,12 +27,13 @@ public class Gasto implements Serializable {
     private long GA_Qtd_Parcela;
 
     @NotBlank
-    private LocalDate Cadastrado_em = LocalDate.now();
+    private LocalDate Criado_em;
 
     public Gasto (Date GA_Data, double GA_Valor, long GA_Qtd_Parcela) {
         this.GA_Data = GA_Data;
         this.GA_Valor = GA_Valor;
         this.GA_Qtd_Parcela = GA_Qtd_Parcela;
+        this.Criado_em = LocalDate.now();
     }
     public Gasto (){
 
