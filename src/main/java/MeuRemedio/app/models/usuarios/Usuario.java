@@ -57,7 +57,6 @@ public class Usuario implements UserDetails {
     private List <Gasto> gasto;
 
     @OneToMany
-    @JoinColumn(name = "USUARIO_FK_US_ID")
     private List <Remedio> remedio;
 
 

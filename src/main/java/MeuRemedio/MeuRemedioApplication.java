@@ -1,5 +1,6 @@
 package MeuRemedio;
 
+import MeuRemedio.app.controllers.IndexController;
 import  	 org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,7 @@ public class MeuRemedioApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MeuRemedioApplication.class, args);
+
 	}
 
 }

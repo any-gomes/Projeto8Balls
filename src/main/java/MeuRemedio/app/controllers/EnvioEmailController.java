@@ -14,16 +14,6 @@ public class EnvioEmailController {
     @Autowired
     EmailService emailService;
 
-/*Setar as email model com os atributos que virão do front para envio de email, @RequistParam
-* para pegar os dados*/
-
-/*@RequestMapping(value = "/sending-email", method = RequestMethod.POST)
-    public ResponseEntity<EmailModel> sendingEmail(@RequestBody Usuario usuario){
-    emailService.sendEmail(usuario);
-
-    return new ResponseEntity<T>(usuario, HttpStatus.CREATED);
-}*/
-
     @RequestMapping(value = "/recuperar_senha", method = RequestMethod.POST)
     public void emailRecuperarSenha (Usuario usuario){
         String link = "https://meuremedioapp.herokuapp.com/cadastro";
