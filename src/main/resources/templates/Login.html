@@ -61,22 +61,19 @@
                                    placeholder="********" required>
                         </div>
                         <div class="form-group">
+
                             <button th:text="#{loginlogin.text}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
-                            <p th:text="#{loginforget.password}" style="font-size:12px"><a href=""></a></p>
+                            <p><a th:text="#{loginforget.password}" style="font-size:12px" href="/"></a></p>
                             <div class="line-break">
                                 <span th:text="#{loginor.text}">
-
                                 </span>
                             </div>
-                            <p th:text="#{loginunsigned.text}"><a th:text="#{loginsingup.text}" href="/cadastro"></a></p>
+                            <p th:text="#{loginunsigned.text}"> </p> <p> <a th:text="#{loginsingup.text}" href="/cadastro"></a></p>
                         </div>
-
-                        <!--
-                       <div th:text="#{logininvalid.text}" th:if="${param.error}" class="alert alert-error">
-                       </div>
-                       <div th:text="#{loginlogout.text}" th:if="${param.logout}" class="alert alert-sucess">
-                       </div>
-                        -->
+<!--                        <label th:text="#{logininvalid.text}" th:if="${param.error}" class="alert alert-error">-->
+<!--                        </label>-->
+<!--                        <label th:text="#{loginlogout.text}" th:if="${param.logout}" class="alert alert-sucess">-->
+<!--                        </label>-->
                     </form>
                 </div>
             </div>
