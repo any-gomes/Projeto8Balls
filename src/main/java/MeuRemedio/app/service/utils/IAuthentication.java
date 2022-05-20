@@ -1,7 +1,7 @@
-package MeuRemedio.app.utils;
+package MeuRemedio.app.service.utils;
 
 import org.springframework.security.core.Authentication;
 
-public interface IAuthenticationFacade {
+public interface IAuthentication {
     Authentication getAuthentication();
 }

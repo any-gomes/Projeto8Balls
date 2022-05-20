@@ -29,25 +29,25 @@ public class Agendamento implements Serializable {
     @Column(name = "AG_ID")
     private long AG_ID;
 
-    @NotNull @NotBlank
+    @NotNull
     @Column(name = "AG_Data_Inicio_Agendamento")
     private Date AG_DataInicio;
 
-    @NotNull @NotBlank
+    @NotNull
     @Column(name = "AG_Hora_Inicio_Agendamento")
     private Time AG_horaInicio;
 
-    @NotNull @NotBlank
+    @NotNull
     @Column(name = "AG_Data_Final_Agendamento")
     private Date AG_DataFinal;
 
-    @NotNull @NotBlank
+    @NotNull
     private long AG_Periodicidade;
 
-    @NotNull @NotBlank
+    @NotNull
     private LocalDate AG_Criado_em ;
 
-    @ManyToMany(cascade = CascadeType.ALL) @NotNull @NotBlank
+    @ManyToMany(cascade = CascadeType.ALL) @NotNull
     @JoinTable(name="AgendamentoRemedio",
             joinColumns= {@JoinColumn(name="agendamento_ag_id")},
             inverseJoinColumns = {@JoinColumn(name="remedio_rm_id")})

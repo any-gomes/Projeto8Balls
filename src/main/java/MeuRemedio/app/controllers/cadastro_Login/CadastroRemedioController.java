@@ -1,12 +1,14 @@
-package MeuRemedio.app.controllers;
+package MeuRemedio.app.controllers.cadastro_Login;
 
 
+import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.RemedioRepository;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.EmailService;
-import MeuRemedio.app.utils.IAuthenticationFacade;
+import MeuRemedio.app.service.utils.IAuthentication;
+import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -30,10 +32,10 @@ public class CadastroRemedioController {
     RemedioRepository remedioRepository;
 
     @Autowired
-    private IAuthenticationFacade authenticationFacade;
+    private IAuthentication authenticationFacade;
 
     @Autowired
-    EnvioEmailController emailCadastro;
+    ValidateAuthentication validateAuthentication;
 
     public String returnUsernameUsuario(){
         Authentication authentication = authenticationFacade.getAuthentication();
@@ -50,6 +52,14 @@ public class CadastroRemedioController {
         return idUserLogado ;
     }
 
+    @RequestMapping(value = "/cadastro_Remedio")
+    public String telaCadastroRemedio(){
+
+        if (validateAuthentication.auth() != true){
+            return "Login";
+        }
+        return "redirect:/cadastro_Remedio";
+    }
     @RequestMapping(value = "/cadastro_Remedio", method = RequestMethod.POST)
     public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
                                    @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
@@ -64,10 +74,10 @@ public class CadastroRemedioController {
         Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem,
                 false, usuarioID);
 
+
         remedioRepository.save(remedio);
         return "redirect:/cadastro_remedio";
     }
-
 
     /*Metodo de teste*/
     @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.GET)

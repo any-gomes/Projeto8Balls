@@ -1,13 +1,10 @@
-package MeuRemedio.app.controllers;
+package MeuRemedio.app.controllers.cadastro_Login;
 
+import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
-import MeuRemedio.app.service.EmailService;
-import MeuRemedio.app.utils.AuthenticationFacade;
+import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +18,12 @@ public class CadastroUsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    EmailService emailService;
-
-    @Autowired
-    AuthenticationFacade authenticationFacade;
+    ValidateAuthentication validateAuthentication;
 
     @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario() {
 
-        if (authenticationFacade.getAuthentication() == null
-                || authenticationFacade.getAuthentication() instanceof AnonymousAuthenticationToken){
-
+        if (validateAuthentication.auth() != true){
             return "Cadastro";
         }
         return "redirect:/home";
