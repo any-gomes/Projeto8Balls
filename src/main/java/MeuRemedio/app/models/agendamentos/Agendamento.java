@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,18 +32,19 @@ public class Agendamento implements Serializable {
 
     @NotNull @NotBlank
     @Column(name = "AG_Data_Inicio_Agendamento")
-    private Date AG_DataInicio;
+    private String dataInicio;
 
     @NotNull @NotBlank
     @Column(name = "AG_Hora_Inicio_Agendamento")
-    private Time AG_horaInicio;
+    private String horaInicio;
 
     @NotNull @NotBlank
     @Column(name = "AG_Data_Final_Agendamento")
-    private Date AG_DataFinal;
+    private String dataFinal;
 
     @NotNull @NotBlank
-    private long AG_Periodicidade;
+    @Column(name = "AG_Periodicidade")
+    private long periodicidade;
 
     @NotNull @NotBlank
     private LocalDate AG_Criado_em ;
@@ -53,23 +55,23 @@ public class Agendamento implements Serializable {
             inverseJoinColumns = {@JoinColumn(name="remedio_rm_id")})
     private List <Remedio> remedio = new ArrayList <Remedio> ();
 
-    public Agendamento (Date AG_DataInicio, Time AG_horaInicio,
-                        Date AG_DataFinal, long AG_Periodicidade) {
+    public Agendamento (String AG_DataInicio, String AG_horaInicio,
+                        String AG_DataFinal, long AG_Periodicidade) {
 
-        this.AG_DataInicio = AG_DataInicio;
-        this.AG_horaInicio = AG_horaInicio;
-        this.AG_DataFinal = AG_DataFinal;
-        this.AG_Periodicidade = AG_Periodicidade;
+        this.dataInicio = AG_DataInicio;
+        this.horaInicio = AG_horaInicio;
+        this.dataFinal = AG_DataFinal;
+        this.periodicidade = AG_Periodicidade;
         this.AG_Criado_em = LocalDate.now();
     }
 
-    public Agendamento (Date AG_DataInicio, Time AG_horaInicio,
-                        Date AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio) {
+    public Agendamento (String AG_DataInicio, String AG_horaInicio,
+                        String AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio) {
 
-        this.AG_DataInicio = AG_DataInicio;
-        this.AG_horaInicio = AG_horaInicio;
-        this.AG_DataFinal = AG_DataFinal;
-        this.AG_Periodicidade = AG_Periodicidade;
+        this.dataInicio = AG_DataInicio;
+        this.horaInicio = AG_horaInicio;
+        this.dataFinal = AG_DataFinal;
+        this.periodicidade = AG_Periodicidade;
         this.AG_Criado_em = LocalDate.now();
         this.remedio = remedio;
     }
