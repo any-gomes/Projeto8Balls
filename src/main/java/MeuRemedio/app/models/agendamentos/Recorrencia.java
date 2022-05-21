@@ -21,7 +21,7 @@ public class Recorrencia extends Agendamento implements Serializable {
     @Column(name = "RE_DiaSemana")
     private long RE_DiasSemana;
 
-    public Recorrencia (Date AG_DataInicio, Time AG_horaInicio, Date AG_DataFinal, long AG_Periodicidade, long RE_DiasSemana) {
+    public Recorrencia (String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, long RE_DiasSemana) {
         super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade);
         this.RE_DiasSemana = RE_DiasSemana;
     }

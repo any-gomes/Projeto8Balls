@@ -51,9 +51,9 @@ public class Remedio implements Serializable {
     private List<Categoria> categoria = new ArrayList <Categoria> () ;
 
 
-/*   @ManyToOne @NotNull @NotBlank
+    @ManyToOne @NotNull
     @JoinColumn(name = "Usuario_FK_Usuario")
-    private Usuario usuario;*/
+    private Usuario usuario;
 
     @NotNull
     private LocalDate Criado_em = LocalDate.now();
@@ -65,7 +65,7 @@ public class Remedio implements Serializable {
         this.RM_UnidadeDosagem = RM_UnidadeDosagem;
         this.RM_RetiradoSus = RM_RetiradoSus;
         this.categoria = categoria;
-       // this.usuario = usuario;
+       this.usuario = usuario;
     }
 
     public Remedio (String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Boolean RM_RetiradoSus
