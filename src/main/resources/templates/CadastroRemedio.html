@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Tela de cadastro de remedio </h1>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="#{cadtitle.text}"></title>
 
-</body>
+        <!-- Link do bootstrap (CSS) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <header>
+            <!-- Menu Simples -->
+            <nav class="navbar d-flex justify-content-end">
+                <ul class="d-flex justify-content-around align-item-center nav-lista">
+                    <li class="nav-lista-item">
+                        <select id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
+                    </li>
+                    <li class="nav-lista-item">
+                        <a th:text="#{cadnavbar.index}" class="" href="/"></a>
+                    </li>
+                    <li class="nav-lista-item">
+                        <a th:text="#{cadnavbar.login}" class="" href="/login"></a>
+                    </li>
+
+                </ul>
+            </nav>
+        </header>
+        <main class="container">
+            <section id="remedies">
+            <h2 class="sr-only">Remédios</h2>
+            <a id="new-form" href="#" class="button new" onclick="Modal.open()">+ Novo Cadastro</a>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Remédio</th>
+                        <th>Dosagem</th>
+                        <th>Data</th>
+	        <th>Frequência</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+        </main>
+
+        <div class="modal-overlay">
+            <div class="modal">
+                <div id="form">
+                    <h2>Novo Remédio</h2>
+                    <form action="" onsubmit="Form.submit(event)">
+                        <div class="input-group">
+                            <label class="sr-only" for="remedy">Remédio</label>
+                            <input type="text" id="remedy" name="remedy" 
+                            placeholder="Nome do Medicamento" />
+                        </div>
+                        <div class="input-group">
+                            <label class="sr-only" for="dosage">Dosagem</label>
+                            <input type="text" id="dosage" name="dosage" 
+                            placeholder="Ex:'10ml', '10mg'" />
+                            <small class="help">Use milímetros e miligramas. Ex:'10mg', '40ml'.</small>
+                        </div>
+                        <div class="input-group">
+                            <label class="sr-only" for="date">Data</label>
+                            <input type="date" id="date" name="date" />
+                        </div>
+                        <div class="input-group">
+                            <label class="sr-only" for="frequency">Frequência</label>
+                            <input type="text" id="frequency" name="frequency" 
+               	            placeholder="Ex:'5h', '6h'" />
+	            <small class="help">Use horas. Ex:'5h' para rotinas de 5 em 5 horas.</small>
+
+                        </div>
+                        <div class="input-group actions">
+                            <a id="cancelar" href="#" class="button cancel" 
+                            onclick="Modal.close()">Cancelar</a>
+                            <button id="confirmar" type="submit">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
 </html>
