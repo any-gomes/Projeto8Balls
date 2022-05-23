@@ -1,6 +1,5 @@
 package MeuRemedio.app.models.agendamentos;
 
-import MeuRemedio.app.models.remedios.Categoria;
 import MeuRemedio.app.models.remedios.Remedio;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 

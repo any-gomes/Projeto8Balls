@@ -30,7 +30,7 @@ public class EnvioEmailController {
     public void emailRecuperarSenha (Usuario usuario){
         String link = "https://meuremedioapp.herokuapp.com/cadastro";
         String msgRecuperacao = usuario.getNome() + " " + usuario.getSobrenome();
-        String assunto = MensagemEmail.RECUPERACAO_SENHA.getDescricao();;
+        String assunto = MensagemEmail.RECUPERACAO_SENHA.getDescricao();
         String mensagem = msgRecuperacao + MensagemEmail.RECUPERACAO_MENSAGEM.getDescricao() + link;
 
         emailService.sendEmail(usuario, assunto, mensagem );
@@ -55,9 +55,9 @@ public class EnvioEmailController {
     public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios){
         String assunto = MensagemEmail.NOTIFICACAO_REMEDIO.getDescricao();
 
-        String remediosString = " ";
-        for (int i = 0; i < remedios.size(); i++) {
-             remediosString = remediosString + remedios.get(i).getRM_Nome();
+        StringBuilder remediosString = new StringBuilder(" ");
+        for (Remedio remedio : remedios) {
+            remediosString.append(remedio.getRM_Nome());
         }
         String msg = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome() +
                 "! Já está na hora de tomar os seus remédios, que são: " + remediosString;
