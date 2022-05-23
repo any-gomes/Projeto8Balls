@@ -19,15 +19,15 @@ public class Recorrencia extends Agendamento implements Serializable {
     private static long serialVersionUID = 1L;
 
     @Column(name = "RE_DiaSemana")
-    private long RE_DiasSemana;
+    private long diaSemana;
 
-    public Recorrencia (String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, long RE_DiasSemana) {
+    public Recorrencia (String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, long diaSemana) {
         super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade);
-        this.RE_DiasSemana = RE_DiasSemana;
+        this.diaSemana = diaSemana;
     }
 
     public Recorrencia(long RE_DiasSemana) {
-        this.RE_DiasSemana = RE_DiasSemana;
+        this.diaSemana = RE_DiasSemana;
     }
 
     public Recorrencia() {

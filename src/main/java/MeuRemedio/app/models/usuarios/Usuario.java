@@ -22,7 +22,7 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "US_ID", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "US_Nome", nullable = false)
     @NotNull @NotEmpty @NotBlank

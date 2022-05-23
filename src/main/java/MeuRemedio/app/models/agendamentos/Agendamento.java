@@ -28,7 +28,7 @@ public class Agendamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "AG_ID")
-    private long AG_ID;
+    private long id;
 
     @NotNull @NotBlank
     @Column(name = "AG_Data_Inicio_Agendamento")
@@ -53,7 +53,7 @@ public class Agendamento implements Serializable {
     @JoinTable(name="AgendamentoRemedio",
             joinColumns= {@JoinColumn(name="agendamento_ag_id")},
             inverseJoinColumns = {@JoinColumn(name="remedio_rm_id")})
-    private List <Remedio> remedio = new ArrayList <Remedio> ();
+    private List <Remedio> remedio = new ArrayList <> ();
 
     public Agendamento (String AG_DataInicio, String AG_horaInicio,
                         String AG_DataFinal, long AG_Periodicidade) {
