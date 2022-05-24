@@ -20,19 +20,16 @@
         <header>
             <!-- Menu Simples -->
             <nav class="navbar d-flex justify-content-end">
-                <ul class="d-flex justify-content-around align-item-center nav-lista">
+                <ul class="nav-lista d-flex justify-content-around align-item-center ">
                     <li class="nav-lista-item">
-                        <select id="locales">
+                        <select class="inter" id="locales">
                             <option value="" th:text="#{alllanguage.change}"></option>
                             <option value="en" th:text="#{alllanguage.english}"></option>
                             <option value="pt" th:text="#{alllanguage.portuguese}"></option>
                         </select>
                     </li>
                     <li class="nav-lista-item">
-                        <a th:text="#{cadnavbar.index}" class="" href="/"></a>
-                    </li>
-                    <li class="nav-lista-item">
-                        <a th:text="#{cadnavbar.login}" class="" href="/login"></a>
+                        <a th:text="#{navbar.index}" class="" href="/"></a>
                     </li>
 
                 </ul>
@@ -40,15 +37,15 @@
         </header>
         <main class="container">
             <section id="remedies">
-                <h2 class="sr-only">Remédios</h2>
-                <a id="new-form" href="#" class="button new" onclick="Modal.open()">+ Novo Cadastro</a>
+                <h2 th:text="#{cadrem.title}" class="sr-only"></h2>
+                <a th:text="#{cadremregister.newremedy}" id="new-form" href="#" class="button new" onclick="Modal.open()"></a>
                 <table id="data-table">
                     <thead>
                         <tr>
-                            <th>Remédio</th>
-                            <th>Dosagem</th>
-                            <th>Data</th>
-                            <th>Frequência</th>
+                            <th th:text="#{cadremtable.remedy}"></th>
+                            <th th:text="#{cadremtable.dosage}"></th>
+                            <th th:text="#{cadremtable.date}"></th>
+                            <th th:text="#{cadremtable.frequency}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,39 +57,39 @@
         <div class="modal-overlay">
             <div class="modal">
                 <div id="form">
-                    <h2>Novo Remédio</h2>
+                    <h2 th:text="#{cadremform.title}"></h2>
                     <form action="" onsubmit="Form.submit(event)">
                         <div class="input-group">
-                            <label class="sr-only" for="remedy">Remédio</label>
-                            <input type="text" id="remedy" name="remedy" 
-                                   placeholder="Nome do Medicamento" />
+                            <label th:text="#{cadremform.remedy}" class="sr-only" for="remedy"></label>
+                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="remedy" name="remedy" 
+                                    />
                         </div>
                         <div class="input-group">
-                            <label class="sr-only" for="dosage">Dosagem</label>
-                            <input type="text" id="dosage" name="dosage" 
-                                   placeholder="Ex:'10ml', '10mg'" />
-                            <small class="help">Use milímetros e miligramas. Ex:'10mg', '40ml'.</small>
+                            <label th:text="#{cadremform.dosage}" class="sr-only" for="dosage"></label>
+                            <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="dosage" name="dosage"/>
+                            <small th:text="#{cadremform.dosagesmall}" class="help"></small>
                         </div>
                         <div class="input-group">
-                            <label class="sr-only" for="date">Data</label>
-                            <input type="date" id="date" name="date" />
+                            <label th:text="#{cadremform.date}" class="sr-only" for="date"></label>
+                            <input type="date" id="date" name="date"/>
                         </div>
                         <div class="input-group">
-                            <label class="sr-only" for="frequency">Frequência</label>
-                            <input type="text" id="frequency" name="frequency" 
-                                   placeholder="Ex:'5h', '6h'" />
-                            <small class="help">Use horas. Ex:'5h' para rotinas de 5 em 5 horas.</small>
+                            <label th:text="#{cadremform.frequency}" class="sr-only" for="frequency"></label>
+                            <input th:placeholder="#{cadremplaceholder.frequency}" type="text" id="frequency" name="frequency"/>
+                            <small th:text="#{cadremform.frequencysmall}" class="help"></small>
 
                         </div>
                         <div class="input-group actions">
-                            <a id="cancelar" href="#" class="button cancel" 
-                               onclick="Modal.close()">Cancelar</a>
-                            <button id="confirmar" type="submit">Salvar</button>
+                            <a th:text="#{cadremform.cancel}" id="cancelar" href="#" class="button cancel" 
+                               onclick="Modal.close()"></a>
+                            <button th:text="#{cadremform.submit}" id="confirmar" type="submit"></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
+        <!-- Scripts da página -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="/script/cadastroRemedio.jsp"></script>
     </body>
 </html>

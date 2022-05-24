@@ -11,6 +11,28 @@
 </head>
 
 <body>
+    <header>
+        <!-- Menu Simples -->
+        <nav class="navbar d-flex justify-content-end">
+            <ul class="d-flex justify-content-around align-item-center nav-lista">
+                <li class="nav-lista-item">
+                    <select id="locales">
+                        <option value="" th:text="#{alllanguage.change}"></option>
+                        <option value="en" th:text="#{alllanguage.english}"></option>
+                        <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                    </select>
+                </li>
+                <li class="nav-lista-item">
+                    <a th:text="#{navbar.index}" class="" href="/"></a>
+                </li>
+                <li class="nav-lista-item">
+                    <!-- Os valores dos atributos ainda não existem, botão novo -->
+                    <a th:text="#{navbar.remedy}" class="" href="/cadastro_remedio"></a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
 <h1 style="text-align: center"> Pagina inicial da aplicação</h1>
 
 <form class="logout" method="post" th:action="@{/logout}">

@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : 22 de mai de 2022, 21:10:33
     Author     : Pedro Haka
     Project    : Meu Remédio App
+    File       : Página de Cadastro de Remédios - Stylesheet
 */
 
 /*  Global config =================== */
@@ -172,7 +173,7 @@ td.expense{
 
     position: fixed;
     top: 0%;
-    z-index: 999;
+    z-index: 1;
 
     display: flex;
     align-items: center;
@@ -181,7 +182,7 @@ td.expense{
     opacity: 0;
     visibility: hidden;
 }
-.modal-overlay.active {
+.modal-overlay.active{
     opacity: 1;
     visibility: visible;
 }
@@ -190,13 +191,17 @@ td.expense{
     padding: 2.4rem;
     width: 90%;
     max-width: 500px;
+    max-height: 1000px;
+    display: block;
     position: relative;
-    z-index: 1;
+    
 }
 
 /* Form ==========================*/
 #form{
     max-width: 500px;
+    
+    
 }
 #form h2{
     margin-top: 0;

@@ -1,0 +1,39 @@
+/*  Global config =================== */
+:root{
+    --black: #000;
+    --light-black: #181a19;
+    --dark-blue: #363f5f;
+    --light-blue: #f2fffd;
+    --light-green: #3dd405;
+    --green: #49aa26;
+    --dark-green: #2d4a22;
+    --red: #e92929;
+    --light-gray: #fbf2f5;
+    --gray: #969cb3;
+    --white: #fff;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--light-blue);
+}
+
+/*  Header =================== */
+.nav-lista{
+    width: 25%;
+    list-style: none;
+}
+.nav-lista-item{
+    width: 85%;
+    color: var(--light-black);
+    font-family: 'Roboto';
+    font-style: normal;
+    text-align:center;
+}
+.nav-lista-item a {
+    text-decoration: none;
+    color: var(--light-black);
+    font-family: 'Roboto';
+    font-style: normal;
+
+
+}

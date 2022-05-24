@@ -93,6 +93,6 @@ public class CadastroRemedioController {
 
         remedioRepository.save(remedio);
 
-        return "redirect:/home";
+        return "CadastroRemedio";
     }
 }
