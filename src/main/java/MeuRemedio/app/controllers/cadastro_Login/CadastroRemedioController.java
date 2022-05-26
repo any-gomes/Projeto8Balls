@@ -60,7 +60,7 @@ public class CadastroRemedioController {
         }
         return "redirect:/cadastro_Remedio";
     }
-    @RequestMapping(value = "/cadastro_Remedio", method = RequestMethod.POST)
+    @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.POST)
     public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
                                    @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
 
@@ -76,7 +76,7 @@ public class CadastroRemedioController {
 
 
         remedioRepository.save(remedio);
-        return "redirect:/cadastro_remedio";
+        return "CadastroRemedio";
     }
 
     /*Metodo de teste*/

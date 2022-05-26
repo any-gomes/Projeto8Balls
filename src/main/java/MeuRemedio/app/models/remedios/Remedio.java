@@ -41,7 +41,7 @@ public class Remedio implements Serializable {
     private String RM_UnidadeDosagem;
 
 
-    private Boolean RM_RetiradoSus = null;
+    private Boolean RM_RetiradoSus = false;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="RemedioCategoria",

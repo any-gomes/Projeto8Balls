@@ -58,31 +58,27 @@
             <div class="modal">
                 <div id="form">
                     <h2 th:text="#{cadremform.title}"></h2>
-                    <form action="" onsubmit="Form.submit(event)">
+                    <form method="post" name="formCadastroRM">
                         <div class="input-group">
-                            <label th:text="#{cadremform.remedy}" class="sr-only" for="remedy"></label>
-                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="remedy" name="remedy" 
+                            <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
+                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome" 
                                     />
                         </div>
                         <div class="input-group">
-                            <label th:text="#{cadremform.dosage}" class="sr-only" for="dosage"></label>
-                            <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="dosage" name="dosage"/>
+                            <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
+                            <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="RM_Dosagem" name="RM_Dosagem"/>
                             <small th:text="#{cadremform.dosagesmall}" class="help"></small>
                         </div>
                         <div class="input-group">
-                            <label th:text="#{cadremform.date}" class="sr-only" for="date"></label>
-                            <input type="date" id="date" name="date"/>
-                        </div>
-                        <div class="input-group">
-                            <label th:text="#{cadremform.frequency}" class="sr-only" for="frequency"></label>
-                            <input th:placeholder="#{cadremplaceholder.frequency}" type="text" id="frequency" name="frequency"/>
-                            <small th:text="#{cadremform.frequencysmall}" class="help"></small>
-
+                            <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
+                            <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem" 
+                                   name="RM_UnidadeDosagem"/>
+                            <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
                         </div>
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="#" class="button cancel" 
                                onclick="Modal.close()"></a>
-                            <button th:text="#{cadremform.submit}" id="confirmar" type="submit"></button>
+                            <button th:text="#{cadremform.submit}" name="action" id="confirmar" type="submit"></button>
                         </div>
                     </form>
                 </div>
