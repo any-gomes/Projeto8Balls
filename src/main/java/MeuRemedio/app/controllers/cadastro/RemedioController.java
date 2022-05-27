@@ -92,7 +92,6 @@ public class RemedioController {
 
     }
 
-
     /*Metodo de teste*/
     @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.GET)
     public String CadastroRemedio () throws SQLException {
