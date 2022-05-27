@@ -14,10 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RemedioController {
@@ -53,20 +51,28 @@ public class RemedioController {
         return idUserLogado ;
     }
 
-    @RequestMapping(value = "/cadastro_remedio")
-    public String telaCadastroRemedio(){
-
+    @RequestMapping(value = "/remedios")
+    public String telaViewRemedios(){
         if (validateAuthentication.auth() != true){
             return "Login";
         }
-        return "CadastroRemedio";
+        return "Remedios";
     }
 
-    @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.POST)
+    @RequestMapping(value = "/remedios_cadastro")
+    public String telaCadastroRemedio(){
+        if (validateAuthentication.auth() != true){
+            return "Login";
+        }
+        return "CadastroRemedios";
+    }
+
+    @RequestMapping(value = "/remedios_cadastro", method = RequestMethod.POST)
     public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
                                    @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem , @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
 
         boolean auxRetiradoSUS;
+
         Usuario usuarioID = new Usuario();
         usuarioID.setId(returnIdUsuarioLogado());
 
@@ -81,14 +87,14 @@ public class RemedioController {
         Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem ,auxRetiradoSUS, usuarioID);
         remedioRepository.save(remedio);
 
-        return "CadastroRemedio";
+        return "redirect:/remedios";
     }
-
-    @RequestMapping(value = "lista_remedios") //(Alterar Mapeamento) ou Chamar esse método em um click de um botão no front
+/*
+    @RequestMapping(value = "remedios", method = RequestMethod.GET) //(Alterar Mapeamento) ou Chamar esse método em um click de um botão no front
     public String deletarRemedio (long id){
         Remedio remedio = remedioRepository.findById(id);
         remedioRepository.delete(remedio);
 
-        return "redirect:/cadastro_remedio";
-    }
+        return "redirect:/remedios";
+    }*/
 }

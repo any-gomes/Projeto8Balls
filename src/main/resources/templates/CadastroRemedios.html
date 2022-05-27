@@ -16,7 +16,6 @@
     </head>
 
     <body>
-
         <header>
             <!-- Menu Simples -->
             <nav class="navbar d-flex justify-content-end">
@@ -31,28 +30,9 @@
                     <li class="nav-lista-item">
                         <a th:text="#{navbar.index}" class="" href="/"></a>
                     </li>
-
                 </ul>
             </nav>
         </header>
-        <main class="container">
-            <section id="remedies">
-                <h2 th:text="#{cadrem.title}" class="sr-only"></h2>
-                <a th:text="#{cadremregister.newremedy}" id="new-form" href="#" class="button new" onclick="Modal.open()"></a>
-                <table id="data-table">
-                    <thead>
-                        <tr>
-                            <th th:text="#{cadremtable.remedy}"></th>
-                            <th th:text="#{cadremtable.dosage}"></th>
-                            <th th:text="#{cadremtable.dosageunit}"></th>
-                            <th th:text="#{cadremtable.susremedy}"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </section>
-        </main>
 
         <div class="modal-overlay">
             <div class="modal">
@@ -61,8 +41,8 @@
                     <form method="post" name="formCadastroRM">
                         <div class="input-group">
                             <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
-                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome" 
-                                    />
+                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome"
+                            />
                         </div>
                         <div class="input-group">
                             <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
@@ -71,20 +51,19 @@
                         </div>
                         <div class="input-group">
                             <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
-                            <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem" 
+                            <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem"
                                    name="RM_UnidadeDosagem"/>
                             <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
                         </div>
 
                         <div class="input-group">
-                         Retirado do SUS ?<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>
+                            Retirado do SUS ?<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>
                             <input th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
                             <input th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
                         </div>
 
                         <div class="input-group actions">
-                            <a th:text="#{cadremform.cancel}" id="cancelar" href="#" class="button cancel" 
-                               onclick="Modal.close()"></a>
+                            <a th:text="#{cadremform.cancel}" id="cancelar" href="/remedios" class="button cancel"></a>
                             <button th:text="#{cadremform.submit}" name="action" id="confirmar" type="submit"></button>
                         </div>
                     </form>
