@@ -45,6 +45,5 @@ public class UsuarioController {
         emailCadastro.emailConfirmCadastro(usuarioCadastro);
 
         return "redirect:/";
-
     }
 }

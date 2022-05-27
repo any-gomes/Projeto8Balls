@@ -41,7 +41,7 @@ public class Remedio implements Serializable {
     private String RM_UnidadeDosagem;
 
 
-    private Boolean RM_RetiradoSus = null;
+    private Boolean RM_RetiradoSus ;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="RemedioCategoria",
@@ -80,4 +80,14 @@ public class Remedio implements Serializable {
     public Remedio (){
 
     }
+    
+    //Método de teste sem o rádio/boolean
+    public Remedio(String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Usuario usuario) {
+        this.RM_Nome = RM_Nome;
+        this.RM_Dosagem = RM_Dosagem;
+        this.RM_UnidadeDosagem = RM_UnidadeDosagem;
+       // this.categoria = categoria;
+        this.usuario = usuario;
+    }
+
 }

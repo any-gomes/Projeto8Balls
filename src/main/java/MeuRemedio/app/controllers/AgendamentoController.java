@@ -48,9 +48,6 @@ public class AgendamentoController {
         return "redirect:/agendamentos";
     }
 
-
-
-
 /*    método de teste*/
     @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
     public String cadastrarAgendamento(){

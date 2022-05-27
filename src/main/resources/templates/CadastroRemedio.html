@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Tela de cadastro de remedio </h1>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="#{cadtitle.text}"></title>
 
-</body>
+        <!-- Link do bootstrap (CSS) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header>
+            <!-- Menu Simples -->
+            <nav class="navbar d-flex justify-content-end">
+                <ul class="nav-lista d-flex justify-content-around align-item-center ">
+                    <li class="nav-lista-item">
+                        <select class="inter" id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
+                    </li>
+                    <li class="nav-lista-item">
+                        <a th:text="#{navbar.index}" class="" href="/"></a>
+                    </li>
+
+                </ul>
+            </nav>
+        </header>
+        <main class="container">
+            <section id="remedies">
+                <h2 th:text="#{cadrem.title}" class="sr-only"></h2>
+                <a th:text="#{cadremregister.newremedy}" id="new-form" href="#" class="button new" onclick="Modal.open()"></a>
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th th:text="#{cadremtable.remedy}"></th>
+                            <th th:text="#{cadremtable.dosage}"></th>
+                            <th th:text="#{cadremtable.dosageunit}"></th>
+                            <th th:text="#{cadremtable.susremedy}"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <div class="modal-overlay">
+            <div class="modal">
+                <div id="form">
+                    <h2 th:text="#{cadremform.title}"></h2>
+                    <form method="post" name="formCadastroRM">
+                        <div class="input-group">
+                            <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
+                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome" 
+                                    />
+                        </div>
+                        <div class="input-group">
+                            <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
+                            <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="RM_Dosagem" name="RM_Dosagem"/>
+                            <small th:text="#{cadremform.dosagesmall}" class="help"></small>
+                        </div>
+                        <div class="input-group">
+                            <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
+                            <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem" 
+                                   name="RM_UnidadeDosagem"/>
+                            <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
+                        </div>
+
+                        <div class="input-group">
+                         Retirado do SUS ?<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>
+                            <input th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
+                            <input th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
+                        </div>
+
+                        <div class="input-group actions">
+                            <a th:text="#{cadremform.cancel}" id="cancelar" href="#" class="button cancel" 
+                               onclick="Modal.close()"></a>
+                            <button th:text="#{cadremform.submit}" name="action" id="confirmar" type="submit"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Scripts da página -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="/script/cadastroRemedio.jsp"></script>
+    </body>
 </html>
