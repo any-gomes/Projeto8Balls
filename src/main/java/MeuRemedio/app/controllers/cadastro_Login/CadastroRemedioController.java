@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CadastroRemedioController {
@@ -52,7 +53,7 @@ public class CadastroRemedioController {
         return idUserLogado ;
     }
 
-    @RequestMapping(value = "/cadastro_Remedio")
+@RequestMapping(value = "/cadastro_remedio")
     public String telaCadastroRemedio(){
 
         if (validateAuthentication.auth() != true){
@@ -60,9 +61,10 @@ public class CadastroRemedioController {
         }
         return "redirect:/cadastro_Remedio";
     }
+    
     @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.POST)
     public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
-                                   @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
+                                   @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem /*, @RequestParam("RM_RetiradoSus") Boolean RM_RetiradoSus*/) throws SQLException {
 
         Usuario usuarioID = new Usuario();
         usuarioID.setId(returnIdUsuarioLogado());
@@ -71,14 +73,25 @@ public class CadastroRemedioController {
             throw new SQLException("Erro ao retornar ID do usuário ");
         }
 
-        Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem,
-                false, usuarioID);
+           
+        Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem
+                /*,RM_RetiradoSus*/, usuarioID);
 
 
         remedioRepository.save(remedio);
         return "CadastroRemedio";
     }
 
+    @RequestMapping(value = "/remedios")
+    public ModelAndView getRemedios (){
+        ModelAndView model = new ModelAndView("CadastroRemedio");
+        Iterable<Remedio> remedios = remedioRepository.findAll();
+        model.addObject("remedios", remedios);
+
+        return model;
+    }
+    
+    
     /*Metodo de teste*/
     @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.GET)
     public String CadastroRemedio () throws SQLException {

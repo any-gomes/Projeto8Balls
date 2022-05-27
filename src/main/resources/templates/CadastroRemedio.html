@@ -44,8 +44,8 @@
                         <tr>
                             <th th:text="#{cadremtable.remedy}"></th>
                             <th th:text="#{cadremtable.dosage}"></th>
-                            <th th:text="#{cadremtable.date}"></th>
-                            <th th:text="#{cadremtable.frequency}"></th>
+                            <th th:text="#{cadremtable.dosageunit}"></th>
+                            <th th:text="#{cadremtable.susremedy}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +75,13 @@
                                    name="RM_UnidadeDosagem"/>
                             <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
                         </div>
+                        <!-- 
+                        <div class="input-group">
+                            <label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>
+                            <input th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
+                            <input th:text="#{cadremform.radiono} type="radio" id="RM_RetiradoSus" value="Nao" name="RM_RetiradoSus"/>
+                        </div>
+                        -->
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="#" class="button cancel" 
                                onclick="Modal.close()"></a>
