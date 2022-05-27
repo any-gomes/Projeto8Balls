@@ -1,4 +1,4 @@
-package MeuRemedio.app.controllers.cadastro_Login;
+package MeuRemedio.app.controllers.cadastro;
 
 import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.usuarios.Usuario;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class CadastroUsuarioController {
+public class UsuarioController {
     @Autowired
     EnvioEmailController emailCadastro;
 
@@ -24,7 +24,7 @@ public class CadastroUsuarioController {
     public String telaCadasUsuario() {
 
         if (validateAuthentication.auth() != true){
-            return "Cadastro";
+            return "CadastroUsuario";
         }
         return "redirect:/home";
     }

@@ -44,8 +44,12 @@ public class AgendamentoController {
     public String deletarAgendamento(long id){
         Agendamento agendamento = agendamentoRepository.findById(id);
         agendamentoRepository.delete(agendamento);
+
         return "redirect:/agendamentos";
     }
+
+
+
 
 /*    método de teste*/
     @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)

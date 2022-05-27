@@ -1,7 +1,6 @@
-package MeuRemedio.app.controllers.cadastro_Login;
+package MeuRemedio.app.controllers.cadastro;
 
 
-import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.RemedioRepository;
@@ -15,12 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class CadastroRemedioController {
+public class RemedioController {
     private String username;
 
     @Autowired
@@ -53,7 +53,9 @@ public class CadastroRemedioController {
         return idUserLogado ;
     }
 
-@RequestMapping(value = "/cadastro_remedio")
+
+    @RequestMapping(value = "/cadastro_remedio")
+
     public String telaCadastroRemedio(){
 
         if (validateAuthentication.auth() != true){
@@ -66,12 +68,16 @@ public class CadastroRemedioController {
     public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
                                    @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem /*, @RequestParam("RM_RetiradoSus") Boolean RM_RetiradoSus*/) throws SQLException {
 
+    
         Usuario usuarioID = new Usuario();
         usuarioID.setId(returnIdUsuarioLogado());
 
         if (usuarioID.getId() <= 0) {
             throw new SQLException("Erro ao retornar ID do usuário ");
         }
+        /*if (RM_RetiradoSus == null ){
+            RM_RetiradoSus = false;
+        }*/
 
            
         Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem
@@ -92,20 +98,21 @@ public class CadastroRemedioController {
     }
     
     
-    /*Metodo de teste*/
-    @RequestMapping(value = "/cadastro_remedio", method = RequestMethod.GET)
-    public String CadastroRemedio () throws SQLException {
-        Usuario usuarioID = new Usuario();
-        usuarioID.setId(returnIdUsuarioLogado());
 
-        if (usuarioID.getId() <= 0) {
-            throw new SQLException("Erro ao retornar ID do usuário ");
-        }
-        Remedio remedio = new Remedio("Amoxilina", "10", "miligrmas",
-                false, usuarioID);
+       /* Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem,
+                RM_RetiradoSus , usuarioID);
 
         remedioRepository.save(remedio);
 
-        return "CadastroRemedio";
-    }
+        return "redirect:/cadastro_remedio";
+    }*/
+
+    /*@RequestMapping(value = "lista_remedios") //(Alterar Mapeamento) ou Chamar esse método em um click de um botão no front
+    public String deletarRemedio (long id){
+        Remedio remedio = remedioRepository.findById(id);
+        remedioRepository.delete(remedio);
+
+        return "redirect:/cadastro_remedio";
+
+}*/
 }
