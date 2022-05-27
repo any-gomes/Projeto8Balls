@@ -18,7 +18,6 @@ public class IndexController {
             return "Home";
         }
 
-
     @RequestMapping(value = "/")
     public String Index(){
         if (validateAuthentication.auth() != true){
