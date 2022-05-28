@@ -11,9 +11,12 @@ import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 
@@ -51,13 +54,6 @@ public class RemedioController {
         return idUserLogado ;
     }
 
-    @RequestMapping(value = "/remedios")
-    public String telaViewRemedios(){
-        if (validateAuthentication.auth() != true){
-            return "Login";
-        }
-        return "Remedios";
-    }
 
     @RequestMapping(value = "/remedios_cadastro")
     public String telaCadastroRemedio(){
@@ -89,12 +85,36 @@ public class RemedioController {
 
         return "redirect:/remedios";
     }
-/*
-    @RequestMapping(value = "remedios", method = RequestMethod.GET) //(Alterar Mapeamento) ou Chamar esse método em um click de um botão no front
-    public String deletarRemedio (long id){
-        Remedio remedio = remedioRepository.findById(id);
-        remedioRepository.delete(remedio);
+
+    @RequestMapping(value = "/remedios" )
+    public String listaRemedios(ModelMap model){
+
+        if (validateAuthentication.auth() != true){
+            return "Login";
+        }
+        Usuario usuarioID = new Usuario();
+        usuarioID.setId(returnIdUsuarioLogado());
+
+        Iterable<Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
+        model.addAttribute("remedio", remedio);
+
+        return "Remedios";
+    }
+
+    //Metodo de teste, para validar colocar um id valido na URL do navegador
+    @RequestMapping(value = "/{id}")
+    public String deletarRemedio (@PathVariable("id") long id){
+      //  Remedio remedio = remedioRepository.findById(id);
+        remedioRepository.deleteById(id);
+        return "redirect:/remedios";
+    }
+
+/*    @RequestMapping(value = "/deletar_remedio") Metodo de teste
+    public String deletarRemedio(long id){
+        //  Remedio remedio = remedioRepository.findById(id);
+        remedioRepository.deleteById(id);
 
         return "redirect:/remedios";
     }*/
+
 }
