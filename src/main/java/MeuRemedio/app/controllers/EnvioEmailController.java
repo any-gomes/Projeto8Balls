@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 public class EnvioEmailController {
     @Autowired
@@ -18,7 +20,7 @@ public class EnvioEmailController {
     public void emailRecuperarSenha (Usuario usuario){
         String link = "https://meuremedioapp.herokuapp.com/cadastro";
         String msgRecuperacao = usuario.getNome() + " " + usuario.getSobrenome();
-        String assunto = MensagemEmail.RECUPERACAO_SENHA.getDescricao();;
+        String assunto = MensagemEmail.RECUPERACAO_SENHA.getDescricao();
         String mensagem = msgRecuperacao + MensagemEmail.RECUPERACAO_MENSAGEM.getDescricao() + link;
 
         emailService.sendEmail(usuario, assunto, mensagem );
@@ -38,6 +40,18 @@ public class EnvioEmailController {
         String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao();
 
         emailService.sendEmail(usuario, assunto, msg);
+    }
 
+    public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios){
+        String assunto = MensagemEmail.NOTIFICACAO_REMEDIO.getDescricao();
+
+        StringBuilder remediosString = new StringBuilder(" ");
+        for (Remedio remedio : remedios) {
+            remediosString.append(remedio.getRM_Nome());
+        }
+        String msg = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome() +
+                "! Já está na hora de tomar os seus remédios, que são: " + remediosString;
+
+        emailService.sendEmail(usuario, assunto, msg);
     }
 }
