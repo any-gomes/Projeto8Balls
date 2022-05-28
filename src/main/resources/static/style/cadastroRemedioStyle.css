@@ -40,7 +40,7 @@ body{
     border-width: 0;
 }
 
-.container{
+.container-table{
     width: min(90vw, 800px);
     margin: auto;
 }
@@ -130,6 +130,7 @@ button:hover{
     width: 100%;
     border-spacing: 0 0.5rem;
     color: var(--gray);
+    flex-wrap: wrap;
 
 }
 table thead tr th:first-child,

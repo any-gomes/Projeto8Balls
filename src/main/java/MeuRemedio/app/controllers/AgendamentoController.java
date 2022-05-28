@@ -49,12 +49,5 @@ public class AgendamentoController {
     }
 
 /*    método de teste*/
-    @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
-    public String cadastrarAgendamento(){
 
-        Agendamento agendamento = new Agendamento("data","time","data",2); //Passar dentro do construtor os dados para teste do método
-        agendamentoRepository.save(agendamento);
-
-        return "redirect:/agendamentos";
-    }
 }
