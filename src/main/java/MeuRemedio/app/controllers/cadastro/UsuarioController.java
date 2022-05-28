@@ -23,7 +23,7 @@ public class UsuarioController {
     @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario() {
 
-        if (validateAuthentication.auth() != true){
+        if (!validateAuthentication.auth()){
             return "CadastroUsuario";
         }
         return "redirect:/home";

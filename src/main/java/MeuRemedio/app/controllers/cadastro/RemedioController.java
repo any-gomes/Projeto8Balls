@@ -42,8 +42,7 @@ public class RemedioController {
     public String returnUsernameUsuario(){
         Authentication authentication = authenticationFacade.getAuthentication();
         username = authentication.getName();
-
-        return  username;
+        return username;
     }
 
     public long returnIdUsuarioLogado () {
@@ -57,7 +56,7 @@ public class RemedioController {
 
     @RequestMapping(value = "/remedios_cadastro")
     public String telaCadastroRemedio(){
-        if (validateAuthentication.auth() != true){
+        if (!validateAuthentication.auth()){
             return "Login";
         }
         return "CadastroRemedios";
@@ -74,8 +73,9 @@ public class RemedioController {
 
         if (usuarioID.getId() <= 0) {
             throw new SQLException("Erro ao retornar ID do usuário ");
+        }
 
-        } if (RM_RetiradoSus.equals("Sim")){
+        if (RM_RetiradoSus.equals("Sim")){
             auxRetiradoSUS = true;
         } else {
             auxRetiradoSUS = false;
@@ -89,7 +89,7 @@ public class RemedioController {
     @RequestMapping(value = "/remedios" )
     public String listaRemedios(ModelMap model){
 
-        if (validateAuthentication.auth() != true){
+        if (!validateAuthentication.auth()){
             return "Login";
         }
         Usuario usuarioID = new Usuario();

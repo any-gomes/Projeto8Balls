@@ -43,7 +43,7 @@ public class NotificationService {
 
         final var horaAgora = LocalTime.parse(LocalTime.now(ZoneId.of("America/Sao_Paulo")).format(horaFormatada()));
         final var dataAgora = LocalDate.parse(LocalDate.now(ZoneId.of("America/Sao_Paulo")).format(dataFormatada()));
-        List<Agendamento> agendamentosAgora = agendamentoRepository.findAll();
+        Iterable<Agendamento> agendamentosAgora = agendamentoRepository.findAll();
 
         // Percorre todos os agendamentos registrados no banco de dados
         for (Agendamento agendamento : agendamentosAgora) {

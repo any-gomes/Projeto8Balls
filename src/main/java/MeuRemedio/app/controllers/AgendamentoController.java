@@ -23,16 +23,16 @@ public class AgendamentoController {
 
     @RequestMapping(value = "/agendamentos")
     public String TelaAgendarRemedio() {
-        if (validateAuthentication.auth() != true) {
+        if (!validateAuthentication.auth()) {
             return "Login";
         }
         return "Agendamento";
     }
 
     @RequestMapping(value = "/agendamentos", method = RequestMethod.POST)
-    public String cadastrarAgendamento(@RequestParam("AG_Data_Inicio_Agendamento") Date AG_DataInicio,
-                                       @RequestParam("AG_Hora_Inicio_Agendamento") Time AG_horaInicio,
-                                       @RequestParam("AG_Data_Final_Agendamento")  Date AG_DataFinal ,
+    public String cadastrarAgendamento(@RequestParam("AG_Data_Inicio_Agendamento") String AG_DataInicio,
+                                       @RequestParam("AG_Hora_Inicio_Agendamento") String AG_horaInicio,
+                                       @RequestParam("AG_Data_Final_Agendamento")  String AG_DataFinal ,
                                        @RequestParam("AG_Periodicidade") long AG_Periodicidade){
 
         Agendamento agendamento = new Agendamento(AG_DataInicio,AG_horaInicio,AG_DataFinal,AG_Periodicidade);
@@ -52,10 +52,7 @@ public class AgendamentoController {
     @RequestMapping(value = "/agendamentos", method = RequestMethod.GET)
     public String cadastrarAgendamento(){
 
-        Date data = new Date();
-        Time time = new Time(1);
-
-        Agendamento agendamento = new Agendamento(data,time,data,2); //Passar dentro do construtor os dados para teste do método
+        Agendamento agendamento = new Agendamento("data","time","data",2); //Passar dentro do construtor os dados para teste do método
         agendamentoRepository.save(agendamento);
 
         return "redirect:/agendamentos";
