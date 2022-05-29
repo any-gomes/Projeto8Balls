@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -136,6 +136,8 @@
         </li>
     </ul>
 </nav>
+
+<!-- Local para digitar o texto na página  -->
 <div id="content">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -145,9 +147,9 @@
                 <span>Menu</span>
             </button>
         </div>
-        <div class="container col-4 col-sm-4 col-md-3 col-lg-12 col-lx-7 text-center">
-            <a href="#" class="navbar-brand text-center col-11" >
-                <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
+        <div class="container">
+            <a href="#" class="navbar-brand" menu>
+                <img alt="Brand" src="/images/icon.svg" class="img-responsive">
 
             </a>
 
@@ -156,7 +158,7 @@
 
     </nav>
 
-   <!-- <div class="jumbotron">
+    <div class="jumbotron">
 
 
         <selection class="jumbotron text-center">
@@ -166,47 +168,101 @@
 
             </div>
         </selection>
-    </div>-->
+    </div>
 
+    <div class="line"></div>
+    <!-- DIV 1 -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-lx-5 text-center">
+                <h2>Notificações Ativas</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <main class="container-table text-center">
-        <section id="remedies">
-            <h2 th:text="#{cadrem.title}" ></h2>
-            <table id="data-table">
-                <thead>
-                <tr>
-                    <th th:text="#{cadremtable.remedy}"></th>
-                    <th th:text="#{cadremtable.dosage}"></th>
-                    <th th:text="#{cadremtable.dosageunit}"></th>
-                    <th th:text="#{cadremtable.susremedy}"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <div class="" th:each ="remedio : ${remedio}">
-                    <tr>
-                        <td><p><span th:text="${remedio.RM_Nome}"></span></td>
-                        <td><p><span th:text="${remedio.RM_Dosagem}"></span></td>
-                        <td><p><span th:text="${remedio.RM_UnidadeDosagem}"></span></td>
-                        <td><p><span th:text="${remedio.RM_RetiradoSus}"></span></td>
-                    </tr>
-
+                <div class="text-center">
+                    <button type="button" class="btn btn-info">Mais Detalhes</button>
                 </div>
-                </tbody>
-            </table>
-            <a th:text="#{cadremregister.newremedy}" id="new-form" href="/remedios_cadastro" class="button new"></a>
-        </section>
+            </div>
+
+            <!-- DIV 2 -->
+            <!--<div class="vl"></div> -->
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-lx-6" >
+                <h2 class="gastos text-center">Gastos nos ultimos meses</h2>
+                <img src="/images/img1.jpg" style="width:100%">
+                <div class="text-center">
+                    <button type="button" class="btn btn-info">Mais Detalhes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIV 3-->
+    <div class="line"></div>
+    <div class="text-center">
+        <h2>Agenda</h2>
+        <img src="/images/agenda.jpg" style="width:50%">
+        <div class="text-center">
+            <button type="button" class="btn btn-info">Mais Detalhes</button>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="line"></div>
+
+    <div class="rodape">
+        <div class="informacoes-footer text-center">
+
+            <h5>
+                Meu Remédio - CNPJ: 00.000.000/0000-00 - SAC: (11) 0000-0000
+            </h5>
+            <h5>
+                <a href="mailto:8balls.integratedproject@gmail.com">8balls.integratedproject@gmail.com</a>
+            </h5>
+            <h5>
+                Rua Um dois Três, 8 – Jardins – São Paulo (SP)
+            </h5>
+        </div>
+    </div>
+
     </main>
-    <!-- Scripts da página -->
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="/script/cadastroRemedio.jsp"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 </div>
+
+
+
+
+<div class="overlay"></div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#dismiss, .overlay').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('.overlay').removeClass('active');
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').addClass('active');
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>
 </body>
+
 </html>

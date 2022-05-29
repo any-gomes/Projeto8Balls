@@ -20,10 +20,11 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
+
+
+
 </head>
-
 <body>
-
 <div class="wrapper" "conta-lg">
 <!-- Menu bolado  -->
 <nav id="sidebar">
@@ -148,16 +149,29 @@
                 <i class="fas fa-align-left"></i>
                 <span>Menu</span>
             </button>
+
+            <div class=" col-sm-2 col-md-2 col-lg-1 col-lx-1" id="navbarSupportedContent">
+                <select class= "inter" id="locales">
+                    <option value="" th:text="#{alllanguage.change}"></option>
+                    <option value="en" th:text="#{alllanguage.english}"></option>
+                    <option value="pt" th:text="#{alllanguage.portuguese}"></option>
+                </select>
+            </div>
+
+
         </div>
-        <div class="container">
-            <a href="#" class="navbar-brand" menu>
-            <img alt="Brand" src="/images/icon.svg" class="img-responsive">
+        <!---->
 
-            </a>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid text-center">
+        <a href="/home" class="navbar-brand text-center col-11">
+            <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
+
+        </a>
 
 
-        </div>
-
+    </div>
     </nav>
 
     <div class="jumbotron">
@@ -229,7 +243,7 @@
     </div>
 
     </main>
-</body>
+
 </div>
 
 
