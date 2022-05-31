@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Teste para selecionar um remedio cadastrado </h1>
+<h2>Aqui deve ter a lista de remédios cadastrados na tela de cadastro de remedios</h2>
+<h4>Use Shift para selecionar mais de um remedio por agendamento</h4>
+
+<select id="selectRemedios" multiple="multiple">
+    <option value="">Selecione o remédio </option>
+    <option th:each  ="remedio : ${remedio}"
+            th:value ="${remedio.RM_Nome}"
+            th:text  ="${remedio.RM_Nome}"
+    ></option>
+</select>
+</div>
+</body>
+</html>
