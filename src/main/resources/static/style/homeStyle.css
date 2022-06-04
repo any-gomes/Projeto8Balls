@@ -221,7 +221,10 @@ nav a img {
     margin-left: auto;
     margin-right: auto;
 }
-
+.container-table{
+    width: min(90vw, 800px);
+    margin: auto;
+}
 /*.gastos {
 
     margin: 10%;
