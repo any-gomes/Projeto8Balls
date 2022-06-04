@@ -18,101 +18,98 @@
     </head>
 
     <body>
+    <!-- Menu Simples -->
         <header>
-            <!-- Menu Simples -->
-            <nav class="navbar d-flex justify-content-end">
-                <ul class="d-flex justify-content-around align-item-center nav-lista">
-                    <li class="nav-lista-item">
-                        <select id="locales">
-                            <option value="" th:text="#{alllanguage.change}"></option>
-                            <option value="en" th:text="#{alllanguage.english}"></option>
-                            <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
-                        </select>
-                    </li>
-                    <li class="nav-lista-item">
-                        <a th:text="#{navbar.index}" class="" href="/"></a>
-                    </li>
-                    <li class="nav-lista-item">
-                        <a th:text="#{navbar.login}" class="" href="/login"></a>
-                    </li>
+                <a class="icon-home" href="/"></a>
 
-                </ul>
-            </nav>
+                <a th:text="#{indexbutton.signup}" class="inicio-btn" href="/index"></a>
+                <a th:text="#{indexbutton.signup}" class="cadastrar-btn" href="/login"></a>
+
+                <select class="inter" id="locales">
+                    <option value="" th:text="#{alllanguage.change}"></option>
+                    <option value="en" th:text="#{alllanguage.english}"></option>
+                    <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
+                </select>
         </header>
-        <main class="container d-flex justify-content-center">
-            <!-- Formulario do Login -->
-            <div class="card formulario-card">
-                <div class="card-body d-flex flex-wrap justify-content-center">
-                    <img class="formulario-icon" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio">
-                    <h3 th:text="#{cadform.text1}"></h3>
-                    <h5 th:text="#{cadform.text2}" ></h5>
-                    <form method="post" name="formCadastro">
 
-                        <input th:placeholder="#{cadplaceholder.firstname}" 
-                               type="text"
-                               class="formulario-input"
-                               id="US_Nome"
-                               name="US_Nome"
-                               required="required"
-                               >
+        <div id="content">
 
-                        <input th:placeholder="#{cadplaceholder.lastname}"
-                               type="text"
-                               class="formulario-input"
-                               id="US_Sobrenome"
-                               name="US_Sobrenome"
-                               required="required"
-                               >
+                <!-- Formulario do Login -->
+                <div class=" container col-12 col-sm-10 col-md-8 col-lg-5 col-lx-6">
+                    <div class="card formulario-card col-10">
+                        <div class="card-body d-flex flex-wrap justify-content-center">
+                            <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio">
+                            <h3 th:text="#{cadform.text1}"></h3>
+                            <h5 th:text="#{cadform.text2}" ></h5>
+                            <form method="post" name="formCadastro">
 
-                        <input type=""
-                               name="US_Email"
-                               class="formulario-input"
-                               id="US_Email"
-                               placeholder="E-mail*"
-                               required="required"
-                               onblur="checarEmail();"
-                               >
+                                <input th:placeholder="#{cadplaceholder.firstname}"
+                                       type="text"
+                                       class="formulario-input"
+                                       id="US_Nome"
+                                       name="US_Nome"
+                                       required="required"
+                                       >
 
-                        <select id="US_Sexo" name="US_Sexo" class="formulario-input">
-                            <option th:text="#{cadselect.female}" value="Feminino"></option>
-                            <option th:text="#{cadselect.male}" value="Masculino"></option>
-                        </select>
+                                <input th:placeholder="#{cadplaceholder.lastname}"
+                                       type="text"
+                                       class="formulario-input"
+                                       id="US_Sobrenome"
+                                       name="US_Sobrenome"
+                                       required="required"
+                                       >
 
-                        <input
-                            th:placeholder="#{cadplaceholder.birthdate}"
-                            type="date"
-                            class="formulario-input"
-                            id="US_DataNascimento"
-                            name="US_DataNascimento"
-                            maxlength="10"
-                            onBlur="validaData()"
-                            required=""
-                            >
+                                <input type=""
+                                       name="US_Email"
+                                       class="formulario-input"
+                                       id="US_Email"
+                                       placeholder="E-mail*"
+                                       required="required"
+                                       onblur="checarEmail();"
+                                       >
 
-                        <input th:placeholder="#{cadplaceholder.password}"
-                               type="password"
-                               id="US_Senha"
-                               name="US_Senha"
-                               class="formulario-input"
-                               minlength="8"
-                               required
-                               >
+                                <select id="US_Sexo" name="US_Sexo" class="formulario-input">
+                                    <option th:text="#{cadselect.female}" value="Feminino"></option>
+                                    <option th:text="#{cadselect.male}" value="Masculino"></option>
+                                </select>
 
-                        <span id="error-email" style="color:#FF8A8A; display:block"></span>
-                        <span id="error-date" style="color:#FF8A8A; display:block"></span>
+                                <input
+                                    th:placeholder="#{cadplaceholder.birthdate}"
+                                    type="date"
+                                    class="formulario-input"
+                                    id="US_DataNascimento"
+                                    name="US_DataNascimento"
+                                    maxlength="10"
+                                    onBlur="validaData()"
+                                    required=""
+                                    >
 
-                        <button th:text="#{cadbutton.createacc}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
+                                <input th:placeholder="#{cadplaceholder.password}"
+                                       type="password"
+                                       id="US_Senha"
+                                       name="US_Senha"
+                                       class="formulario-input"
+                                       minlength="8"
+                                       required
+                                       >
 
-                        <div th:if="${param.emailExistente}" 
-                             th:text="#{cadvalid.usedemail}"
-                             class="alert alert-error">
-                            
+                                <span id="error-email" style="color:#FF8A8A; display:block"></span>
+                                <span id="error-date" style="color:#FF8A8A; display:block"></span>
+
+                                <button th:text="#{cadbutton.createacc}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
+
+                                <div th:if="${param.emailExistente}"
+                                     th:text="#{cadvalid.usedemail}"
+                                     class="alert alert-error">
+
+                                </div>
+
+                            </form>
                         </div>
-
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </main>
+
+        </div>
         <!-- Estes scripts tratam dos arquivos .jsp correspondentes a cada página html -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="/script/cadastro.jsp"></script>
