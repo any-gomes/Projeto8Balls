@@ -148,5 +148,8 @@ replay_pid*
 
 # Ignore code-workspaces
 *.code-workspace
+aplication.proporties
+.aplication.proporties
+/src/main/resources/application.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,visualstudiocode

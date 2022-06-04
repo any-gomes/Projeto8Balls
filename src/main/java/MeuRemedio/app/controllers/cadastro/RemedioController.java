@@ -39,32 +39,32 @@ public class RemedioController {
     @Autowired
     ValidateAuthentication validateAuthentication;
 
-    public String returnUsernameUsuario(){
+    public String returnUsernameUsuario() {
         Authentication authentication = authenticationFacade.getAuthentication();
         username = authentication.getName();
         return username;
     }
 
-    public long returnIdUsuarioLogado () {
+    public long returnIdUsuarioLogado() {
         long idUserLogado;
         Usuario usuarioLogados = usuarioRepository.findByEmail(returnUsernameUsuario());
         idUserLogado = usuarioLogados.getId();
 
-        return idUserLogado ;
+        return idUserLogado;
     }
 
 
     @RequestMapping(value = "/remedios_cadastro")
-    public String telaCadastroRemedio(){
-        if (!validateAuthentication.auth()){
+    public String telaCadastroRemedio() {
+        if (!validateAuthentication.auth()) {
             return "Login";
         }
         return "CadastroRemedios";
     }
 
     @RequestMapping(value = "/remedios_cadastro", method = RequestMethod.POST)
-    public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
-                                   @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem , @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
+    public String CadastroRemedio(@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
+                                  @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
 
         boolean auxRetiradoSUS;
 
@@ -75,21 +75,21 @@ public class RemedioController {
             throw new SQLException("Erro ao retornar ID do usuário ");
         }
 
-        if (RM_RetiradoSus.equals("Sim")){
+        if (RM_RetiradoSus.equals("Sim")) {
             auxRetiradoSUS = true;
         } else {
             auxRetiradoSUS = false;
         }
-        Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem ,auxRetiradoSUS, usuarioID);
+        Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem, auxRetiradoSUS, usuarioID);
         remedioRepository.save(remedio);
 
         return "redirect:/remedios";
     }
 
-    @RequestMapping(value = "/remedios" )
-    public String listaRemedios(ModelMap model){
+    @RequestMapping(value = "/remedios")
+    public String listaRemedios(ModelMap model) {
 
-        if (!validateAuthentication.auth()){
+        if (!validateAuthentication.auth()) {
             return "Login";
         }
         Usuario usuarioID = new Usuario();
@@ -101,6 +101,7 @@ public class RemedioController {
         return "Remedios";
     }
 
+/*
     //Metodo de teste, para validar colocar um id valido na URL do navegador
     @RequestMapping(value = "/{id}")
     public String deletarRemedio (@PathVariable("id") long id){
@@ -108,13 +109,13 @@ public class RemedioController {
         remedioRepository.deleteById(id);
         return "redirect:/remedios";
     }
+*/
 
-/*    @RequestMapping(value = "/deletar_remedio") Metodo de teste
-    public String deletarRemedio(long id){
-        //  Remedio remedio = remedioRepository.findById(id);
-        remedioRepository.deleteById(id);
+    @RequestMapping(value = "/deletar_remedio")
+        public String deletarRemedio (long id){
+            //  Remedio remedio = remedioRepository.findById(id);
+            remedioRepository.deleteById(id);
 
-        return "redirect:/remedios";
-    }*/
-
-}
+            return "redirect:/remedios";
+        }
+    }

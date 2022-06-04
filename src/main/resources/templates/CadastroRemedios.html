@@ -10,9 +10,9 @@
     <title th:text="#{cadtitle.text}"></title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
-    <link rel="stylesheet" href="/style/homeStyle.css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
@@ -140,76 +140,82 @@
         </li>
     </ul>
 </nav>
-<div id="content">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
 
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span>Menu</span>
-            </button>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+            <span>Menu</span>
+        </button>
+    </div>
+    <div class="container col-4 col-sm-4 col-md-3 col-lg-12 col-lx-7 text-center">
+        <a href="#" class="navbar-brand text-center col-11">
+            <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
+        </a>
+    </div>
+
+</nav>
+
+<!--
+<div class="jumbotron">
+
+
+    <selection class="jumbotron text-center">
         <div class="container">
-            <a href="#" class="navbar-brand" menu>
-                <img alt="Brand" src="/images/icon.svg" class="img-responsive">
-
-            </a>
-
+            <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
+            <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS gratuitamente.</p>
 
         </div>
+    </selection>
+-->
+</div>
 
-    </nav>
 
+<div class="modal-overlay text-center">
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-            </div>
-            <div>
-                <div class="text-center" id="form">
-                    <img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio">
-                    <h2 class='form-h2' th:text="#{cadremform.title}"></h2>
-                    <form method="post" name="formCadastroRM">
-                        <div class="input-group">
-                            <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
-                            <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome"
-                            />
-                        </div>
-                        <div class="input-group">
-                            <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
-                            <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="RM_Dosagem" name="RM_Dosagem"/>
-
-                        </div>
-                        <small th:text="#{cadremform.dosagesmall}" class="help"></small>
-                        <div class="input-group">
-                            <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
-                            <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem"
-                                   name="RM_UnidadeDosagem"/>
-
-                        </div>
-                        <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
-
-                        <div class="input-group-radio">
-                            <small><strong th:text="#{cadremform.susremedy}" class="sus-medicine" ></strong></small>
-                            <!--<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>-->
-                            <div class="radio-container">
-                                <small>
-                                    <input class="radio-yes" th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
-                                    <input class="radio-no" th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
-                                </small>
-                            </div>
-                        </div>
-
-                        <div class="input-group actions">
-                            <a th:text="#{cadremform.cancel}" id="cancelar" href="/remedios" class="button cancel"></a>
-                            <button th:text="#{cadremform.submit}" name="action" id="confirmar" type="submit"></button>
-                        </div>
-                    </form>
+    <div class="modal">
+        <div class="text-center" id="form">
+            <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
+            <h2 class='form-h2' th:text="#{cadremform.title}"></h2>
+            <form method="post" name="formCadastroRM">
+                <div class="input-group">
+                    <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
+                    <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome"
+                    />
                 </div>
-            </div>
+                <div class="input-group">
+                    <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
+                    <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="RM_Dosagem" name="RM_Dosagem"/>
+
+                </div>
+                <small th:text="#{cadremform.dosagesmall}" class="help"></small>
+                <div class="input-group">
+                    <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
+                    <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem"
+                           name="RM_UnidadeDosagem"/>
+
+                </div>
+                <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
+
+                <div class="input-group-radio">
+                    <small><strong th:text="#{cadremform.susremedy}" class="sus-medicine" ></strong></small>
+                    <!--<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>-->
+                    <div class="radio-container">
+
+                        <input class="radio-yes" th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
+                        <input class="radio-no" th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
+
+                    </div>
+                </div>
+
+                <div class="input-group actions">
+                    <a th:text="#{cadremform.cancel}" id="cancelar" href="/remedios" class="button cancel"></a>
+                    <button th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>
+                </div>
+            </form>
         </div>
-    </nav>
+    </div>
 </div>
 
 
@@ -219,7 +225,7 @@
 
 
 
-<div class="overlay"></div>
+
 <!-- Scripts da página -->
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
