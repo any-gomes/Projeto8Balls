@@ -20,16 +20,17 @@ function checarEmail() {
     const error = document.getElementById('error-email');
     const email = document.getElementById('US_Email').value;
 
-    const dominios = ['gmail', 'ifsp', 'yahoo', 'live', 'hotmail', 'bol'];
+    const dominios = ['gmail', 'ifsp', 'yahoo', 'live', 'hotmail', 'bol','yopmail'];
 
     let gmail = email.includes("gmail");
     let yahoo = email.includes("yahoo");
     let ifsp = email.includes("ifsp");
     let hotmail = email.includes("hotmail");
     let outlook = email.includes("outlook");
+    let yopmail = email.includes("yopmail");
 
     if ((gmail !== true) && (yahoo !== true) && (ifsp !== true)
-        && (hotmail !== true) && (outlook !== true) ) {
+        && (hotmail !== true) && (outlook !== true) && (yopmail !== true)) {
 
         error.innerHTML = "E-mail inválido";
 

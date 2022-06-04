@@ -7,6 +7,7 @@ import MeuRemedio.app.repository.RemedioRepository;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.EmailService;
 import MeuRemedio.app.service.utils.IAuthentication;
+import MeuRemedio.app.service.utils.UserSession;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -39,20 +40,8 @@ public class RemedioController {
     @Autowired
     ValidateAuthentication validateAuthentication;
 
-    public String returnUsernameUsuario(){
-        Authentication authentication = authenticationFacade.getAuthentication();
-        username = authentication.getName();
-        return username;
-    }
-
-    public long returnIdUsuarioLogado () {
-        long idUserLogado;
-        Usuario usuarioLogados = usuarioRepository.findByEmail(returnUsernameUsuario());
-        idUserLogado = usuarioLogados.getId();
-
-        return idUserLogado ;
-    }
-
+    @Autowired
+    UserSession userSession;
 
     @RequestMapping(value = "/remedios_cadastro")
     public String telaCadastroRemedio(){
@@ -69,7 +58,7 @@ public class RemedioController {
         boolean auxRetiradoSUS;
 
         Usuario usuarioID = new Usuario();
-        usuarioID.setId(returnIdUsuarioLogado());
+        usuarioID.setId(userSession.returnIdUsuarioLogado());
 
         if (usuarioID.getId() <= 0) {
             throw new SQLException("Erro ao retornar ID do usuário ");
@@ -93,7 +82,7 @@ public class RemedioController {
             return "Login";
         }
         Usuario usuarioID = new Usuario();
-        usuarioID.setId(returnIdUsuarioLogado());
+        usuarioID.setId(userSession.returnIdUsuarioLogado());
 
         Iterable<Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
         model.addAttribute("remedio", remedio);

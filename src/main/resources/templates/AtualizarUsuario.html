@@ -72,9 +72,9 @@
                        required="required"
                 >
 
-                <select id="US_Sexo" name="US_Sexo" class="formulario-input">
-                    <option th:text="#{cadselect.female}" value="Feminino"></option>
-                    <option th:text="#{cadselect.male}" value="Masculino"></option>
+                <select id="US_Sexo" name="US_Sexo" class="formulario-input" th:value="${usuario.sexo}" >
+                    <option th:text="#{cadselect.female}" th:selected="${usuario.sexo == Feminino}" value="Feminino"></option>
+                    <option th:text="#{cadselect.male}" th:selected="${usuario.sexo == Masculino}" value="Masculino"></option>
                 </select>
 
                 <input
