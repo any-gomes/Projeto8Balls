@@ -4,7 +4,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 /* 
     Created on : 22 de mai de 2022, 21:10:33
-    Author     : Pedro Haka
     Project    : Meu Remédio App
     File       : Página de Cadastro de Remédios - Stylesheet
 */
@@ -26,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: var(--light-blue);
+    background: #ffffff;
 }
 .sr-only{
     position: absolute;
@@ -57,11 +56,9 @@ h2{
 a.button.new{
     color: var(--light-green);
     text-decoration: none;
-
 }
 a.button.new:hover{
     color: var(--green);
-
 }
 /*Esse botão é da barra lateral*/
 .btn.btn-info{
@@ -171,7 +168,6 @@ td.income{
 td.expense{
     color: var(--red);
 }
-
 
 /*Modal ==========================*/
 .modal-overlay{

@@ -6,6 +6,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #ffffff;
+    /*background-color: var(--light-blue);*/
 }
 
 p {

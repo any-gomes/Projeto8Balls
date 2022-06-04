@@ -54,7 +54,7 @@ public class AgendamentoController {
         return "Agendamento";
     }
 
-    @RequestMapping(value = "/cadastro_agendamentos", method = RequestMethod.GET)
+    @RequestMapping(value = "/cadastro_agendamentos")
     public String viewCadastroAgendamento(ModelMap model) {
         if (!validateAuthentication.auth()) {
             return "Login";
@@ -78,7 +78,7 @@ public class AgendamentoController {
         Agendamento agendamento = new Agendamento(AG_DataInicio,AG_horaInicio,AG_DataFinal,AG_Periodicidade);
         agendamentoRepository.save(agendamento);
 
-        return "Agendamento";
+        return "redirect:/agendamentos";
     }
 
     @RequestMapping(value="/deletar_agendamento")
