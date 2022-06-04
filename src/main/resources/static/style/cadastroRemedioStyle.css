@@ -258,21 +258,21 @@ td.expense{
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: nowrap;
-    text-align: left!important; 
+    text-align: left!important;
 
 
 
 }
 #form form input.radio-yes{
     width: 10%;
-    
+
     margin-left: -.37rem;
 
 
 }
 #form form input.radio-no{
     width: 10%;
-    
+
     margin-left: -.37rem;
 
 
@@ -512,6 +512,5 @@ nav a img {
 }
 
 /*.gastos {
-
     margin: 10%;
 }*/

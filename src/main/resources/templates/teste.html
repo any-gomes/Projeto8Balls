@@ -7,16 +7,18 @@
 
     <link rel="icon" href="/static/images/icon.svg"/>
 
-    <title>Meu Remédio</title>
+    <title th:text="#{cadtitle.text}"></title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/style/homeStyle.css">
-    <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
-
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -24,7 +26,7 @@
 
 </head>
 <body>
-<div class="wrapper conta-lg">
+<div class="wrapper" "conta-lg">
 <!-- Menu bolado  -->
 <nav id="sidebar">
     <div id="dismiss">
@@ -40,7 +42,7 @@
 
     <ul class="list-unstyled components">
         <li>
-            <a th:text="#{navbar.index}" href="/home">
+            <a href="/home">
                 <!-- Peguei essas imagens no próprio site do Bootstrap -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
                     <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z"/>
@@ -51,7 +53,7 @@
         </li>
 
         <li>
-            <a th:text="#{navbar.profile}" href="#perfilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <a href="#perfilSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                     <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
@@ -60,14 +62,14 @@
             </a>
             <ul class="collapse list-unstyled" id="perfilSubmenu">
                 <li>
-                    <a th:text="#{navbar.editprofile}" href="/atualizar_usuario">Editar</a>
+                    <a href="#">Editar</a>
                 </li>
 
 
             </ul>
         </li>
         <li>
-            <a th:text="#{cadremtable.remedy}" href="#remedioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <a href="#remedioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bandaid" viewBox="0 0 16 16">
                     <path d="M14.121 1.879a3 3 0 0 0-4.242 0L8.733 3.026l4.261 4.26 1.127-1.165a3 3 0 0 0 0-4.242ZM12.293 8 8.027 3.734 3.738 8.031 8 12.293 12.293 8Zm-5.006 4.994L3.03 8.737 1.879 9.88a3 3 0 0 0 4.241 4.24l.006-.006 1.16-1.121ZM2.679 7.676l6.492-6.504a4 4 0 0 1 5.66 5.653l-1.477 1.529-5.006 5.006-1.523 1.472a4 4 0 0 1-5.653-5.66l.001-.002 1.505-1.492.001-.002Z"/>
                     <path d="M5.56 7.646a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708Zm1.415-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707ZM8.39 4.818a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707Zm0 5.657a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707ZM9.803 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707Zm1.414-1.414a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708ZM6.975 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707ZM8.39 7.646a.5.5 0 1 1-.708.708.5.5 0 0 1 .707-.708Zm1.413-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707Z"/>
@@ -76,20 +78,20 @@
             </a>
             <ul class="collapse list-unstyled" id="remedioSubmenu">
                 <li>
-                    <a th:text="#{indexbutton.signup}" href="/remedios_cadastro">Cadastrar</a>
+                    <a href="/remedios_cadastro">Cadastrar</a>
                 </li>
                 <li>
-                    <a th:text="#{navbar.list}" href="/remedios">Listar</a>
+                    <a href="/remedios">Listar</a>
                 </li>
                 <li>
-                    <a th:text="#{navbar.sus}" href="#">Verificar Disponibilidade no SUS</a>
+                    <a href="#">Verificar Disponibilidade no SUS</a>
                 </li>
             </ul>
         </li>
 
 
         <li>
-            <a th:text="#{navbar.schedule}" href="#agendaSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <a href="#agendaSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-heart" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5ZM1 14V4h14v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1Zm7-6.507c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
                 </svg>
@@ -98,13 +100,13 @@
             <ul class="collapse list-unstyled" id="agendaSubmenu">
                 <li>
 
-                    <a th:text="#{navbar.schedcreate}" href="/agendamentos">Criar Agendamento</a>
+                    <a href="/cadastro_agendamentos">Criar Agendamento</a>
                 </li>
                 <li>
-                    <a th:text="#{navbar.schedlist}" href="#">Listar Agendamento</a>
+                    <a href="/agendamentos">Listar Agendamento</a>
                 </li>
                 <li>
-                    <a th:text="#{navbar.schedcalendar}" href="#">Visualizar Calendário</a>
+                    <a href="#">Visualizar Calendário</a>
                 </li>
 
             </ul>
@@ -112,7 +114,7 @@
 
 
         <li>
-            <a th:text="#{navbar.finance}" href="#">
+            <a href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-piggy-bank" viewBox="0 0 16 16">
                     <path d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.138-1.496A6.613 6.613 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.602 7.602 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962z"/>
                     <path fill-rule="evenodd" d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595zM2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.558 6.558 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.649 4.649 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393zm12.621-.857a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199z"/>
@@ -121,14 +123,14 @@
             </a>
         </li>
         <li>
-            <a th:text="#{navbar.contact}" href="#">
+            <a href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-heart" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l3.235 1.94a2.76 2.76 0 0 0-.233 1.027L1 5.384v5.721l3.453-2.124c.146.277.329.556.55.835l-3.97 2.443A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741l-3.968-2.442c.22-.28.403-.56.55-.836L15 11.105V5.383l-3.002 1.801a2.76 2.76 0 0 0-.233-1.026L15 4.217V4a1 1 0 0 0-1-1H2Zm6 2.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
                 </svg>
                 Contato
             </a>
 
-            <a th:text="#{navbar.logout}" href="/logout">
+            <a href="/logout">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                     <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -146,23 +148,10 @@
                 <i class="fas fa-align-left"></i>
                 <span>Menu</span>
             </button>
-
-
-            <div class=" col-sm-2 col-md-2 col-lg-1 col-lx-1" id="navbarSupportedContent">
-                <select class="inter" id="locales">
-                    <option value="" th:text="#{alllanguage.change}"></option>
-                    <option value="en" th:text="#{alllanguage.english}"></option>
-                    <option value="pt" th:text="#{alllanguage.portuguese}"></option>
-                </select>
-            </div>
-
         </div>
-    </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container col-4 col-sm-4 col-md-3 col-lg-12 col-lx-7 text-center">
-            <a href="#" class="navbar-brand text-center col-11" >
-                <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
+        <div class="container">
+            <a href="#" class="navbar-brand" menu>
+                <img alt="Brand" src="/images/icon.svg" class="img-responsive">
 
             </a>
 
@@ -171,9 +160,7 @@
 
     </nav>
 
-
-
-   <!-- <div class="jumbotron">
+    <div class="jumbotron">
 
 
         <selection class="jumbotron text-center">
@@ -183,40 +170,62 @@
 
             </div>
         </selection>
-    </div>-->
+    </div>
 
 
-    <main class="container-table text-center">
-        <section id="remedies">
-            <h2 th:text="#{cadrem.title}" ></h2>
-            <table id="data-table">
-                <thead>
-                <tr>
-                    <th th:text="#{cadremtable.remedy}"></th>
-                    <th th:text="#{cadremtable.dosage}"></th>
-                    <th th:text="#{cadremtable.dosageunit}"></th>
-                    <th th:text="#{cadremtable.susremedy}"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <div class="" th:each ="remedio : ${remedio}">
-                    <tr>
-                        <td><p><span th:text="${remedio.RM_Nome}"></span></td>
-                        <td><p><span th:text="${remedio.RM_Dosagem}"></span></td>
-                        <td><p><span th:text="${remedio.RM_UnidadeDosagem}"></span></td>
-                        <td><p><span th:text="${remedio.RM_RetiradoSus}"></span></td>
-                    </tr>
+    <div class="modal-overlay text-center">
+        <div class="modal">
+            <div class="text-center" id="form">
+                <img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio">
+                <h2 class='form-h2' th:text="#{cadremform.title}"></h2>
+                <form method="post" name="formCadastroRM">
+                    <div class="input-group">
+                        <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
+                        <input th:placeholder="#{cadremplaceholder.remedy}" type="text" id="RM_Nome" name="RM_Nome"
+                        />
+                    </div>
+                    <div class="input-group">
+                        <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
+                        <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="RM_Dosagem" name="RM_Dosagem"/>
+
+                    </div>
+                    <small th:text="#{cadremform.dosagesmall}" class="help"></small>
+                    <div class="input-group">
+                        <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
+                        <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem"
+                               name="RM_UnidadeDosagem"/>
+
+                    </div>
+                    <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
+
+                    <div class="input-group-radio">
+                        <small><strong th:text="#{cadremform.susremedy}" class="sus-medicine" ></strong></small>
+                        <!--<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>-->
+                        <div class="radio-container">
+                            <small>
+                                <input class="radio-yes" th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
+                                <input class="radio-no" th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="input-group actions">
+                        <a th:text="#{cadremform.cancel}" id="cancelar" href="/remedios" class="button cancel"></a>
+                        <button th:text="#{cadremform.submit}" name="action" id="confirmar" type="submit"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
-                </div>
-                </tbody>
-            </table>
-            <a th:text="#{cadremregister.newremedy}" id="new-form" href="/remedios_cadastro" class="button new"></a>
-        </section>
-    </main>
 
-    <div class="overlay"></div>
-</div>
+
+
+
+
+
+
     <!-- Scripts da página -->
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -227,10 +236,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="/script/cadastroRemedio.jsp"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-</div>
-
-            
 </body>
-
 </html>

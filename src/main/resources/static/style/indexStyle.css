@@ -17,7 +17,7 @@ body {
 
 header{
   position: fixed;
-    z-index: 1;
+  z-index: 1;
   background: #ffffff;
   padding: 35px;
   width: calc(100% - 0%);
@@ -322,6 +322,24 @@ header{
     position: absolute;
     border: 3px solid #4FF4DB;
 }
+.inicio-btn {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 27px;
+  text-align: center;
+  margin: 5px;
+  color: #081816;
+  padding: 5px;
+  height: 40px;
+  width: 115px;
+  border-radius: 117px;
+  right: 130px;
+  top: 10px;
+  position: absolute;
+  border: 3px solid #4FF4DB;
+}
 
 .inter {
     font-family: 'Roboto';
@@ -340,4 +358,30 @@ header{
     top: 10px;
     position: absolute;
     border: 3px solid #4FF4DB;
+}
+
+
+#content {
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+}
+
+.vl {
+  border-left: 3px solid #47748b;
+  height: 430px;
+}
+
+.navbar {
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
