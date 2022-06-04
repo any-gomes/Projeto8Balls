@@ -54,32 +54,29 @@ public class UsuarioController {
 
         return "redirect:/";
     }
-    @RequestMapping(value = "/atualizar-usuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.GET)
     public String viewAtualizarUsuario(HttpServletRequest request, Model model){
         String EmailUsuarioLogado = userSession.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
         model.addAttribute("usuario",usuarioLogado);
         return "AtualizarUsuario";
     }
-    @RequestMapping(value = "/atualizar-usuario", method = RequestMethod.POST)
+    @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.POST)
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
-                                   @RequestParam("US_Email") String email, @RequestParam("US_Senha") String senha,
-                                   @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo){
+                                   @RequestParam("US_Senha") String senha, @RequestParam("US_Sexo") String sexo){
 
         String EmailUsuarioLogado = userSession.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
 
         usuarioLogado.setNome(nome);
         usuarioLogado.setSobrenome(sobrenome);
-        usuarioLogado.setEmail(email);
         usuarioLogado.setSenha(senha);
-        usuarioLogado.setDataNascimento(dataNascimento);
         usuarioLogado.setSexo(sexo);
         usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(senha));
 
         usuarioRepository.save(usuarioLogado);
 
-        return "redirect:/atualizar-usuario";
+        return "redirect:/home";
     }
 
 }

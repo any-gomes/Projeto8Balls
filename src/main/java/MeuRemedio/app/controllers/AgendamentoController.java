@@ -6,6 +6,7 @@ import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.AgendamentoRepository;
 import MeuRemedio.app.repository.RemedioRepository;
+import MeuRemedio.app.service.utils.UserSession;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,9 @@ public class AgendamentoController {
     @Autowired
     RemedioController remedioController;
 
+    @Autowired
+    UserSession userSession;
+
 
     /* Por hora, esse metodo retorna todos os agendamentos
     * Estamos encontrando uma maneira de retornar um agendamento
@@ -57,7 +61,7 @@ public class AgendamentoController {
         }
 
         Usuario usuarioID = new Usuario();
-        usuarioID.setId(remedioController.returnIdUsuarioLogado());
+        usuarioID.setId(userSession.returnIdUsuarioLogado());
 
         Iterable <Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
         model.addAttribute("remedio", remedio);
