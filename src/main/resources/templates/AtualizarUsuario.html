@@ -70,6 +70,7 @@
                        id="US_Email"
                        placeholder="E-mail*"
                        required="required"
+                       disabled
                 >
 
                 <select id="US_Sexo" name="US_Sexo" class="formulario-input" th:value="${usuario.sexo}" >
@@ -86,6 +87,7 @@
                         maxlength="10"
                         onBlur="validaData()"
                         required=""
+                        disabled
                 >
 
                 <input th:placeholder="#{cadplaceholder.password}"

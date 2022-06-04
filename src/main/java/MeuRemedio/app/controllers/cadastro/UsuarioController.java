@@ -54,14 +54,14 @@ public class UsuarioController {
 
         return "redirect:/";
     }
-    @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/atualizar-usuario", method = RequestMethod.GET)
     public String viewAtualizarUsuario(HttpServletRequest request, Model model){
         String EmailUsuarioLogado = userSession.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
         model.addAttribute("usuario",usuarioLogado);
         return "AtualizarUsuario";
     }
-    @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.PUT)
+    @RequestMapping(value = "/atualizar-usuario", method = RequestMethod.POST)
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
                                    @RequestParam("US_Email") String email, @RequestParam("US_Senha") String senha,
                                    @RequestParam("US_DataNascimento") String dataNascimento, @RequestParam("US_Sexo") String sexo){
