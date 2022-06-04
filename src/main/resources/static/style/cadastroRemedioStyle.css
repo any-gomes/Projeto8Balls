@@ -53,13 +53,7 @@ h2{
 }
 
 /*Links e Buttons ================*/
-a.button.new{
-    color: var(--light-green);
-    text-decoration: none;
-}
-a.button.new:hover{
-    color: var(--green);
-}
+
 /*Esse botão é da barra lateral*/
 .btn.btn-info{
     height: 50px;

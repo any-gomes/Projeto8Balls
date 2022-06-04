@@ -2,6 +2,13 @@
     STYLE PADRÃO
 */
 
+
+:root{
+    --light-green: #3dd405;
+    --green: #49aa26;
+}
+
+
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
@@ -225,6 +232,19 @@ nav a img {
     width: min(90vw, 800px);
     margin: auto;
 }
+a.button.new{
+    color: var(--light-green);
+    text-decoration: none;
+}
+a.button.new:hover{
+    color: var(--green);
+}
+#remedies{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
 /*.gastos {
 
     margin: 10%;
