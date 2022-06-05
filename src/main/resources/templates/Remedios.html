@@ -204,7 +204,7 @@
                         <td><p><span th:text="${remedio.RM_Nome}"></span></td>
                         <td><p><span th:text="${remedio.RM_Dosagem}"></span></td>
                         <td><p><span th:text="${remedio.RM_UnidadeDosagem}"></span></td>
-                        <td><p><span th:text="${remedio.RM_RetiradoSus}"></span></td>
+                        <td><p><span th:text="${remedio.RM_RetiradoSus} ? 'Sim' : 'Não'"></span></td>
                     </tr>
 
 
