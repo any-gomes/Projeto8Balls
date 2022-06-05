@@ -159,19 +159,15 @@
             </div>
         </nav>
 
-
-
-
-            <!-- Formulario do Login -->
+            <!-- Formulario de dados do usuário -->
             <div class="container d-flex justify-content-center col-12 col-sm-12 col-md-8 col-lg-5 col-lx-6">
                 <div class="card formulario-card col-12">
                     <div class="card-body d-flex flex-wrap justify-content-center">
                         <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio">
-                        <h3 th:text="#{cadform.text1}"></h3>
-                        <h5 th:text="#{cadform.text2}" ></h5>
+                        <h3 th:text="#{alterarUsuarioCard.title}"></h3>
                         <form method="post" name="formCadastro">
 
-                            <input th:placeholder="#{cadplaceholder.firstname}"
+                            <input th:value="${usuario.nome}"
                                    type="text"
                                    class="formulario-input"
                                    id="US_Nome"
@@ -179,7 +175,7 @@
                                    required="required"
                             >
 
-                            <input th:placeholder="#{cadplaceholder.lastname}"
+                            <input th:value="${usuario.sobrenome}"
                                    type="text"
                                    class="formulario-input"
                                    id="US_Sobrenome"
@@ -188,12 +184,14 @@
                             >
 
                             <input type=""
+                                   th:value="${usuario.email}"
                                    name="US_Email"
                                    class="formulario-input"
                                    id="US_Email"
                                    placeholder="E-mail*"
                                    required="required"
                                    onblur="checarEmail();"
+                                   disabled
                             >
 
                             <select id="US_Sexo" name="US_Sexo" class="formulario-input">
@@ -202,7 +200,7 @@
                             </select>
 
                             <input
-                                    th:placeholder="#{cadplaceholder.birthdate}"
+                                    th:value="${usuario.dataNascimento}"
                                     type="date"
                                     class="formulario-input"
                                     id="US_DataNascimento"
@@ -210,6 +208,7 @@
                                     maxlength="10"
                                     onBlur="validaData()"
                                     required=""
+                                    disabled
                             >
 
                             <input th:placeholder="#{cadplaceholder.password}"
@@ -224,12 +223,11 @@
                             <span id="error-email" style="color:#FF8A8A; display:block"></span>
                             <span id="error-date" style="color:#FF8A8A; display:block"></span>
 
-                            <button th:text="#{cadbutton.createacc}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
+                            <button th:text="#{alterarUsuarioCard.button}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
 
                             <div th:if="${param.emailExistente}"
                                  th:text="#{cadvalid.usedemail}"
                                  class="alert alert-error">
-
                             </div>
 
                         </form>
