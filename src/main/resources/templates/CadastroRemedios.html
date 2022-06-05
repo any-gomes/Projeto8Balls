@@ -24,13 +24,11 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-
-
-
-
 </head>
 <body>
 <div class="wrapper conta-lg">
+
+
 <!-- Menu bolado  -->
 <nav id="sidebar">
     <div id="dismiss">
@@ -92,8 +90,6 @@
                 </li>
             </ul>
         </li>
-
-
         <li>
             <a href="#agendaSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-heart" viewBox="0 0 16 16">
@@ -164,7 +160,6 @@
 <!--
 <div class="jumbotron">
 
-
     <selection class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
@@ -173,9 +168,8 @@
         </div>
     </selection>
 -->
+
 </div>
-
-
 <div class="modal-overlay text-center">
 
     <div class="modal">
@@ -193,29 +187,26 @@
                     <input th:placeholder="#{cadremplaceholder.dosage}" type="text" id="RM_Dosagem" name="RM_Dosagem"/>
 
                 </div>
-                <small th:text="#{cadremform.dosagesmall}" class="help"></small>
+<!--                <small th:text="#{cadremform.dosagesmall}" class="help"></small>-->
                 <div class="input-group">
                     <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
                     <input th:placeholder="#{cadremplaceholder.dosageunit}" type="text" id="RM_UnidadeDosagem"
                            name="RM_UnidadeDosagem"/>
 
                 </div>
-                <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>
+<!--                <small th:text="#{cadremform.dosageunitsmall}" class="help"></small>-->
 
                 <div class="input-group-radio">
                     <small><strong th:text="#{cadremform.susremedy}" class="sus-medicine" ></strong></small>
                     <!--<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>-->
                     <div class="radio-container">
-
                         <input class="radio-yes" th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
                         <input class="radio-no" th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
-
                     </div>
                 </div>
-
                 <div class="input-group actions">
                     <a th:text="#{cadremform.cancel}" id="cancelar" href="/remedios" class="button cancel"></a>
-                    <button th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>
+                    <button  th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>
                 </div>
             </form>
         </div>
