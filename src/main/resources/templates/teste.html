@@ -26,7 +26,7 @@
 
 </head>
 <body>
-<div class="wrapper" "conta-lg">
+<div class="wrapper conta-lg">
 <!-- Menu bolado  -->
 <nav id="sidebar">
     <div id="dismiss">
@@ -221,7 +221,13 @@
 
 
 
-
+    <select id="selectRemedios" multiple="multiple">
+        <option value="">Selecione o remédio </option>
+        <option th:each  ="remedio : ${remedio}"
+                th:value ="${remedio.RM_Nome}"
+                th:text  ="${remedio.RM_Nome}"
+        ></option>
+    </select>
 
 
 
@@ -236,5 +242,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="/script/cadastroRemedio.jsp"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+</div>
+</div>
 </body>
 </html>
