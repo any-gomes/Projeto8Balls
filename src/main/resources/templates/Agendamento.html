@@ -179,6 +179,36 @@
 
          -->
 
+        <main class="container-table text-center">
+            <section id="agendamentos">
+                <h2> Agendamentos </h2>
+                <table id="data-table">
+                    <thead>
+                    <tr>
+                        <th>Remedios</th>
+                        <th>Data Inicio</th>
+                        <th>Hora Inicio</th>
+                        <th>Data Fim</th>
+                        <th>Periodicidade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <div class="" th:each ="agendamento : ${agendamento}">
+                        <tr>
+                            <td><p><span th:text="${agendamento.remedio}"></span></td>
+                            <td><p><span th:text="${agendamento.dataInicio}"></span></td>
+                            <td><p><span th:text="${agendamento.horaInicio}"></span></td>
+                            <td><p><span th:text="${agendamento.dataFinal}"></span></td>
+                            <td><p><span th:text="${agendamento.periodicidade}"></span></td>
+                        </tr>
+
+
+                    </div>
+                    </tbody>
+                </table>
+                <a id="new-form" href="/cadastro_agendamentos" class="button new"> Criar Agendamento </a>
+            </section>
+        </main>
 
 
         <div class="overlay"></div>
