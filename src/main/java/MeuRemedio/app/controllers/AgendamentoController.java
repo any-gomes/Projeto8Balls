@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class AgendamentoController {
@@ -48,9 +49,8 @@ public class AgendamentoController {
             return "Login";
         }
 
-        Iterable <Agendamento> agendamentos = agendamentoRepository.findAll();
+        List<Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSession.returnIdUsuarioLogado());
         model.addAttribute("agendamento", agendamentos);
-
         return "Agendamento";
     }
 
@@ -70,12 +70,15 @@ public class AgendamentoController {
     }
 
     @RequestMapping(value = "/cadastro_agendamentos", method = RequestMethod.POST)
-    public String cadastrarAgendamento(@RequestParam("AG_Data_Inicio_Agendamento") String AG_DataInicio,
-                                       @RequestParam("AG_Hora_Inicio_Agendamento") String AG_horaInicio,
-                                       @RequestParam("AG_Data_Final_Agendamento")  String AG_DataFinal ,
+    public String cadastrarAgendamento(@RequestParam("AG_Remedios") List<Remedio> remedios,
+                                       @RequestParam("AG_DataInicio") String AG_DataInicio,
+                                       @RequestParam("AG_HoraInicio") String AG_horaInicio,
+                                       @RequestParam("AG_DataFinal")  String AG_DataFinal ,
                                        @RequestParam("AG_Periodicidade") long AG_Periodicidade){
 
-        Agendamento agendamento = new Agendamento(AG_DataInicio,AG_horaInicio,AG_DataFinal,AG_Periodicidade);
+        Agendamento agendamento = new Agendamento(AG_DataInicio,AG_horaInicio,AG_DataFinal,AG_Periodicidade,
+                remedios, userSession.returnIdUsuarioLogado());
+
         agendamentoRepository.save(agendamento);
 
         return "redirect:/agendamentos";

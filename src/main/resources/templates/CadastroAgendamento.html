@@ -168,12 +168,11 @@
                 <div class="text-center" id="form">
                     <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
                     <h2 class='form-h2' text="">Novo Agendamento</h2>
-                    <form method="post" name="formCadastroRM">
+                    <form method="post" name="formCadastroAG">
                         <div class="input-group">
-
                                 <div class="form-group ">
                                     <label class="sr-only">Escolha o Remédio</label>
-                                    <select id="AG_Remedio" class="form-control" name="list" multiple>
+                                    <select id="AG_Remedios" class="form-control" name="AG_Remedios" multiple>
                                         <option th:each  ="remedio : ${remedio}"
                                                 th:value ="${remedio.RM_ID}"
                                                 th:text  ="${remedio.RM_Nome}"
@@ -184,12 +183,12 @@
                         <small class="help">Selecione o Remédio</small>
 
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataInicio" name="birthday">
+                            <input type="date" id="AG_DataInicio" name="AG_DataInicio">
                         </div>
                         <small class="help">Data de Início</small>
 
                         <div class="input-group">
-                            <input id="AG_HoraInicius" type="time" name="hora-cons" value="00:00">
+                            <input id="AG_HoraInicio" type="time" name="AG_HoraInicio" value="00:00">
                         </div>
 
                         <small class="help">Hora de Inicio</small>
@@ -256,7 +255,7 @@
 </body>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#AG_Remedio').multiselect()
+            $('#AG_Remedios').multiselect()
         });
     </script>
 

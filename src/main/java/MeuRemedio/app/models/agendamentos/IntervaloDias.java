@@ -35,8 +35,9 @@ public class IntervaloDias extends Agendamento implements Serializable {
     }
 
 
-    public IntervaloDias(String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio, long IT_IntervaloDias) {
-        super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade, remedio);
+    public IntervaloDias(String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade,
+                         List<Remedio> remedio, long IT_IntervaloDias, Long usuarioID) {
+        super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade, remedio, usuarioID);
         this.intervaloDias = IT_IntervaloDias;
         this.Criado_em = LocalDate.now();
     }
