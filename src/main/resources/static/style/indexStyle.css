@@ -27,36 +27,16 @@ header{
 
 
 /* Meu Remédio */
-.title-home {
-  width: 166px;
-  height: 32px;
-  left: 136px;
-  top: -10px;
 
+.title-home {
 /* H4 - Regular */
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 27px;
   line-height: 32px;
   text-align: justify;
   color: #181A19;
-  margin-left: 40px;
   margin-top: -15px;
-}
-
-
-.icon-home {
-  width: 100px;
-  height: 60.29px;
-  background: url("../images/icon-home.png");
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  overflow: hidden;
-  margin-left: 0px;
-  left: -10px;
-  top: 4px;
 }
 
 .banner-home {
@@ -299,9 +279,6 @@ header{
     height: 40px;
     width: 115px;
     border-radius: 117px;
-    right: 5px;
-    top: 10px;
-    position: absolute;
 }
 
 .cadastrar-btn {
@@ -317,9 +294,6 @@ header{
     height: 40px;
     width: 115px;
     border-radius: 117px;
-    right: 130px;
-    top: 10px;
-    position: absolute;
     border: 3px solid #4FF4DB;
 }
 .inicio-btn {
@@ -335,9 +309,6 @@ header{
   height: 40px;
   width: 115px;
   border-radius: 117px;
-  right: 130px;
-  top: 10px;
-  position: absolute;
   border: 3px solid #4FF4DB;
 }
 
@@ -354,9 +325,6 @@ header{
     height: 40px;
     width: 115px;
     border-radius: 117px;
-    right: 255px;
-    top: 10px;
-    position: absolute;
     border: 3px solid #4FF4DB;
 }
 
