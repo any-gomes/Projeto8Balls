@@ -91,7 +91,8 @@
                         <td><p style="color: black"><span th:text="${remedio.RM_Nome}"></span></td>
                         <td><p style="color: black"><span th:text="${remedio.RM_Dosagem}"></span></td>
                         <td><p style="color: black"><span th:text="${remedio.RM_UnidadeDosagem}"></span></td>
-                        <td><p style="color: black"><span th:text="${remedio.RM_RetiradoSus}"></span></td>
+                        <td><p style="color: black"><span th:text="${remedio.RM_RetiradoSus} ? 'Sim' : 'Não'"></span></td>
+                        <td><a th:href="@{/deletar_remedio{id} (id = ${remedio.RM_ID})}"> deletar </a></td>
                     </tr>
                 </div>
                 </tbody>
@@ -112,7 +113,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="/script/cadastroRemedio.jsp"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
 </div>
 
 </body>

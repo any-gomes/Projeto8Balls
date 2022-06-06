@@ -1,4 +1,4 @@
-<nav id="sidebar" th:fragment="menuLateral">
+<nav id="sidebar" th:fragment="menuLateral" xmlns:th="http://www.w3.org/1999/xhtml">
     <div id="dismiss">
         <i class="fas fa-arrow-left"></i>
     </div>
@@ -70,10 +70,10 @@
             <ul class="collapse list-unstyled" id="agendaSubmenu">
                 <li>
 
-                    <a th:text="#{navbar.schedcreate}" href="/agendamentos">Criar Agendamento</a>
+                    <a th:text="#{navbar.schedcreate}" href="/cadastro_agendamentos">Criar Agendamento</a>
                 </li>
                 <li>
-                    <a th:text="#{navbar.schedlist}" href="#">Listar Agendamento</a>
+                    <a th:text="#{navbar.schedlist}" href="/agendamentos">Listar Agendamento</a>
                 </li>
                 <li>
                     <a th:text="#{navbar.schedcalendar}" href="#">Visualizar Calendário</a>

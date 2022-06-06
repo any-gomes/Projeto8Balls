@@ -89,6 +89,7 @@
                             <td><p><span th:text="${agendamento.horaInicio}"></span></td>
                             <td><p><span th:text="${agendamento.dataFinal}"></span></td>
                             <td><p><span th:text="${agendamento.periodicidade}"></span></td>
+                            <td><a th:href="@{/deletar_agendamento{id} (id = ${agendamento.id})}"> deletar </a></td>
                         </tr>
 
 
