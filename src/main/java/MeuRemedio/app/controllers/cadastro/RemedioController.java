@@ -99,8 +99,8 @@ public class RemedioController {
         return "redirect:/remedios";
     } */
 
-    @RequestMapping(value = "/deletar_remedio")
-        public String deletarRemedio (long id){
+    @RequestMapping(value = "/deletar_remedio{id}")
+        public String deletarRemedio (@PathVariable("id") long id){
             //  Remedio remedio = remedioRepository.findById(id);
             remedioRepository.deleteById(id);
 
