@@ -85,11 +85,11 @@ public class AgendamentoController {
         return "redirect:/agendamentos";
     }
 
-    @RequestMapping(value="/deletar_agendamento{id}")
+    @RequestMapping(value="/deletar_agendamento/{id}")
     public String deletarAgendamento(@PathVariable("id") long id){
         Agendamento agendamento = agendamentoRepository.findById(id);
         agendamentoRepository.delete(agendamento);
 
-        return "Agendamento";
+        return "redirect:/agendamentos";
     }
 }

@@ -44,16 +44,16 @@ public class RemedioController {
     UserSession userSession;
 
     @RequestMapping(value = "/remedios_cadastro")
-    public String telaCadastroRemedio(){
-        if (!validateAuthentication.auth()){
+    public String telaCadastroRemedio() {
+        if (!validateAuthentication.auth()) {
             return "Login";
         }
         return "CadastroRemedios";
     }
 
     @RequestMapping(value = "/remedios_cadastro", method = RequestMethod.POST)
-    public String CadastroRemedio (@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
-                                   @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem , @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
+    public String CadastroRemedio(@RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
+                                  @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus) throws SQLException {
 
         boolean auxRetiradoSUS;
 
@@ -64,21 +64,21 @@ public class RemedioController {
             throw new SQLException("Erro ao retornar ID do usuário ");
         }
 
-        if (RM_RetiradoSus.equals("Sim")){
+        if (RM_RetiradoSus.equals("Sim")) {
             auxRetiradoSUS = true;
         } else {
             auxRetiradoSUS = false;
         }
-        Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem ,auxRetiradoSUS, usuarioID);
+        Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem, auxRetiradoSUS, usuarioID);
         remedioRepository.save(remedio);
 
         return "redirect:/remedios";
     }
 
-    @RequestMapping(value = "/remedios" )
-    public String listaRemedios(ModelMap model){
+    @RequestMapping(value = "/remedios")
+    public String listaRemedios(ModelMap model) {
 
-        if (!validateAuthentication.auth()){
+        if (!validateAuthentication.auth()) {
             return "Login";
         }
         Usuario usuarioID = new Usuario();
@@ -90,21 +90,52 @@ public class RemedioController {
         return "Remedios";
     }
 
-/*
-    //Metodo de teste, para validar colocar um id valido na URL do navegador
-    @RequestMapping(value = "/{id}")
-    public String deletarRemedio (@PathVariable("id") long id){
-      //  Remedio remedio = remedioRepository.findById(id);
+    @RequestMapping(value = "/deletar_remedio/{id}")
+    public String deletarRemedio(@PathVariable("id") long id) {
+        //  Remedio remedio = remedioRepository.findById(id);
         remedioRepository.deleteById(id);
-        return "redirect:/remedios";
-    } */
-
-    @RequestMapping(value = "/deletar_remedio{id}")
-        public String deletarRemedio (@PathVariable("id") long id){
-            //  Remedio remedio = remedioRepository.findById(id);
-            remedioRepository.deleteById(id);
 
         return "redirect:/remedios";
     }
+
+    @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.PUT)
+    public String atualizarDadosRemedio(@PathVariable("id") long id,  @RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
+                                       @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus)  {
+        boolean auxRetiradoSUS;
+
+        if (RM_RetiradoSus.equals("Sim")) {
+            auxRetiradoSUS = true;
+       } else {
+            auxRetiradoSUS = false;
+        }
+        Remedio remedio = remedioRepository.findById(id);
+
+        //Criar validação para id não encontrado
+
+        remedio.setRM_Nome(RM_Nome);
+        remedio.setRM_Dosagem(RM_Dosagem);
+        remedio.setRM_UnidadeDosagem(RM_UnidadeDosagem);
+        remedio.setRM_RetiradoSus(auxRetiradoSUS);
+
+        remedioRepository.save(remedio);
+        return "redirect:/remedios";
+
+    }
+        @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.GET)
+    public String atualizarDadosRemedio(@PathVariable("id") long id) {
+        boolean auxRetiradoSUS;
+
+        Remedio remedio = remedioRepository.findById(id);
+        remedio.setRM_Nome("Amoxilina");
+        remedio.setRM_Dosagem("10");
+        remedio.setRM_UnidadeDosagem("ML");
+        remedio.setRM_RetiradoSus(false);
+
+        remedioRepository.save(remedio);
+
+        return "redirect:/remedios";
+    }
+
+
 
 }

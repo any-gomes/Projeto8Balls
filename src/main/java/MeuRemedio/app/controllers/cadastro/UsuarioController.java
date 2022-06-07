@@ -61,6 +61,7 @@ public class UsuarioController {
         model.addAttribute("usuario",usuarioLogado);
         return "AtualizarUsuario";
     }
+
     @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.POST)
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
                                    @RequestParam("US_Senha") String senha, @RequestParam("US_Sexo") String sexo){
@@ -70,9 +71,9 @@ public class UsuarioController {
 
         usuarioLogado.setNome(nome);
         usuarioLogado.setSobrenome(sobrenome);
-        usuarioLogado.setSenha(senha);
         usuarioLogado.setSexo(sexo);
         usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(senha));
+     // usuarioLogado.setSenha(senha);
 
         usuarioRepository.save(usuarioLogado);
 
