@@ -39,6 +39,11 @@
             <i class="fas fa-align-left"></i>
             <span>Menu</span>
         </button>
+
+        <a href="/home" class="navbar-brand text-center col-09" >
+            <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
+        </a>
+
     </div>
 
     <div class=" col-sm-2 col-md-2 col-lg-1 col-lx-1" id="navbarSupportedContent">
@@ -58,18 +63,15 @@
         <div class="container">
             <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
             <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS gratuitamente.</p>
-
         </div>
     </selection>
 -->
-
 </div>
 <div class="modal-overlay text-center">
-
     <div class="modal">
         <div class="text-center" id="form">
             <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
-            <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio"><h2 class='form-h2' th:text="#{cadremform.title}"></h2>
+            <h2 class='form-h2' th:text="#{cadremform.title}"></h2>
             <form method="post" name="formCadastroRM">
                 <div class="input-group">
                     <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
@@ -133,7 +135,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="/script/cadastroRemedio.jsp"></script>
-<script src="/script/cadastro.jsp"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 </body>
 </html>

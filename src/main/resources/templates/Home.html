@@ -29,13 +29,18 @@
     <!-- Local para digitar o texto na página  -->
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
             <div class="container-fluid">
 
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span>Menu</span>
                 </button>
+                <a href="/home" class="navbar-brand text-center col-09">
+                    <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
 
+                </a>
                 <div class=" col-sm-2 col-md-2 col-lg-1 col-lx-1" id="navbarSupportedContent">
                     <select class="inter" id="locales">
                         <option value="" th:text="#{alllanguage.change}"></option>
@@ -43,21 +48,9 @@
                         <option value="pt" th:text="#{alllanguage.portuguese}"></option>
                     </select>
                 </div>
-
-
             </div>
         </nav>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid text-center">
-                <a href="/home" class="navbar-brand text-center col-11">
-                    <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
-
-                </a>
-
-
-            </div>
-        </nav>
 
         <div class="jumbotron">
 
@@ -89,7 +82,7 @@
                 <!-- DIV 2 -->
                 <!--<div class="vl"></div> -->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-lx-6">
-                    <h2 class="gastos text-center">Gastos nos ultimos meses</h2>
+                    <h2 class="gastos text-center">Gastos mensais </h2>
                     <img src="/images/img1.jpg" style="width:100%">
                     <div class="text-center">
                         <button type="button" class="btn btn-info">Mais Detalhes</button>
