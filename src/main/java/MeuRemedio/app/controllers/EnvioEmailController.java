@@ -47,7 +47,10 @@ public class EnvioEmailController {
 
         StringBuilder remediosString = new StringBuilder(" ");
         for (Remedio remedio : remedios) {
-            remediosString.append(remedio.getRM_Nome()).append("\n");
+            remediosString.append(remedio.getRM_Nome()    + " " +
+                                  remedio.getRM_Dosagem() + " " +
+                                  remedio.getRM_UnidadeDosagem())
+            .append("\n");
         }
         String msg = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome() +
                 "! Já está na hora de tomar os seus remédios, que são: \n" + remediosString;
