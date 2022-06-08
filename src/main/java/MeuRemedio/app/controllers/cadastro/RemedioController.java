@@ -121,7 +121,8 @@ public class RemedioController {
         return "redirect:/remedios";
 
     }
-        @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.GET)
+    /*Método de testes de atualização */
+    @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.GET)
     public String atualizarDadosRemedio(@PathVariable("id") long id) {
         boolean auxRetiradoSUS;
 
@@ -132,10 +133,6 @@ public class RemedioController {
         remedio.setRM_RetiradoSus(false);
 
         remedioRepository.save(remedio);
-
         return "redirect:/remedios";
     }
-
-
-
 }

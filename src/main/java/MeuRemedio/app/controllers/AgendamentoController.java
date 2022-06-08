@@ -39,18 +39,13 @@ public class AgendamentoController {
     UserSession userSession;
 
 
-    /* Por hora, esse metodo retorna todos os agendamentos
-    * Estamos encontrando uma maneira de retornar um agendamento
-    * que foi realizado pelo usuario em questão !
-    */
-
     @RequestMapping(value = "/agendamentos")
     public String viewAgendamentos(ModelMap model) {
         if (!validateAuthentication.auth()) {
             return "Login";
         }
 
-        List<Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSession.returnIdUsuarioLogado());
+        List <Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSession.returnIdUsuarioLogado());
         model.addAttribute("agendamento", agendamentos);
         return "Agendamento";
     }
@@ -78,12 +73,13 @@ public class AgendamentoController {
                                        @RequestParam("AG_Periodicidade") long AG_Periodicidade){
 
         Agendamento agendamento = new Agendamento(AG_DataInicio,AG_horaInicio,AG_DataFinal,AG_Periodicidade,
-                remedios, userSession.returnIdUsuarioLogado());
+        remedios, userSession.returnIdUsuarioLogado());
 
         agendamentoRepository.save(agendamento);
 
         return "redirect:/agendamentos";
     }
+
 
     @RequestMapping(value="/deletar_agendamento/{id}")
     public String deletarAgendamento(@PathVariable("id") long id){

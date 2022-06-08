@@ -1,5 +1,3 @@
-
-
 //Esta funcao se encarrega de trocar o idioma da p�gina
 $(document).ready(function () {
         
@@ -69,5 +67,22 @@ function validaData() {
 
     // se for maior que 60 não vai acontecer nada!
     return false;
+}
+
+function mensagemDosagem(){
+const mensagem = document.getElementById("mensagemDosagem");
+mensagem.innerHTML = "EX: 10, 50, 500"
+}
+function retirarMensagemDosagem(){
+const mensagem = document.getElementById("mensagemDosagem");
+mensagem.innerHTML = ""
+}
+function mensagemUnidade(){
+const mensagem = document.getElementById("mensagemUnidade");
+mensagem.innerHTML = "EX: miligrama (mg), gramas (g) mililitro (ml), gotas e microgotas"
+}
+function retirarMensagemUnidade(){
+const mensagem = document.getElementById("mensagemUnidade");
+mensagem.innerHTML = ""
 }
 
