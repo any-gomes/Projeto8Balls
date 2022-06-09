@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -42,7 +43,7 @@ public class EnvioEmailController {
         emailService.sendEmail(usuario, assunto, msg);
     }
 
-    public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios){
+    public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios, LocalDateTime instanteAgora){
         String assunto = MensagemEmail.NOTIFICACAO_REMEDIO.getDescricao();
 
         StringBuilder remediosString = new StringBuilder(" ");
@@ -53,7 +54,7 @@ public class EnvioEmailController {
             .append("\n");
         }
         String msg = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome() +
-                "! Já está na hora de tomar os seus remédios, que são: \n" + remediosString;
+                "! Agora são: " + instanteAgora + " e já está na hora de tomar os seus remédios, que são: \n" + remediosString;
 
         emailService.sendEmail(usuario, assunto, msg);
     }
