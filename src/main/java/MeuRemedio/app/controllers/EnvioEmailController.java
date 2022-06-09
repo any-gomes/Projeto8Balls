@@ -46,15 +46,16 @@ public class EnvioEmailController {
     public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios, LocalDateTime instanteAgora){
         String assunto = MensagemEmail.NOTIFICACAO_REMEDIO.getDescricao();
 
-        StringBuilder remediosString = new StringBuilder(" ");
+        String horaFormatada = instanteAgora.getHour() + ":" + instanteAgora.getMinute();
+        StringBuilder remediosString = new StringBuilder("");
         for (Remedio remedio : remedios) {
-            remediosString.append(remedio.getRM_Nome()    + " " +
-                                  remedio.getRM_Dosagem() + " " +
+            remediosString.append(remedio.getRM_Nome()    + "-" +
+                                  remedio.getRM_Dosagem() + "" +
                                   remedio.getRM_UnidadeDosagem())
             .append("\n");
         }
         String msg = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome() +
-                "! Agora são: " + instanteAgora + " e já está na hora de tomar os seus remédios, que são: \n" + remediosString;
+                "! Agora são " + horaFormatada + " e já está na hora de tomar os seus remédios: \n" + remediosString;
 
         emailService.sendEmail(usuario, assunto, msg);
     }
