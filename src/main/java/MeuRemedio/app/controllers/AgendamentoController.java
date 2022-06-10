@@ -88,4 +88,23 @@ public class AgendamentoController {
 
         return "redirect:/agendamentos";
     }
+    @RequestMapping(value = "/agendamentos/atualizar/{id}", method = RequestMethod.PUT)
+    public  String atualizarDadosAgendamento(@PathVariable("id") long id,
+                                            @RequestParam("AG_Remedios") List<Remedio> remedios,
+                                            @RequestParam("AG_DataInicio") String AG_DataInicio,
+                                            @RequestParam("AG_HoraInicio") String AG_horaInicio,
+                                            @RequestParam("AG_DataFinal")  String AG_DataFinal ,
+                                            @RequestParam("AG_Periodicidade") long AG_Periodicidade){
+
+        Agendamento agendamento = agendamentoRepository.findById(id);
+        agendamento.setRemedio(remedios);
+        agendamento.setDataInicio(AG_DataInicio);
+        agendamento.setHoraInicio(AG_horaInicio);
+        agendamento.setDataFinal(AG_DataFinal);
+        agendamento.setPeriodicidade(AG_Periodicidade);
+
+        agendamentoRepository.save(agendamento);
+        return "redirect/agendamentos";
+
+    }
 }

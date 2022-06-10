@@ -114,7 +114,12 @@ public class RemedioController {
         }
         Remedio remedio = remedioRepository.findById(id);
 
-        //Criar validação para id não encontrado
+        /*
+        * Criar método para validar se um id não está no banco
+        * if (Se o id passado pela ulr não estiver na tabela remedios ){
+        * chama função templateError(); }
+        * se não segue o fluxo e atualiza
+        * */
 
         remedio.setRM_Nome(RM_Nome);
         remedio.setRM_Dosagem(RM_Dosagem);
@@ -125,12 +130,15 @@ public class RemedioController {
         return "redirect:/remedios";
 
     }
-    /*Método de testes de atualização */
-    @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.GET)
+    /*Método de testes de atualização
+    @RequestMapping(value = "/remedios/atualizar/{id}", method = RequestMethod.GET)
     public String atualizarDadosRemedio(@PathVariable("id") long id) {
         boolean auxRetiradoSUS;
 
         Remedio remedio = remedioRepository.findById(id);
+
+        //Criar validação para id não encontrado
+
         remedio.setRM_Nome("Amoxilina");
         remedio.setRM_Dosagem("10");
         remedio.setRM_UnidadeDosagem("ML");
@@ -138,5 +146,10 @@ public class RemedioController {
 
         remedioRepository.save(remedio);
         return "redirect:/remedios";
+    }*/
+
+    //Essa função deve retornar uma tela customizada de erro.
+    public String templateError(){
+        return "TemplateError";
     }
 }
