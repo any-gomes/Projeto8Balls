@@ -4,6 +4,7 @@ import MeuRemedio.app.enums.MensagemEmail;
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.service.EmailService;
+import MeuRemedio.app.service.utils.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,8 @@ public class EnvioEmailController {
 
     public void emailCadastroRemedio(Usuario usuario, Remedio remedios){
         String assunto = MensagemEmail.REMEDIO_CADASTRADO.getDescricao();
-        String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao();
+        String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao() + remedios.getRM_Nome() + "''. " +
+                "Fique atento aos horários e siga as restrições médicas !";
 
         emailService.sendEmail(usuario, assunto, msg);
     }
@@ -49,8 +51,8 @@ public class EnvioEmailController {
         String horaFormatada = instanteAgora.getHour() + ":" + instanteAgora.getMinute();
         StringBuilder remediosString = new StringBuilder("");
         for (Remedio remedio : remedios) {
-            remediosString.append(remedio.getRM_Nome()    + "-" +
-                                  remedio.getRM_Dosagem() + "" +
+            remediosString.append(remedio.getRM_Nome()    + " " +
+                                  remedio.getRM_Dosagem() + " " +
                                   remedio.getRM_UnidadeDosagem())
             .append("\n");
         }

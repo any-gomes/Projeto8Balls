@@ -37,8 +37,6 @@ public class RemedioController {
     @Autowired
     RemedioRepository remedioRepository;
 
-    @Autowired
-    private IAuthentication authenticationFacade;
 
     @Autowired
     ValidateAuthentication validateAuthentication;
@@ -75,6 +73,8 @@ public class RemedioController {
         Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem, auxRetiradoSUS, usuarioID);
 
         remedioRepository.save(remedio);
+        Usuario us = usuarioRepository.findByEmail(userSession.returnUsernameUsuario());
+        emailController.emailCadastroRemedio(us, remedio);
 
         return "redirect:/remedios";
     }
