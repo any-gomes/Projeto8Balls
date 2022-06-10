@@ -1,6 +1,7 @@
 package MeuRemedio.app.controllers.cadastro;
 
 
+import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.RemedioRepository;
@@ -25,8 +26,10 @@ import java.sql.SQLException;
 public class RemedioController {
     private String username;
 
+
+
     @Autowired
-    EmailService emailService;
+    EnvioEmailController emailController;
 
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -70,6 +73,7 @@ public class RemedioController {
             auxRetiradoSUS = false;
         }
         Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem, auxRetiradoSUS, usuarioID);
+
         remedioRepository.save(remedio);
 
         return "redirect:/remedios";

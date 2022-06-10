@@ -35,7 +35,7 @@ public class EnvioEmailController {
         emailService.sendEmail(usuario, assunto, mensagem );
     }
 
-    public void emailCadastroRemedio(Usuario usuario){
+    public void emailCadastroRemedio(Usuario usuario, Remedio remedios){
         String assunto = MensagemEmail.REMEDIO_CADASTRADO.getDescricao();
         String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao();
 
