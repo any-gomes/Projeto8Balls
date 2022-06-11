@@ -12,14 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
-import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 @Controller
@@ -91,7 +88,7 @@ public class RemedioController {
         Iterable<Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
         model.addAttribute("remedio", remedio);
 
-        return "Remedios";
+        return "ListaRemedios";
     }
 
     @RequestMapping(value = "/deletar_remedio/{id}")
@@ -103,10 +100,14 @@ public class RemedioController {
     }
 
     @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.GET)
-    public String atualizarRemedio(@PathVariable("id") long id, HttpServletRequest request, Model model){
-        Remedio remedio = remedioRepository.findById(id);
-        model.addAttribute("remedio", remedio);
-        return "AtualizarRemedios";
+    public String atualizarRemedio(@PathVariable("id") long id, Model model) {
+        if (!verificarPorId(id)) {
+            return templateError();
+        } else {
+            Remedio remedio = remedioRepository.findById(id);
+            model.addAttribute("remedio", remedio);
+            return "AtualizarRemedios";
+        }
     }
 
     @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.POST)
