@@ -74,27 +74,27 @@ public class NotificationService {
         List<LocalDateTime> horasRemedio = new ArrayList<>();
         horasRemedio.add(instanteInicio);
 
-//        boolean isIntervaloDias = verificarseIntervaloDias(agendamento);
-//        if (isIntervaloDias){
-//            IntervaloDias intervalo = intervaloDiasRepository.getById(agendamento.getId());
-//
-//            //Monta lista de horários com intervalos
-//            while (instanteInicio.isBefore(instanteFinal)){
-//                int dia = instanteInicio.getDayOfMonth();
-//                instanteInicio = instanteInicio.plusHours(agendamento.getPeriodicidade());
-//                if(instanteInicio.getDayOfMonth() == dia){
-//                    horasRemedio.add(instanteInicio);
-//                } else {
-//                    instanteInicio = instanteInicio.plusDays(intervalo.getIntervaloDias());
-//                }
-//            }
-//        } else {
+        boolean isIntervaloDias = verificarseIntervaloDias(agendamento);
+        if (isIntervaloDias){
+            IntervaloDias intervalo = intervaloDiasRepository.getById(agendamento.getId());
+
+            //Monta lista de horários com intervalos
+            while (instanteInicio.isBefore(instanteFinal)){
+                int dia = instanteInicio.getDayOfMonth();
+                instanteInicio = instanteInicio.plusHours(agendamento.getPeriodicidade());
+                if(instanteInicio.getDayOfMonth() == dia){
+                    horasRemedio.add(instanteInicio);
+                } else {
+                    instanteInicio = instanteInicio.plusDays(intervalo.getIntervaloDias());
+                }
+            }
+        } else {
             //Monta lista de horários sem intervalo
             while (instanteInicio.isBefore(instanteFinal)) {
                 instanteInicio = instanteInicio.plusHours(agendamento.getPeriodicidade());
                 horasRemedio.add(instanteInicio);
             }
-        //}
+        }
 
 //        boolean isRecorrenciaVazio = verificarSeRecorrencia(agendamento);
 //        if (!isRecorrenciaVazio) {
@@ -117,11 +117,11 @@ public class NotificationService {
         envioEmailController.emailNotificacaoRemedio(usuario, remedios, instanteAgora);
     }
 
-//    //Verifica se o agendamento em questão possui intervalo de dias na tabela intervalo_dias
-//    public boolean verificarseIntervaloDias(Agendamento agendamento){
-//        Optional<IntervaloDias> intervaloDias = intervaloDiasRepository.findById(agendamento.getId());
-//        return intervaloDias.isPresent();
-//    }
+    //Verifica se o agendamento em questão possui intervalo de dias na tabela intervalo_dias
+    public boolean verificarseIntervaloDias(Agendamento agendamento){
+        Optional<IntervaloDias> intervaloDias = intervaloDiasRepository.findById(agendamento.getId());
+        return intervaloDias.isPresent();
+    }
 //
 //    //Verifica se o agendamento em questão possui uma recorrência associada na tabela recorrencia
 //    public boolean verificarSeRecorrencia(Agendamento agendamento){

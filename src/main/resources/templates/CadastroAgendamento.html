@@ -99,6 +99,12 @@
                         </div>
                         <small>Periodicidade. De quantas em quantas horas pretende tomar o remédio.</small>
 
+                        <div class="input-group number">
+                            <label><input type="checkbox" onclick="desabilitar('sim')"> Adicionar Intervalo</label></label>
+                            <input placeholder="Número de dias de intervalo" type="number" id="intervaloDias"
+                                   name="intervaloDias" disabled/>
+                        </div>
+
 
 
                         <div class="input-group actions">
@@ -138,9 +144,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="/script/bootstrap-multiselect.js"></script>
 
-
-
-
 </div>
 
 
@@ -157,5 +160,18 @@
     inline: true
     });
 </script>
+
+<script type="text/javascript">
+    function desabilitar(valor){
+      var status = document.getElementById('intervaloDias').disabled;
+
+  if (valor == 'sim' && status) {
+    document.getElementById('intervaloDias').disabled = false;
+  } else {
+    document.getElementById('intervaloDias').disabled = true;
+    document.getElementById('intervaloDias').value = null;
+  }
+    }
+    </script>
 
 </html>
