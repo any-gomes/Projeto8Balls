@@ -10,6 +10,7 @@ import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 @Controller
@@ -100,9 +102,16 @@ public class RemedioController {
         return "redirect:/remedios";
     }
 
-    @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.PUT)
-    public String atualizarDadosRemedio(@Valid @PathVariable("id") long id, @RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
-                                        @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus, BindingResult bindingResult)  {
+    @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.GET)
+    public String atualizarRemedio(@PathVariable("id") long id, HttpServletRequest request, Model model){
+        Remedio remedio = remedioRepository.findById(id);
+        model.addAttribute("remedio", remedio);
+        return "AtualizarRemedios";
+    }
+
+    @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.POST)
+    public String atualizarDadosRemedio(@PathVariable("id") long id,  @RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
+                                       @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus)  {
         boolean auxRetiradoSUS;
 
         if (RM_RetiradoSus.equals("Sim")) {
