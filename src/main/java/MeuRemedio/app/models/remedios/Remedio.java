@@ -51,7 +51,7 @@ public class Remedio implements Serializable {
 
     private List<Categoria> categoria = new ArrayList <Categoria> () ;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="AgendamentoRemedio",
             joinColumns= {@JoinColumn(name="remedio_rm_id")},
             inverseJoinColumns = {@JoinColumn(name="agendamento_ag_id")})
