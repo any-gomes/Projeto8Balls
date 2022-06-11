@@ -1,4 +1,4 @@
-package MeuRemedio.app.controllers.cadastro;
+package MeuRemedio.app.controllers;
 
 import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.usuarios.Usuario;

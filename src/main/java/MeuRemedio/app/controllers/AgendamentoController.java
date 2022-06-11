@@ -1,6 +1,6 @@
 package MeuRemedio.app.controllers;
 
-import MeuRemedio.app.controllers.cadastro.RemedioController;
+import MeuRemedio.app.controllers.RemedioController;
 import MeuRemedio.app.models.agendamentos.Agendamento;
 import MeuRemedio.app.models.agendamentos.IntervaloDias;
 import MeuRemedio.app.models.remedios.Remedio;
@@ -12,6 +12,7 @@ import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +54,7 @@ public class AgendamentoController {
 
         List <Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSessionService.returnIdUsuarioLogado());
         model.addAttribute("agendamento", agendamentos);
-        return "Agendamento";
+        return "ListaAgendamentos";
     }
 
     @RequestMapping(value = "/cadastro_agendamentos")
@@ -100,7 +101,23 @@ public class AgendamentoController {
 
         return "redirect:/agendamentos";
     }
-    @RequestMapping(value = "/agendamentos/atualizar/{id}", method = RequestMethod.PUT)
+
+    @RequestMapping(value = "/atualizar_agendamento/{id}", method = RequestMethod.GET)
+    public String atualizarRemedio(@PathVariable("id") long id, Model model) {
+        if (!verificarPorId(id)) {
+            return templateError();
+        } else {
+            Usuario usuarioID = new Usuario();
+            usuarioID.setId(userSessionService.returnIdUsuarioLogado());
+            Iterable <Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
+            model.addAttribute("remedio", remedio);
+            Agendamento agendamento = agendamentoRepository.findById(id);
+            model.addAttribute("agendamento", agendamento);
+            return "AtualizarAgendamento";
+        }
+    }
+
+    @RequestMapping(value = "/atualizar_agendamento/{id}", method = RequestMethod.POST)
     public  String atualizarDadosAgendamento(@PathVariable("id") long id,
                                             @RequestParam("AG_Remedios") List<Remedio> remedios,
                                             @RequestParam("AG_DataInicio") String AG_DataInicio,
@@ -119,9 +136,13 @@ public class AgendamentoController {
             agendamento.setPeriodicidade(AG_Periodicidade);
 
             agendamentoRepository.save(agendamento);
-            return "redirect/agendamentos";
+            return "redirect:/agendamentos";
         }
     public boolean verificarPorId (long id ) {
         return agendamentoRepository.existsById(id); //Falso se não achar o ID do remédio
+    }
+
+    public String templateError(){
+        return "TemplateError";
     }
 }
