@@ -4,7 +4,6 @@ import MeuRemedio.app.enums.MensagemEmail;
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.service.EmailService;
-import MeuRemedio.app.service.utils.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -6,7 +6,7 @@ import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.AgendamentoRepository;
 import MeuRemedio.app.repository.RemedioRepository;
-import MeuRemedio.app.service.utils.UserSession;
+import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Time;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -36,7 +33,7 @@ public class AgendamentoController {
     RemedioController remedioController;
 
     @Autowired
-    UserSession userSession;
+    UserSessionService userSessionService;
 
 
     @RequestMapping(value = "/agendamentos")
@@ -45,7 +42,7 @@ public class AgendamentoController {
             return "Login";
         }
 
-        List <Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSession.returnIdUsuarioLogado());
+        List <Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSessionService.returnIdUsuarioLogado());
         model.addAttribute("agendamento", agendamentos);
         return "Agendamento";
     }
@@ -57,7 +54,7 @@ public class AgendamentoController {
         }
 
         Usuario usuarioID = new Usuario();
-        usuarioID.setId(userSession.returnIdUsuarioLogado());
+        usuarioID.setId(userSessionService.returnIdUsuarioLogado());
 
         Iterable <Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
         model.addAttribute("remedio", remedio);
@@ -73,7 +70,7 @@ public class AgendamentoController {
                                        @RequestParam("AG_Periodicidade") long AG_Periodicidade){
 
         Agendamento agendamento = new Agendamento(AG_DataInicio,AG_horaInicio,AG_DataFinal,AG_Periodicidade,
-        remedios, userSession.returnIdUsuarioLogado());
+        remedios, userSessionService.returnIdUsuarioLogado());
 
         agendamentoRepository.save(agendamento);
 
@@ -95,16 +92,21 @@ public class AgendamentoController {
                                             @RequestParam("AG_HoraInicio") String AG_horaInicio,
                                             @RequestParam("AG_DataFinal")  String AG_DataFinal ,
                                             @RequestParam("AG_Periodicidade") long AG_Periodicidade){
+        if (!verificarPorId(id)) {
+            return remedioController.
+                    templateError();
+        }
+            Agendamento agendamento = agendamentoRepository.findById(id);
+            agendamento.setRemedio(remedios);
+            agendamento.setDataInicio(AG_DataInicio);
+            agendamento.setHoraInicio(AG_horaInicio);
+            agendamento.setDataFinal(AG_DataFinal);
+            agendamento.setPeriodicidade(AG_Periodicidade);
 
-        Agendamento agendamento = agendamentoRepository.findById(id);
-        agendamento.setRemedio(remedios);
-        agendamento.setDataInicio(AG_DataInicio);
-        agendamento.setHoraInicio(AG_horaInicio);
-        agendamento.setDataFinal(AG_DataFinal);
-        agendamento.setPeriodicidade(AG_Periodicidade);
-
-        agendamentoRepository.save(agendamento);
-        return "redirect/agendamentos";
-
+            agendamentoRepository.save(agendamento);
+            return "redirect/agendamentos";
+        }
+    public boolean verificarPorId (long id ) {
+        return agendamentoRepository.existsById(id); //Falso se não achar o ID do remédio
     }
 }
