@@ -38,14 +38,17 @@ public class Agendamento implements Serializable {
     @Column(name = "AG_Data_Final_Agendamento")
     private String dataFinal;
 
-    @NotNull @NotBlank
+    @NotNull
     @Column(name = "AG_Periodicidade")
     private long periodicidade;
 
-    @NotNull @NotBlank
-    private LocalDate AG_Criado_em ;
+    @NotNull
+    private LocalDate AG_Criado_em;
 
-    @ManyToMany(cascade = CascadeType.ALL) @NotNull @NotBlank
+    @Column(name = "AG_UsuarioID")
+    private Long usuarioID;
+
+    @ManyToMany()
     @JoinTable(name="AgendamentoRemedio",
             joinColumns= {@JoinColumn(name="agendamento_ag_id")},
             inverseJoinColumns = {@JoinColumn(name="remedio_rm_id")})
@@ -62,7 +65,7 @@ public class Agendamento implements Serializable {
     }
 
     public Agendamento (String AG_DataInicio, String AG_horaInicio,
-                        String AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio) {
+                        String AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio, Long usuarioID) {
 
         this.dataInicio = AG_DataInicio;
         this.horaInicio = AG_horaInicio;
@@ -70,6 +73,7 @@ public class Agendamento implements Serializable {
         this.periodicidade = AG_Periodicidade;
         this.AG_Criado_em = LocalDate.now();
         this.remedio = remedio;
+        this.usuarioID = usuarioID;
     }
 
     public Agendamento() {

@@ -13,7 +13,7 @@ public enum MensagemEmail {
         CADASTRO_MENSAGEM(". Queremos agradecer por ter se registrado na plataforma Meu Remédio. \n Acesse a plataforma em:"),
         RECUPERACAO_MENSAGEM(". Vimos que perdeu a senha, mas não se preocupe, acesse o link para recuperar "),
 
-        CADASTRO_REMEDIO("Olá, vimos que você cadastrou um novo remédio, fique atento e use conforme as indicações médicas"),
+        CADASTRO_REMEDIO("Olá, vimos que você cadastrou um novo remédio, ''"),
 
         NOTIFICACAO_MENSAGEM("Olá! Já está na hora de tomar os seus remédios: ");
         private String descricao;

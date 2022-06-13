@@ -8,9 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,26 +23,23 @@ public class IntervaloDias extends Agendamento implements Serializable {
     @Column(name = "IT_IntervaloDias")
     private long intervaloDias;
 
-    @NotBlank
-    private LocalDate Criado_em;
-
-    public IntervaloDias(String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, long IT_IntervaloDias) {
+    public IntervaloDias(String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, List<Remedio> remedios, long IT_IntervaloDias) {
         super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade);
         this.intervaloDias = IT_IntervaloDias;
-        this.Criado_em = LocalDate.now();
     }
 
 
-    public IntervaloDias(String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade, List<Remedio> remedio, long IT_IntervaloDias) {
-        super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade, remedio);
+    public IntervaloDias(String AG_DataInicio, String AG_horaInicio, String AG_DataFinal, long AG_Periodicidade,
+                         List<Remedio> remedio, Long usuarioID, long IT_IntervaloDias) {
+        super(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade, remedio, usuarioID);
         this.intervaloDias = IT_IntervaloDias;
-        this.Criado_em = LocalDate.now();
     }
 
-    public IntervaloDias(long IT_IntervaloDias) {
+    public IntervaloDias(Agendamento agendamento, long IT_IntervaloDias) {
         this.intervaloDias = IT_IntervaloDias;
-        this.Criado_em = LocalDate.now();
     }
+
+
 
     public  IntervaloDias(){
 

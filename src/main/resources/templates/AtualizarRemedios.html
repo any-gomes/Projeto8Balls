@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="/static/images/icon.svg"/>
+
+    <title th:text="#{cadtitle.text}"></title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="wrapper conta-lg">
+
+
+<!-- Menu bolado  -->
+<nav th:replace="~{MenuLateral :: menuLateral}"></nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+            <span>Menu</span>
+        </button>
+
+        <a href="/home" class="navbar-brand text-center col-09" >
+            <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
+        </a>
+
+    </div>
+
+
+
+</nav>
+
+<!--
+<div class="jumbotron">
+
+    <selection class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
+            <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS gratuitamente.</p>
+        </div>
+    </selection>
+-->
+</div>
+<div class="modal-overlay text-center">
+    <div class="modal">
+        <div class="text-center" id="form">
+            <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
+            <h2 class='form-h2' th:text="#{Attremform.title}"></h2>
+            <form method="post" name="formCadastroRM">
+                <div class="input-group">
+                    <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
+                    <input th:value="${remedio.RM_Nome}"
+                           type="text"
+                           id="RM_Nome"
+                           name="RM_Nome"
+                           required="required"
+                    />
+                </div>
+                <div class="input-group">
+                    <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
+                    <input th:value="${remedio.RM_Dosagem}"
+                           type="text"
+                           id="RM_Dosagem"
+                           name="RM_Dosagem"
+                           onMouseOver="mensagemDosagem()"
+                           onMouseOut = "retirarMensagemDosagem()"
+                           required="required"
+                    />
+                </div>
+                <small><span id="mensagemDosagem" class="help"></span></small>
+
+                <div class="input-group">
+                    <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
+                    <input th:value="${remedio.RM_UnidadeDosagem}"
+                           type="text"
+                           id="RM_UnidadeDosagem"
+                           name="RM_UnidadeDosagem"
+                           required="required"
+                           onMouseOver="mensagemUnidade()"
+                           onMouseOut = "retirarMensagemUnidade()"
+                    />
+                </div>
+                <small><span id="mensagemUnidade" class="help"></span></small>
+
+                <div class="input-group-radio">
+                    <small><strong th:text="#{cadremform.susremedy}" class="sus-medicine" ></strong></small>
+                    <!--<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>-->
+                    <div class="radio-container">
+                        <input class="radio-yes" th:text="#{cadremform.radioyes}" th:checked="${remedio.RM_RetiradoSus}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
+                        <input class="radio-no" th:text="#{cadremform.radiono}"  th:checked="${!remedio.RM_RetiradoSus}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
+                    </div>
+                </div>
+                <div class="input-group actions">
+                    <a th:text="#{cadremform.cancel}" id="cancelar" href="/remedios" class="button cancel"></a>
+                    <button  th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Popper.JS -->
+<!-- Scripts da página -->
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="/script/cadastroRemedio.jsp"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+</body>
+</html>

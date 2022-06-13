@@ -99,6 +99,7 @@ span.multiselect-native-select select {
 .multiselect-container .multiselect-group,
 .multiselect-container .multiselect-all {
   padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+  width: 0%;
 }
 .multiselect-container .multiselect-option.dropdown-item,
 .multiselect-container .multiselect-group.dropdown-item,

@@ -1,5 +1,6 @@
 package MeuRemedio.app.models.remedios;
 
+import MeuRemedio.app.models.agendamentos.Agendamento;
 import MeuRemedio.app.models.usuarios.Usuario;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,6 +50,11 @@ public class Remedio implements Serializable {
                 inverseJoinColumns = {@JoinColumn(name="categoria_ct_id")})
     private List<Categoria> categoria = new ArrayList <Categoria> () ;
 
+    @ManyToMany()
+    @JoinTable(name="AgendamentoRemedio",
+            joinColumns= {@JoinColumn(name="remedio_rm_id")},
+            inverseJoinColumns = {@JoinColumn(name="agendamento_ag_id")})
+    private List <Agendamento> agendamentos = new ArrayList <> ();
 
    @ManyToOne @NotNull
     @JoinColumn(name = "Usuario_FK_Usuario")
@@ -89,4 +95,8 @@ public class Remedio implements Serializable {
         this.usuario = usuario;
     }
 
+    @Override
+    public String toString() {
+        return RM_Nome + " - " + RM_Dosagem + " " + RM_UnidadeDosagem;
+    }
 }
