@@ -98,9 +98,10 @@
                                onblur="checarEmail();"
                                >
 
-                        <select id="US_Sexo" name="US_Sexo" class="formulario-input">
+                        <select id="US_Sexo" name="US_Sexo" class="formulario-input" required="">
                             <option th:text="#{cadselect.female}" value="Feminino"></option>
                             <option th:text="#{cadselect.male}" value="Masculino"></option>
+
                         </select>
 
                         <input
@@ -120,7 +121,7 @@
                                name="US_Senha"
                                class="formulario-input"
                                minlength="8"
-                               required
+                               required=""
                                >
 
                         <span id="error-email" style="color:#FF8A8A; display:block"></span>
@@ -128,7 +129,7 @@
 
                         <button th:text="#{cadbutton.createacc}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
 
-                        <div th:if="${param.emailExistente}"
+                        <div style="text-align: center" th:if="${param.emailExistente}"
                              th:text="#{cadvalid.usedemail}"
                              class="alert alert-error">
                         </div>
