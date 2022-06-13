@@ -48,7 +48,6 @@ public class Remedio implements Serializable {
     @JoinTable(name="RemedioCategoria",
                 joinColumns= {@JoinColumn(name="remedio_rm_id")},
                 inverseJoinColumns = {@JoinColumn(name="categoria_ct_id")})
-
     private List<Categoria> categoria = new ArrayList <Categoria> () ;
 
     @ManyToMany()
