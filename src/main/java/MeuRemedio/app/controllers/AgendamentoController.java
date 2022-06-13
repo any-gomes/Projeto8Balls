@@ -1,6 +1,9 @@
 package MeuRemedio.app.controllers;
 
+<<<<<<< HEAD
+=======
 import MeuRemedio.app.controllers.RemedioController;
+>>>>>>> 837c82d1776530e9c6a76d05cae479574b1e0d3a
 import MeuRemedio.app.models.agendamentos.Agendamento;
 import MeuRemedio.app.models.agendamentos.IntervaloDias;
 import MeuRemedio.app.models.remedios.Remedio;
@@ -19,10 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Time;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
