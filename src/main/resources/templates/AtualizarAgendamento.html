@@ -95,6 +95,13 @@
                         </div>
                         <small>Periodicidade. De quantas em quantas horas pretende tomar o remédio.</small>
 
+                        <div class="input-group number">
+                            <label><input type="checkbox" onclick="desabilitar('sim')"> Adicionar Intervalo</label></label>
+
+                            <input placeholder="Número de dias de intervalo" type="number" id="intervaloDias"
+                                   name="intervaloDias" disabled th:value="${intervaloDias.isPresent() ? intervaloDias.get().intervaloDias: ''}"/>
+                        </div>
+
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="/agendamentos" class="button cancel"></a>
                             <button th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>

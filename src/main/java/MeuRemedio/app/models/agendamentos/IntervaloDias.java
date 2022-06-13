@@ -39,9 +39,7 @@ public class IntervaloDias extends Agendamento implements Serializable {
         this.intervaloDias = IT_IntervaloDias;
     }
 
-
-
-    public  IntervaloDias(){
-
+    public IntervaloDias(){
+        super.setAG_Criado_em(LocalDate.now());
     }
 }

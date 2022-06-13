@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AgendamentoController {
@@ -49,6 +51,14 @@ public class AgendamentoController {
 
         List <Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSessionService.returnIdUsuarioLogado());
         model.addAttribute("agendamento", agendamentos);
+        List<IntervaloDias> intervaloDias = new ArrayList<>();
+        for (Agendamento agendamento : agendamentos) {
+            Optional<IntervaloDias> intervalo = intervaloDiasRepository.findById(agendamento.getId());
+            if (intervalo.isPresent()) {
+                intervaloDias.add(intervalo.get());
+            }
+        }
+        model.addAttribute("intervaloDias", intervaloDias);
         return "ListaAgendamentos";
     }
 
@@ -108,6 +118,8 @@ public class AgendamentoController {
             model.addAttribute("remedio", remedio);
             Agendamento agendamento = agendamentoRepository.findById(id);
             model.addAttribute("agendamento", agendamento);
+            Optional<IntervaloDias> intervaloDias = intervaloDiasRepository.findById(id);
+            model.addAttribute("intervaloDias", intervaloDias);
             return "AtualizarAgendamento";
         }
     }
@@ -118,19 +130,48 @@ public class AgendamentoController {
                                             @RequestParam("AG_DataInicio") String AG_DataInicio,
                                             @RequestParam("AG_HoraInicio") String AG_horaInicio,
                                             @RequestParam("AG_DataFinal")  String AG_DataFinal ,
-                                            @RequestParam("AG_Periodicidade") long AG_Periodicidade){
+                                            @RequestParam("AG_Periodicidade") long AG_Periodicidade,
+                                             @RequestParam(value = "intervaloDias", required = false) Long intervaloDias){
         if (!verificarPorId(id)) {
             return remedioController.
                     templateError();
         }
+
+        Optional<IntervaloDias> intervaloExiste = intervaloDiasRepository.findById(id);
+        if (intervaloExiste.isPresent() && intervaloDias == null){
+            IntervaloDias agendamento = intervaloExiste.get();
+            agendamento.setRemedio(remedios);
+            agendamento.setDataInicio(AG_DataInicio);
+            agendamento.setHoraInicio(AG_horaInicio);
+            agendamento.setDataFinal(AG_DataFinal);
+            agendamento.setPeriodicidade(AG_Periodicidade);
+            agendamento.setIntervaloDias(0);
+            intervaloDiasRepository.save(agendamento);
+        } else if (intervaloExiste.isPresent() && intervaloDias != null){
+            IntervaloDias atualizarIntervalo = intervaloExiste.get();
+            atualizarIntervalo.setId(id);
+            atualizarIntervalo.setRemedio(remedios);
+            atualizarIntervalo.setDataInicio(AG_DataInicio);
+            atualizarIntervalo.setHoraInicio(AG_horaInicio);
+            atualizarIntervalo.setDataFinal(AG_DataFinal);
+            atualizarIntervalo.setPeriodicidade(AG_Periodicidade);
+            atualizarIntervalo.setIntervaloDias(intervaloDias);
+            intervaloDiasRepository.save(atualizarIntervalo);
+        } else if (intervaloDias == null){
             Agendamento agendamento = agendamentoRepository.findById(id);
             agendamento.setRemedio(remedios);
             agendamento.setDataInicio(AG_DataInicio);
             agendamento.setHoraInicio(AG_horaInicio);
             agendamento.setDataFinal(AG_DataFinal);
             agendamento.setPeriodicidade(AG_Periodicidade);
-
             agendamentoRepository.save(agendamento);
+        } else {
+            IntervaloDias adicionarIntervalo = new IntervaloDias(AG_DataInicio, AG_horaInicio, AG_DataFinal, AG_Periodicidade,
+                    remedios, userSessionService.returnIdUsuarioLogado(), intervaloDias);
+            adicionarIntervalo.setId(id);
+            agendamentoRepository.deleteById(id);
+            intervaloDiasRepository.save(adicionarIntervalo);
+        }
             return "redirect:/agendamentos";
         }
     public boolean verificarPorId (long id ) {
