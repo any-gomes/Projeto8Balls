@@ -47,7 +47,7 @@ public class EnvioEmailController {
     public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios, LocalDateTime instanteAgora){
         String assunto = MensagemEmail.NOTIFICACAO_REMEDIO.getDescricao();
 
-        String horaFormatada = instanteAgora.getHour() + ":" + instanteAgora.getMinute();
+        String horaFormatada = instanteAgora.getHour() + ":" + (instanteAgora.getMinute()<10?"0":"") + instanteAgora.getMinute();
         StringBuilder remediosString = new StringBuilder("");
         for (Remedio remedio : remedios) {
             remediosString.append(remedio.getRM_Nome()    + " " +
