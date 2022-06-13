@@ -27,8 +27,7 @@
 </head>
 <body>
 <div class="wrapper conta-lg">
-
-
+    
 <!-- Menu bolado  -->
 <nav th:replace="~{MenuLateral :: menuLateral}"></nav>
 
@@ -46,20 +45,8 @@
 
     </div>
 
-
-
 </nav>
 
-<!--
-<div class="jumbotron">
-
-    <selection class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
-            <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS gratuitamente.</p>
-        </div>
-    </selection>
--->
 </div>
 <div class="modal-overlay text-center">
     <div class="modal">
@@ -89,17 +76,17 @@
                 </div>
                 <small><span id="mensagemDosagem" class="help"></span></small>
 
-                <div class="input-group">
-                    <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
-                    <input th:value="${remedio.RM_UnidadeDosagem}"
-                           type="text"
-                           id="RM_UnidadeDosagem"
-                           name="RM_UnidadeDosagem"
-                           required="required"
-                           onMouseOver="mensagemUnidade()"
-                           onMouseOut = "retirarMensagemUnidade()"
-                    />
-                </div>
+                <label class="sr-only"> Unidade de medida </label>
+                <select id="RM_UnidadeDosagem" class="form-control"
+                        name="RM_UnidadeDosagem"
+                        required="required"
+                >
+                    <option value ="Miligrama">Miligrama (mg)  </option>
+                    <option value ="Gramas">Gramas (g)  </option>
+                    <option value ="Mililitro">Mililitro (ml) </option>
+                    <option value ="Unidades internacionais ">Unidades internacionais (UI)  </option>
+                    <option value ="Gotas e Microgotas">Gotas e Microgotas </option>
+                </select>
                 <small><span id="mensagemUnidade" class="help"></span></small>
 
                 <div class="input-group-radio">
@@ -119,7 +106,7 @@
     </div>
 </div>
 
-<!-- Popper.JS -->
+<div class="overlay"></div>
 <!-- Scripts da página -->
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -130,5 +117,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="/script/cadastroRemedio.jsp"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/script/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#RM_UnidadeDosagem')
+    });
+</script>
+
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        inline: true
+    });
+</script>
+
 </body>
 </html>

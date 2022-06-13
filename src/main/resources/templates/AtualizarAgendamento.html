@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="/images/icon.svg"/>
 
     <link rel="icon" href="/static/images/icon.svg"/>
 
@@ -15,6 +14,7 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/style/homeStyle.css">
     <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
+    <link rel="stylesheet" href="/style/cadastroAgendamento.css">
     <link rel="stylesheet" href="/style/bootstrap-multiselect.css">
 
     <!-- Scrollbar Custom CSS -->
@@ -43,8 +43,6 @@
                     <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
                 </a>
 
-
-
             </div>
         </nav>
 
@@ -53,47 +51,70 @@
 
             <div class="modal">
                 <div class="text-center" id="form">
-                    <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
-                    <h2 class='form-h2' text="">Atualizar o seu agendamento</h2>
+                    <h2 class='form-h2' text="">Novo Agendamento</h2>
                     <form method="post" name="formCadastroAG">
-                        <div class="input-group">
-                                <div class="form-group ">
-                                    <label class="sr-only">Escolha o Remédio</label>
-                                    <select id="AG_Remedios" class="form-control" name="AG_Remedios" multiple>
-                                        <option th:each  ="remedio : ${remedio}"
-                                                th:value ="${remedio.RM_ID}"
-                                                th:text  ="${remedio.RM_Nome}"
-                                                th:selected = "${agendamento.remedio.contains(remedio)}"
-                                        ></option>
-                                    </select>
-                                </div>
+
+                        <h4 style="text-align: center">Informe o período e o horário do agendamento</h4>
+                        <div class="input-group " data-provide="datepicker" id="AgInicio">
+                            <input type="date"
+                                   id="AG_DataInicio"
+                                   name="AG_DataInicio"
+                                   onMouseOver="mensagemDataInicio()"
+                                   onMouseOut = "retirarMensagemDataInicio()"
+                                   required="required">
+
+                            <input id="AG_HoraInicio"
+                                   type="time"
+                                   name="AG_HoraInicio"
+                                   value="00:00"
+                                   onMouseOver="mensagemHora()"
+                                   onMouseOut = "retirarMensagemHora()"
+                                   required="required">
+
+                            <input placeholder="Periodicidade"
+                                   type="number"
+                                   id="AG_Periodicidade"
+                                   name="AG_Periodicidade"
+                                   onMouseOver="mensagemPeriodicidade()"
+                                   onMouseOut = "retirarMensagemPeriodicidade()"
+                            />
+                            <input type="date"
+                                   id="AG_DataFinal"
+                                   name="AG_DataFinal"
+                                   required=""
+                                   placeholder="Data final"
+                                   onMouseOver="mensagemDataFim()"
+                                   onMouseOut = "retirarMensagemDataFim()"
+
+                            >
                         </div>
-                        <small class="help">Selecione o Remédio</small>
+                        <small><span id="mensagemPeriodocidade" class="help"></span></small>
+                        <small><span id="mensagemFimAgendamento" class="help"></span></small>
+                        <small><span id="mensagemInicioAgendamento" class="help"></span></small>
+                        <small><span id="mensagemHora" class="help"></span></small>
 
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataInicio" name="AG_DataInicio" th:value="${agendamento.dataInicio}">
+                        <div id="intervaloDiasGrup" class="container">
+                            <div>
+                                <h4><label><input type="checkbox" onclick="desabilitar('sim')">Adicionar Intervalo</label></h4>
+                            </div>
+                            <div class="input-group">
+                                <input style="min-width:2px"
+                                       placeholder="Número de dias"
+                                       type="number"
+                                       id="intervaloDias"
+                                       name="intervaloDias"
+                                       disabled/>
+                            </div>
                         </div>
-                        <small class="help">Data de Início</small>
 
-                        <div class="input-group">
-                            <input id="AG_HoraInicio" type="time" name="AG_HoraInicio" th:value="${agendamento.horaInicio}">
-                        </div>
-
-                        <small class="help">Hora de Inicio</small>
-
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataFinal" name="AG_DataFinal" th:value="${agendamento.dataFinal}">
-                        </div>
-                        <small class="help">Data de Termino</small>
-
-                        <small class="help"></small>
-                        <div class="input-group">
-                            <label></label>
-                            <input placeholder="Ex: '1', '2'" type="text" id="AG_Periodicidade"
-                                   name="AG_Periodicidade" th:value="${agendamento.periodicidade}"/>
-
-                        </div>
-                        <small>Periodicidade. De quantas em quantas horas pretende tomar o remédio.</small>
+                        <h4 id="adcRemedioTitulo">Adicione o remédio ao agendamento</h4>
+                        <label class="sr-only">Escolha o Remédio</label>
+                        <select id="AG_Remedios" class="form-control" name="AG_Remedios" multiple>
+                            <option th:each  ="remedio : ${remedio}"
+                                    th:value =" ${remedio.RM_ID}"
+                                    th:text  =" ${remedio.RM_Nome}"
+                            ></option>
+                        </select>
 
                         <div class="input-group number">
                             <label><input type="checkbox" onclick="desabilitar('sim')"> Adicionar Intervalo</label></label>
@@ -104,69 +125,57 @@
 
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="/agendamentos" class="button cancel"></a>
-                            <button th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>
+                            <button name="action" id="confirmar" class="button save" type="submit">Atualizar</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
-
-
-
-            </div>
-        </div>
-
-
-
-
-
-
-
     </div>
+</div>
+</div>
 
-        <div class="overlay"></div>
-        <!-- Scripts da página -->
-        <!-- jQuery CDN - Slim version (=without AJAX) -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <!-- Popper.JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-        <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="/script/cadastroRemedio.jsp"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="/script/bootstrap-multiselect.js"></script>
+<div class="overlay"></div>
+<!-- Scripts da página -->
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="/script/cadastroRemedio.jsp"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/script/bootstrap-multiselect.js"></script>
 
 </div>
 
 
 </body>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#AG_Remedios').multiselect()
-        });
-    </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#AG_Remedios').multiselect()
+    });
+</script>
 
 
 <script type="text/javascript">
     $('.datepicker').datepicker({
-    inline: true
+        inline: true
     });
 </script>
 
 <script type="text/javascript">
     function desabilitar(valor){
-      var status = document.getElementById('intervaloDias').disabled;
+        var status = document.getElementById('intervaloDias').disabled;
 
-  if (valor == 'sim' && status) {
-    document.getElementById('intervaloDias').disabled = false;
-  } else {
-    document.getElementById('intervaloDias').disabled = true;
-    document.getElementById('intervaloDias').value = null;
-  }
+        if (valor == 'sim' && status) {
+            document.getElementById('intervaloDias').disabled = false;
+        } else {
+            document.getElementById('intervaloDias').disabled = true;
+            document.getElementById('intervaloDias').value = null;
+        }
     }
-    </script>
+</script>
 
 </html>

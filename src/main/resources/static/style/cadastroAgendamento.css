@@ -1,0 +1,26 @@
+h4{
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.AG_Periodicidade{
+    margin-bottom: 10px;
+}
+
+#intervaloDiasGrup{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+#AgInicio{
+    display: flex;
+    justify-content: space-between;
+}
+input#intervaloDias{
+    width:1px;
+}
+#adcRemedioTitulo{
+margin-top: 15px;
+}
+
+
