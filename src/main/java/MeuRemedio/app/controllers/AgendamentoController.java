@@ -1,6 +1,5 @@
 package MeuRemedio.app.controllers;
 
-import MeuRemedio.app.controllers.cadastro.RemedioController;
 import MeuRemedio.app.models.agendamentos.Agendamento;
 import MeuRemedio.app.models.agendamentos.IntervaloDias;
 import MeuRemedio.app.models.remedios.Remedio;
@@ -18,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Time;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -53,7 +48,7 @@ public class AgendamentoController {
 
         List <Agendamento> agendamentos = agendamentoRepository.findAllByUsuarioID(userSessionService.returnIdUsuarioLogado());
         model.addAttribute("agendamento", agendamentos);
-        return "Agendamento";
+        return "ListaAgendamentos";
     }
 
     @RequestMapping(value = "/cadastro_agendamentos")

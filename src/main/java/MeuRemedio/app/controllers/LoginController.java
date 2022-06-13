@@ -1,4 +1,4 @@
-package MeuRemedio.app.controllers.login;
+package MeuRemedio.app.controllers;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
