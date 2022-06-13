@@ -1,23 +1,21 @@
-package MeuRemedio.app.controllers.cadastro;
+package MeuRemedio.app.controllers;
+
 
 
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.RemedioRepository;
 import MeuRemedio.app.repository.UsuarioRepository;
-import MeuRemedio.app.service.EmailService;
-import MeuRemedio.app.service.utils.IAuthentication;
-import MeuRemedio.app.service.utils.UserSession;
+import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 
@@ -25,8 +23,10 @@ import java.sql.SQLException;
 public class RemedioController {
     private String username;
 
+
+
     @Autowired
-    EmailService emailService;
+    EnvioEmailController emailController;
 
     @Autowired
     UsuarioRepository usuarioRepository;
@@ -34,14 +34,12 @@ public class RemedioController {
     @Autowired
     RemedioRepository remedioRepository;
 
-    @Autowired
-    private IAuthentication authenticationFacade;
 
     @Autowired
     ValidateAuthentication validateAuthentication;
 
     @Autowired
-    UserSession userSession;
+    UserSessionService userSessionService;
 
     @RequestMapping(value = "/remedios_cadastro")
     public String telaCadastroRemedio() {
@@ -58,7 +56,7 @@ public class RemedioController {
         boolean auxRetiradoSUS;
 
         Usuario usuarioID = new Usuario();
-        usuarioID.setId(userSession.returnIdUsuarioLogado());
+        usuarioID.setId(userSessionService.returnIdUsuarioLogado());
 
         if (usuarioID.getId() <= 0) {
             throw new SQLException("Erro ao retornar ID do usuário ");
@@ -70,7 +68,10 @@ public class RemedioController {
             auxRetiradoSUS = false;
         }
         Remedio remedio = new Remedio(RM_Nome, RM_Dosagem, RM_UnidadeDosagem, auxRetiradoSUS, usuarioID);
+
         remedioRepository.save(remedio);
+        Usuario us = usuarioRepository.findByEmail(userSessionService.returnUsernameUsuario());
+        emailController.emailCadastroRemedio(us, remedio);
 
         return "redirect:/remedios";
     }
@@ -82,12 +83,12 @@ public class RemedioController {
             return "Login";
         }
         Usuario usuarioID = new Usuario();
-        usuarioID.setId(userSession.returnIdUsuarioLogado());
+        usuarioID.setId(userSessionService.returnIdUsuarioLogado());
 
         Iterable<Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
         model.addAttribute("remedio", remedio);
 
-        return "Remedios";
+        return "ListaRemedios";
     }
 
     @RequestMapping(value = "/deletar_remedio/{id}")
@@ -98,41 +99,48 @@ public class RemedioController {
         return "redirect:/remedios";
     }
 
-    @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.GET)
+    public String atualizarRemedio(@PathVariable("id") long id, Model model) {
+        if (!verificarPorId(id)) {
+            return templateError();
+        } else {
+            Remedio remedio = remedioRepository.findById(id);
+            model.addAttribute("remedio", remedio);
+            return "AtualizarRemedios";
+        }
+    }
+
+    @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.POST)
     public String atualizarDadosRemedio(@PathVariable("id") long id,  @RequestParam("RM_Nome") String RM_Nome, @RequestParam("RM_Dosagem") String RM_Dosagem,
                                        @RequestParam("RM_UnidadeDosagem") String RM_UnidadeDosagem, @RequestParam("RM_RetiradoSus") String RM_RetiradoSus)  {
         boolean auxRetiradoSUS;
 
         if (RM_RetiradoSus.equals("Sim")) {
             auxRetiradoSUS = true;
-       } else {
+        } else {
             auxRetiradoSUS = false;
         }
-        Remedio remedio = remedioRepository.findById(id);
 
-        //Criar validação para id não encontrado
+        if (!verificarPorId(id)) {
+             return templateError();
+        } else {
+            Remedio remedio = remedioRepository.findById(id);
+            remedio.setRM_Nome(RM_Nome);
+            remedio.setRM_Dosagem(RM_Dosagem);
+            remedio.setRM_UnidadeDosagem(RM_UnidadeDosagem);
+            remedio.setRM_RetiradoSus(auxRetiradoSUS);
+            remedioRepository.save(remedio);
 
-        remedio.setRM_Nome(RM_Nome);
-        remedio.setRM_Dosagem(RM_Dosagem);
-        remedio.setRM_UnidadeDosagem(RM_UnidadeDosagem);
-        remedio.setRM_RetiradoSus(auxRetiradoSUS);
-
-        remedioRepository.save(remedio);
-        return "redirect:/remedios";
-
+            return "redirect:/remedios";
+        }
     }
-    /*Método de testes de atualização */
-    @RequestMapping(value = "/remedio/atualizar/{id}", method = RequestMethod.GET)
-    public String atualizarDadosRemedio(@PathVariable("id") long id) {
-        boolean auxRetiradoSUS;
+    //função responsável por achar um id dentro do banco. Retorna true se encontrar
+    public boolean verificarPorId (long id ) {
+        return remedioRepository.existsById(id);
+    }
 
-        Remedio remedio = remedioRepository.findById(id);
-        remedio.setRM_Nome("Amoxilina");
-        remedio.setRM_Dosagem("10");
-        remedio.setRM_UnidadeDosagem("ML");
-        remedio.setRM_RetiradoSus(false);
-
-        remedioRepository.save(remedio);
-        return "redirect:/remedios";
+    //Essa função deve retornar uma tela customizada de erro.
+    public String templateError(){
+        return "TemplateError";
     }
 }

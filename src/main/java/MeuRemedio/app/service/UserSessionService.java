@@ -1,13 +1,16 @@
-package MeuRemedio.app.service.utils;
+package MeuRemedio.app.service;
 
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
+import MeuRemedio.app.service.utils.IAuthentication;
+import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class UserSession {
+@Service
+public class UserSessionService {
     private String username;
 
     @Autowired
@@ -27,6 +30,7 @@ public class UserSession {
 
     public long returnIdUsuarioLogado () {
         long idUserLogado;
+
         Usuario usuarioLogado = usuarioRepository.findByEmail(returnUsernameUsuario());
         idUserLogado = usuarioLogado.getId();
 

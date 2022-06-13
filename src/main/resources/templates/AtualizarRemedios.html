@@ -46,6 +46,8 @@
 
     </div>
 
+
+
 </nav>
 
 <!--
@@ -63,11 +65,11 @@
     <div class="modal">
         <div class="text-center" id="form">
             <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
-            <h2 class='form-h2' th:text="#{cadremform.title}"></h2>
+            <h2 class='form-h2' th:text="#{Attremform.title}"></h2>
             <form method="post" name="formCadastroRM">
                 <div class="input-group">
                     <label th:text="#{cadremform.remedy}" class="sr-only" for="RM_Nome"></label>
-                    <input th:placeholder="#{cadremplaceholder.remedy}"
+                    <input th:value="${remedio.RM_Nome}"
                            type="text"
                            id="RM_Nome"
                            name="RM_Nome"
@@ -76,7 +78,7 @@
                 </div>
                 <div class="input-group">
                     <label th:text="#{cadremform.dosage}" class="sr-only" for="RM_Dosagem"></label>
-                    <input th:placeholder="#{cadremplaceholder.dosage}"
+                    <input th:value="${remedio.RM_Dosagem}"
                            type="text"
                            id="RM_Dosagem"
                            name="RM_Dosagem"
@@ -89,7 +91,7 @@
 
                 <div class="input-group">
                     <label th:text="#{cadremform.dosageunit}" class="sr-only" for="RM_UnidadeDosagem"></label>
-                    <input th:placeholder="#{cadremplaceholder.dosageunit}"
+                    <input th:value="${remedio.RM_UnidadeDosagem}"
                            type="text"
                            id="RM_UnidadeDosagem"
                            name="RM_UnidadeDosagem"
@@ -104,8 +106,8 @@
                     <small><strong th:text="#{cadremform.susremedy}" class="sus-medicine" ></strong></small>
                     <!--<label th:text="#{cadremform.susremedy}" class="sr-only" for="RM_RetiradoSus"></label>-->
                     <div class="radio-container">
-                        <input class="radio-yes" th:text="#{cadremform.radioyes}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
-                        <input class="radio-no" th:text="#{cadremform.radiono}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
+                        <input class="radio-yes" th:text="#{cadremform.radioyes}" th:checked="${remedio.RM_RetiradoSus}" type="radio" id="RM_RetiradoSus" value="Sim" name="RM_RetiradoSus"/>
+                        <input class="radio-no" th:text="#{cadremform.radiono}"  th:checked="${!remedio.RM_RetiradoSus}" type="radio" id="RM_RetiradoSusNo" value="Não" name="RM_RetiradoSus"/>
                     </div>
                 </div>
                 <div class="input-group actions">

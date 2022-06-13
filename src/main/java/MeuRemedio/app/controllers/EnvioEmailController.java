@@ -36,9 +36,10 @@ public class EnvioEmailController {
         emailService.sendEmail(usuario, assunto, mensagem );
     }
 
-    public void emailCadastroRemedio(Usuario usuario){
+    public void emailCadastroRemedio(Usuario usuario, Remedio remedios){
         String assunto = MensagemEmail.REMEDIO_CADASTRADO.getDescricao();
-        String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao();
+        String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao() + remedios.getRM_Nome() + "''. " +
+                "Fique atento aos horários e siga as restrições médicas !";
 
         emailService.sendEmail(usuario, assunto, msg);
     }
@@ -49,8 +50,8 @@ public class EnvioEmailController {
         String horaFormatada = instanteAgora.getHour() + ":" + instanteAgora.getMinute();
         StringBuilder remediosString = new StringBuilder("");
         for (Remedio remedio : remedios) {
-            remediosString.append(remedio.getRM_Nome()    + "-" +
-                                  remedio.getRM_Dosagem() + "" +
+            remediosString.append(remedio.getRM_Nome()    + " " +
+                                  remedio.getRM_Dosagem() + " " +
                                   remedio.getRM_UnidadeDosagem())
             .append("\n");
         }

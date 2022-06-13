@@ -1,9 +1,9 @@
-package MeuRemedio.app.controllers.cadastro;
+package MeuRemedio.app.controllers;
 
 import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
-import MeuRemedio.app.service.utils.UserSession;
+import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class UsuarioController {
@@ -26,7 +25,7 @@ public class UsuarioController {
     ValidateAuthentication validateAuthentication;
 
     @Autowired
-    UserSession userSession;
+    UserSessionService userSessionService;
 
     @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario() {
@@ -55,10 +54,11 @@ public class UsuarioController {
         return "redirect:/";
     }
     @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.GET)
-    public String viewAtualizarUsuario(HttpServletRequest request, Model model){
-        String EmailUsuarioLogado = userSession.returnUsernameUsuario();
+    public String viewAtualizarUsuario(Model model){
+        String EmailUsuarioLogado = userSessionService.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
         model.addAttribute("usuario",usuarioLogado);
+
         return "AtualizarUsuario";
     }
 
@@ -66,14 +66,13 @@ public class UsuarioController {
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
                                    @RequestParam("US_Senha") String senha, @RequestParam("US_Sexo") String sexo){
 
-        String EmailUsuarioLogado = userSession.returnUsernameUsuario();
+        String EmailUsuarioLogado = userSessionService.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
 
         usuarioLogado.setNome(nome);
         usuarioLogado.setSobrenome(sobrenome);
         usuarioLogado.setSexo(sexo);
         usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(senha));
-     // usuarioLogado.setSenha(senha);
 
         usuarioRepository.save(usuarioLogado);
 
