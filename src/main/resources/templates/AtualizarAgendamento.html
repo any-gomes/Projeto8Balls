@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/images/icon.svg"/>
 
     <link rel="icon" href="/static/images/icon.svg"/>
 
@@ -42,6 +43,8 @@
                     <img alt="Brand" src="/images/icon.svg" class="img-responsive text-center">
                 </a>
 
+
+
             </div>
         </nav>
 
@@ -51,7 +54,7 @@
             <div class="modal">
                 <div class="text-center" id="form">
                     <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
-                    <h2 class='form-h2' text="">Novo Agendamento</h2>
+                    <h2 class='form-h2' text="">Atualizar o seu agendamento</h2>
                     <form method="post" name="formCadastroAG">
                         <div class="input-group">
                                 <div class="form-group ">
@@ -60,6 +63,7 @@
                                         <option th:each  ="remedio : ${remedio}"
                                                 th:value ="${remedio.RM_ID}"
                                                 th:text  ="${remedio.RM_Nome}"
+                                                th:selected = "${agendamento.remedio.contains(remedio)}"
                                         ></option>
                                     </select>
                                 </div>
@@ -67,18 +71,18 @@
                         <small class="help">Selecione o Remédio</small>
 
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataInicio" name="AG_DataInicio">
+                            <input type="date" id="AG_DataInicio" name="AG_DataInicio" th:value="${agendamento.dataInicio}">
                         </div>
                         <small class="help">Data de Início</small>
 
                         <div class="input-group">
-                            <input id="AG_HoraInicio" type="time" name="AG_HoraInicio" value="00:00">
+                            <input id="AG_HoraInicio" type="time" name="AG_HoraInicio" th:value="${agendamento.horaInicio}">
                         </div>
 
                         <small class="help">Hora de Inicio</small>
 
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataFinal" name="AG_DataFinal">
+                            <input type="date" id="AG_DataFinal" name="AG_DataFinal" th:value="${agendamento.dataFinal}">
                         </div>
                         <small class="help">Data de Termino</small>
 
@@ -86,18 +90,10 @@
                         <div class="input-group">
                             <label></label>
                             <input placeholder="Ex: '1', '2'" type="text" id="AG_Periodicidade"
-                                   name="AG_Periodicidade"/>
+                                   name="AG_Periodicidade" th:value="${agendamento.periodicidade}"/>
 
                         </div>
                         <small>Periodicidade. De quantas em quantas horas pretende tomar o remédio.</small>
-
-                        <div class="input-group number">
-                            <label><input type="checkbox" onclick="desabilitar('sim')"> Adicionar Intervalo</label></label>
-                            <input placeholder="Número de dias de intervalo" type="number" id="intervaloDias"
-                                   name="intervaloDias" disabled/>
-                        </div>
-
-
 
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="/agendamentos" class="button cancel"></a>

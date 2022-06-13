@@ -17,66 +17,97 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     <body>
-        <!-- Menu Simples -->
-        <header>
-                <a class="icon-home" href="/"></a>
 
-                <a th:text="#{indexbutton.signup}" class="inicio-btn" href="/index"></a>
-                <a th:text="#{indexbutton.signup}" class="cadastrar-btn" href="/cadastro"></a>
+         <!-- Menu Simples -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div>
+                <a class="navbar-brand" href="/">
+                    <img alt="logo-icon" width="140px" src="/images/icon-home.png">
+                </a>
+            </div>
+            <div th:text="#{indextitle.text}" class="title-home"></div>
 
-                <select class="inter" id="locales">
-                    <option value="" th:text="#{alllanguage.change}"></option>
-                    <option value="en" th:text="#{alllanguage.english}"></option>
-                    <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
-                </select>
-        </header>
-        <!-- Formulário do Login -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span  class="navbar-toggler-icon"></span>
+            </button>
 
-        <div id="content">
-
-                <div class=" container col-12 col-sm-10 col-md-8 col-lg-5 col-lx-6">
-                    <div class="card formulario-card col-12">
-                        <div class="card-body d-flex flex-wrap justify-content-center">
-                            <a href="/">
-                                <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio">
-                            </a>
-                            <h3 th:text="#{loginsignin.text}"></h3>
-                            <form name="form" th:action="@{/login}" method="post" class="form-body">
-                                <div class="form-group">
-                                    <label th:text="#{loginlabel.email}"></label>
-                                    <input type="email"
-                                           class="form-control formulario-input"
-                                           id="username"
-                                           name="username"
-                                           aria-describedby="emailHelp"
-                                           placeholder="email@exemplo.com" required>
-
-                                </div>
-                                <div class="form-group">
-                                    <label th:text="#{loginlabel.password}"></label>
-                                    <input type="password" class="form-control formulario-input" minlength="8" id="password"
-                                           name="password"
-                                           placeholder="********" required>
-                                </div>
-                                <div class="form-group">
-
-                                    <button th:text="#{loginlogin.text}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
-                                    <p><a th:text="#{loginforget.password}" style="font-size:12px" href="/"></a></p>
-                                    <div class="line-break">
-                                        <span th:text="#{loginor.text}">
-                                        </span>
-                                    </div>
-                                    <p th:text="#{loginunsigned.text}"> </p> <p> <a th:text="#{loginsingup.text}" href="/cadastro"></a></p>
-                                </div>
-                                <label th:text="#{logininvalid.text}" th:if="${param.error}" class="alert alert-error">
-                                </label>
-                                <label th:text="#{loginlogout.text}" th:if="${param.logout}" class="alert alert-sucess">
-                                </label>
-                            </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <!--<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
+                    </li>-->
+                    <li>
+                        <select class="inter" id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
+                    </li>
+                    <li class="nav-item">
+                        <a th:text="#{navbar.index}" class="nav-link inicio-btn" href="/"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:text="#{cadbutton.createacc}" class="nav-link cadastrar-btn" href="/cadastro"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+           
+
+
+            <!-- Formulário do Login -->
+
+            <div class=" container d-flex justify-content-center col-12 col-sm-10 col-md-8 col-lg-5 col-lx-6">
+                <div class="card formulario-card col-12">
+                    <div class="card-body d-flex flex-wrap justify-content-center">
+                        <a href="/">
+                            <img class="formulario-icon" src="/images/icon.svg" alt="Ícone Meu Remédio">
+                        </a>
+                        <h3 th:text="#{loginsignin.text}"></h3>
+                        <form name="form" th:action="@{/login}" method="post" class="form-body">
+                            <div class="form-group">
+                                <label th:text="#{loginlabel.email}"></label>
+                                <input type="email"
+                                       class="form-control formulario-input"
+                                       id="username"
+                                       name="username"
+                                       aria-describedby="emailHelp"
+                                       placeholder="email@exemplo.com" required>
+
+                            </div>
+                            <div class="form-group">
+                                <label th:text="#{loginlabel.password}"></label>
+                                <input type="password" class="form-control formulario-input" minlength="8" id="password"
+                                       name="password"
+                                       placeholder="********" required>
+                            </div>
+                            <div class="form-group">
+
+                                <button th:text="#{loginlogin.text}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
+                                <p><a th:text="#{loginforget.password}" style="font-size:12px" href="/"></a></p>
+                                <div class="line-break">
+                                    <span th:text="#{loginor.text}">
+                                    </span>
+                                </div>
+                                <p th:text="#{loginunsigned.text}"> </p> <p> <a th:text="#{loginsingup.text}" href="/cadastro"></a></p>
+                            </div>
+                            <label th:text="#{logininvalid.text}" th:if="${param.error}" class="alert alert-error">
+                            </label>
+                            <label th:text="#{loginlogout.text}" th:if="${param.logout}" class="alert alert-sucess">
+                            </label>
+                        </form>
                     </div>
                 </div>
-        </div>
+            </div>
+        
 
 
         <!-- Estes scripts tratam dos arquivos .jsp correspondentes a cada página html -->
@@ -86,7 +117,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     </body>
