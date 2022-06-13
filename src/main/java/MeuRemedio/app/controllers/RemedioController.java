@@ -20,7 +20,9 @@ import java.sql.SQLException;
 
 @Controller
 public class RemedioController {
+
     private String username;
+
 
 
     @Autowired

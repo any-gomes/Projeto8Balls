@@ -60,3 +60,42 @@ const mensagem = document.getElementById("mensagemUnidade");
 mensagem.innerHTML = ""
 }
 
+
+
+function mensagemPeriodicidade(){
+const mensagem = document.getElementById("mensagemPeriodocidade");
+mensagem.innerHTML = "EX: 1, 2 ou 3 (horas)"
+}
+function retirarMensagemPeriodicidade(){
+const mensagem = document.getElementById("mensagemPeriodocidade");
+mensagem.innerHTML = ""
+}
+
+function mensagemDataFim(){
+const mensagem = document.getElementById("mensagemFimAgendamento");
+mensagem.innerHTML = "Informe a data de término do agendamento"
+}
+function retirarMensagemDataFim(){
+const mensagem = document.getElementById("mensagemFimAgendamento");
+mensagem.innerHTML = ""
+}
+
+function mensagemDataInicio(){
+const mensagem = document.getElementById("mensagemInicioAgendamento");
+mensagem.innerHTML = "Informe a data de início do agendamento"
+}
+function retirarMensagemDataInicio(){
+const mensagem = document.getElementById("mensagemInicioAgendamento");
+mensagem.innerHTML = ""
+}
+
+function mensagemHora(){
+const mensagem = document.getElementById("mensagemHora");
+mensagem.innerHTML = "Informe o horário que deverá tomar o remédio"
+}
+function retirarMensagemHora(){
+const mensagem = document.getElementById("mensagemHora");
+mensagem.innerHTML = ""
+}
+
+

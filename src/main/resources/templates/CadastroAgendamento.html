@@ -14,6 +14,7 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/style/homeStyle.css">
     <link rel="stylesheet" href="/style/cadastroRemedioStyle.css">
+    <link rel="stylesheet" href="/style/cadastroAgendamento.css">
     <link rel="stylesheet" href="/style/bootstrap-multiselect.css">
 
     <!-- Scrollbar Custom CSS -->
@@ -50,77 +51,80 @@
 
             <div class="modal">
                 <div class="text-center" id="form">
-                    <!--<img class="formulario-icon-cadastro" src="/assets/img/cadastro-form-icon.svg" alt="Ícone Meu Remédio"> -->
                     <h2 class='form-h2' text="">Novo Agendamento</h2>
                     <form method="post" name="formCadastroAG">
-                        <div class="input-group">
-                                <div class="form-group ">
-                                    <label class="sr-only">Escolha o Remédio</label>
-                                    <select id="AG_Remedios" class="form-control" name="AG_Remedios" multiple>
-                                        <option th:each  ="remedio : ${remedio}"
-                                                th:value ="${remedio.RM_ID}"
-                                                th:text  ="${remedio.RM_Nome}"
-                                        ></option>
-                                    </select>
-                                </div>
+
+                        <h4 style="text-align: center">Informe o período e o horário do agendamento</h4>
+                        <div class="input-group " data-provide="datepicker" id="AgInicio">
+                            <input type="date"
+                                   id="AG_DataInicio"
+                                   name="AG_DataInicio"
+                                   onMouseOver="mensagemDataInicio()"
+                                   onMouseOut = "retirarMensagemDataInicio()"
+                                   required="required">
+
+                            <input id="AG_HoraInicio"
+                                   type="time"
+                                   name="AG_HoraInicio"
+                                   value="00:00"
+                                   onMouseOver="mensagemHora()"
+                                   onMouseOut = "retirarMensagemHora()"
+                                   required="required">
+
+                            <input placeholder="Periodicidade"
+                                   type="number"
+                                   id="AG_Periodicidade"
+                                   name="AG_Periodicidade"
+                                   onMouseOver="mensagemPeriodicidade()"
+                                   onMouseOut = "retirarMensagemPeriodicidade()"
+                            />
+                            <input type="date"
+                                   id="AG_DataFinal"
+                                   name="AG_DataFinal"
+                                   placeholder="Data final"
+                                   onMouseOver="mensagemDataFim()"
+                                   onMouseOut = "retirarMensagemDataFim()"
+                                   required=""
+                            >
                         </div>
-                        <small class="help">Selecione o Remédio</small>
+                        <small><span id="mensagemPeriodocidade" class="help"></span></small>
+                        <small><span id="mensagemFimAgendamento" class="help"></span></small>
+                        <small><span id="mensagemInicioAgendamento" class="help"></span></small>
+                        <small><span id="mensagemHora" class="help"></span></small>
 
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataInicio" name="AG_DataInicio">
-                        </div>
-                        <small class="help">Data de Início</small>
-
-                        <div class="input-group">
-                            <input id="AG_HoraInicio" type="time" name="AG_HoraInicio" value="00:00">
-                        </div>
-
-                        <small class="help">Hora de Inicio</small>
-
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="date" id="AG_DataFinal" name="AG_DataFinal">
-                        </div>
-                        <small class="help">Data de Termino</small>
-
-                        <small class="help"></small>
-                        <div class="input-group">
-                            <label></label>
-                            <input placeholder="Ex: '1', '2'" type="text" id="AG_Periodicidade"
-                                   name="AG_Periodicidade"/>
-
-                        </div>
-                        <small>Periodicidade. De quantas em quantas horas pretende tomar o remédio.</small>
-
-                        <div class="input-group number">
-                            <label><input type="checkbox" onclick="desabilitar('sim')"> Adicionar Intervalo</label></label>
-                            <input placeholder="Número de dias de intervalo" type="number" id="intervaloDias"
-                                   name="intervaloDias" disabled/>
+                        <div id="intervaloDiasGrup" class="container">
+                            <div>
+                                <h4><label><input type="checkbox" onclick="desabilitar('sim')">Adicionar Intervalo</label></h4>
+                            </div>
+                             <div class="input-group">
+                                 <input style="min-width:2px"
+                                        placeholder="Número de dias"
+                                        type="number"
+                                        id="intervaloDias"
+                                        name="intervaloDias"
+                                        disabled/>
+                             </div>
                         </div>
 
-
+                        <h4 id="adcRemedioTitulo">Adicione o remédio ao agendamento</h4>
+                        <label class="sr-only">Escolha o Remédio</label>
+                        <select id="AG_Remedios" class="form-control" name="AG_Remedios" multiple>
+                            <option th:each  ="remedio : ${remedio}"
+                                    th:value =" ${remedio.RM_ID}"
+                                    th:text  =" ${remedio.RM_Nome}"
+                            >     </option>
+                        </select>
 
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="/agendamentos" class="button cancel"></a>
                             <button th:text="#{cadremform.submit}" name="action" id="confirmar" class="button save" type="submit"></button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
-
-
-
             </div>
         </div>
-
-
-
-
-
-
-
     </div>
 
         <div class="overlay"></div>
