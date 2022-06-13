@@ -81,6 +81,114 @@ body {
     text-align: center;
 }
 
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.navbar-toggler{
+    width: 150px;
+}
+
+/*Botoes*/
+.entrar-btn {
+    background: #fff;
+    background-color: #4FF4DB;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    border-radius: 117px;
+}
+
+.cadastrar-btn {
+    background: #fff;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    border-radius: 117px;
+    border: 3px solid #4FF4DB;
+}
+.inicio-btn {
+    background: #fff;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    border-radius: 117px;
+    border: 3px solid #4FF4DB;
+}
+
+.inter {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    border-radius: 117px;
+    border: 3px solid #4FF4DB;
+}
+
+
+/* == CONTENT == */
+.container{
+    margin-bottom: 15px;
+}
+#content {
+    z-index: -1;
+    width: 100%;
+    padding: 20px;
+    margin-top: 120px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.vl {
+    border-left: 3px solid #47748b;
+    height: 430px;
+}
+
+
+
+.card-title{
+    font-size: 2rem;
+}
+
 .title-func-home {
     width: 357px;
     height: 47px;
@@ -264,102 +372,5 @@ body {
     opacity: 1;
     text-align: center;
 }
-/*Botoes*/
-.entrar-btn {
-    background-color: #4FF4DB;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 27px;
-    text-align: center;
-    margin: 5px;
-    color: #081816;
-    padding: 5px;
-    height: 40px;
-    width: 115px;
-    border-radius: 117px;
-}
 
-.cadastrar-btn {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 27px;
-    text-align: center;
-    margin: 5px;
-    color: #081816;
-    padding: 5px;
-    height: 40px;
-    width: 115px;
-    border-radius: 117px;
-    border: 3px solid #4FF4DB;
-}
-.inicio-btn {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 27px;
-    text-align: center;
-    margin: 5px;
-    color: #081816;
-    padding: 5px;
-    height: 40px;
-    width: 115px;
-    border-radius: 117px;
-    border: 3px solid #4FF4DB;
-}
 
-.inter {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 27px;
-    text-align: center;
-    margin: 5px;
-    color: #081816;
-    padding: 5px;
-    height: 40px;
-    width: 115px;
-    border-radius: 117px;
-    border: 3px solid #4FF4DB;
-}
-
-.container{
-    margin-bottom: 15px;
-}
-#content {
-    z-index: -1;
-    width: 100%;
-    padding: 20px;
-    margin-top: 120px;
-    min-height: 100vh;
-    transition: all 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-}
-
-.vl {
-    border-left: 3px solid #47748b;
-    height: 430px;
-}
-
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-.navbar-toggler{
-    width: 150px;
-}
-
-.card-title{
-    font-size: 2rem;
-}
