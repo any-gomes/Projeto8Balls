@@ -96,25 +96,25 @@ public class NotificationService {
             }
         }
 
-        boolean isRecorrenciaVazio = verificarSeRecorrencia(agendamento);
-        if (!isRecorrenciaVazio) {
-            boolean recorrenciaHoje = verificarSeRecorrenciaHoje(agendamento, instanteAgora);
-            if (!recorrenciaHoje) return;
-        }
+//        boolean isRecorrenciaVazio = verificarSeRecorrencia(agendamento);
+//        if (!isRecorrenciaVazio) {
+//            boolean recorrenciaHoje = verificarSeRecorrenciaHoje(agendamento, instanteAgora);
+//            if (!recorrenciaHoje) return;
+//        }
 
         for (LocalDateTime localDateTime : horasRemedio) {
             if (instanteAgora.isEqual(localDateTime)) {
-                getDadosUsuario(agendamento);
+                getDadosUsuario(agendamento, instanteAgora);
                 break;
             }
         }
     }
 
     //Chama a classe email controller
-    public void getDadosUsuario(Agendamento agendamento){
+    public void getDadosUsuario(Agendamento agendamento, LocalDateTime instanteAgora){
         List<Remedio> remedios = agendamento.getRemedio();   // Recebe todos os remédios associados ao agendamento
         Usuario usuario = remedios.get(0).getUsuario();    // Recebe dados do usuário associado ao primeiro remédio da lista
-        envioEmailController.emailNotificacaoRemedio(usuario, remedios);
+        envioEmailController.emailNotificacaoRemedio(usuario, remedios, instanteAgora);
     }
 
     //Verifica se o agendamento em questão possui intervalo de dias na tabela intervalo_dias
@@ -122,33 +122,33 @@ public class NotificationService {
         Optional<IntervaloDias> intervaloDias = intervaloDiasRepository.findById(agendamento.getId());
         return intervaloDias.isPresent();
     }
-
-    //Verifica se o agendamento em questão possui uma recorrência associada na tabela recorrencia
-    public boolean verificarSeRecorrencia(Agendamento agendamento){
-     List<Recorrencia> recorrencia = recorrenciaRepository.findAllById(Collections.singleton(agendamento.getId()));
-     return recorrencia.isEmpty();
-    }
-
-    //Método que verifica se o dia da semana de hoje é igual à alguma recorrência do Agendamento
-    public boolean verificarSeRecorrenciaHoje(Agendamento agendamento, LocalDateTime instanteAgora){
-        boolean diaRemedio = false;
-        List<Recorrencia> recorrencia = recorrenciaRepository.findAllById
-                (Collections.singleton(agendamento.getId())); //Recebe todas as recorrências para este ID
-
-        Date hojeDate = Date.from(instanteAgora.atZone(ZoneId.of("America/Sao_Paulo")).toInstant());
-        Calendar c = Calendar.getInstance();
-        c.setTime(hojeDate);
-        int diaSemanaHoje = c.get(Calendar.DAY_OF_WEEK); //Recebe o dia de hoje em semana
-
-        //Verifica se dia da semana hoje é igual a algum dia de semana cadastrado em recorrencia para este ID
-        for (Recorrencia value : recorrencia) {
-            if (value.getDiaSemana() == diaSemanaHoje) {
-                diaRemedio = true;
-                break;
-            }
-        }
-        return diaRemedio;
-    }
+//
+//    //Verifica se o agendamento em questão possui uma recorrência associada na tabela recorrencia
+//    public boolean verificarSeRecorrencia(Agendamento agendamento){
+//     List<Recorrencia> recorrencia = recorrenciaRepository.findAllById(Collections.singleton(agendamento.getId()));
+//     return recorrencia.isEmpty();
+//    }
+//
+//    //Método que verifica se o dia da semana de hoje é igual à alguma recorrência do Agendamento
+//    public boolean verificarSeRecorrenciaHoje(Agendamento agendamento, LocalDateTime instanteAgora){
+//        boolean diaRemedio = false;
+//        List<Recorrencia> recorrencia = recorrenciaRepository.findAllById
+//                (Collections.singleton(agendamento.getId())); //Recebe todas as recorrências para este ID
+//
+//        Date hojeDate = Date.from(instanteAgora.atZone(ZoneId.of("America/Sao_Paulo")).toInstant());
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(hojeDate);
+//        int diaSemanaHoje = c.get(Calendar.DAY_OF_WEEK); //Recebe o dia de hoje em semana
+//
+//        //Verifica se dia da semana hoje é igual a algum dia de semana cadastrado em recorrencia para este ID
+//        for (Recorrencia value : recorrencia) {
+//            if (value.getDiaSemana() == diaSemanaHoje) {
+//                diaRemedio = true;
+//                break;
+//            }
+//        }
+//        return diaRemedio;
+//    }
 
     //Converte a data inicío para LocalDate no formato adequado
     public LocalDate getDataInicio(Agendamento agendamento){

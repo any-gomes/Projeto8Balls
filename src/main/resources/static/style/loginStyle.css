@@ -1,21 +1,23 @@
 body{
-    margin: 7%;
     font-family: 'Roboto', sans-serif;
-    background-color: #F2FFFD;
+    /*background-color: #F2FFFD;*/
 }
 /* Header */
-header{
-    position: fixed;
-    z-index: 1;
-    background: #ffffff00;
-    padding: 35px;
-    width: calc(100% - 0%);
-    top: 0;
-    height: 30px;
+
+.title-home{
+     /* H4 - Regular */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 32px;
+    text-align: justify;
+    color: #181A19;
+    margin-top: -15px;
 }
 
 /* Botões*/
 .cadastrar-btn {
+    background: #fff;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -28,12 +30,10 @@ header{
     height: 40px;
     width: 115px;
     border-radius: 117px;
-    right: 130px;
-    top: 10px;
-    position: absolute;
     border: 3px solid #4FF4DB;
 }
 .inicio-btn {
+    background: #fff;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -46,9 +46,6 @@ header{
     height: 40px;
     width: 115px;
     border-radius: 117px;
-    right: 130px;
-    top: 10px;
-    position: absolute;
     border: 3px solid #4FF4DB;
 }
 
@@ -65,31 +62,20 @@ header{
     height: 40px;
     width: 115px;
     border-radius: 117px;
-    right: 255px;
-    top: 10px;
-    position: absolute;
     border: 3px solid #4FF4DB;
 }
-
-.nav-lista{
-    width: 25%;
-    list-style: none;
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
-.nav-lista-item{
-    width: 85%;
-    color: #181A19;
-    font-family: 'Roboto';
-    font-style: normal;
-    text-align:center;
+.navbar-toggler{
+    width: 150px;
 }
-.nav-lista-item a {
-    text-decoration: none;
-    color: #181A19;
-    font-family: 'Roboto';
-    font-style: normal;
 
 
-}
 /* Main */
 .pillbox-img{
     width: 55%;

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -35,22 +36,27 @@ public class EnvioEmailController {
         emailService.sendEmail(usuario, assunto, mensagem );
     }
 
-    public void emailCadastroRemedio(Usuario usuario){
+    public void emailCadastroRemedio(Usuario usuario, Remedio remedios){
         String assunto = MensagemEmail.REMEDIO_CADASTRADO.getDescricao();
-        String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao();
+        String msg = MensagemEmail.CADASTRO_REMEDIO.getDescricao() + remedios.getRM_Nome() + "''. " +
+                "Fique atento aos horários e siga as restrições médicas !";
 
         emailService.sendEmail(usuario, assunto, msg);
     }
 
-    public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios){
+    public void emailNotificacaoRemedio(Usuario usuario, List<Remedio> remedios, LocalDateTime instanteAgora){
         String assunto = MensagemEmail.NOTIFICACAO_REMEDIO.getDescricao();
 
-        StringBuilder remediosString = new StringBuilder(" ");
+        String horaFormatada = instanteAgora.getHour() + ":" + instanteAgora.getMinute();
+        StringBuilder remediosString = new StringBuilder("");
         for (Remedio remedio : remedios) {
-            remediosString.append(remedio.getRM_Nome()).append("\n");
+            remediosString.append(remedio.getRM_Nome()    + " " +
+                                  remedio.getRM_Dosagem() + " " +
+                                  remedio.getRM_UnidadeDosagem())
+            .append("\n");
         }
         String msg = "Olá, " + usuario.getNome() + " " + usuario.getSobrenome() +
-                "! Já está na hora de tomar os seus remédios, que são: \n" + remediosString;
+                "! Agora são " + horaFormatada + " e já está na hora de tomar os seus remédios: \n" + remediosString;
 
         emailService.sendEmail(usuario, assunto, msg);
     }

@@ -48,7 +48,7 @@ public class Agendamento implements Serializable {
     @Column(name = "AG_UsuarioID")
     private Long usuarioID;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name="AgendamentoRemedio",
             joinColumns= {@JoinColumn(name="agendamento_ag_id")},
             inverseJoinColumns = {@JoinColumn(name="remedio_rm_id")})

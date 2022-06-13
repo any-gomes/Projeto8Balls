@@ -1,165 +1,160 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="#{indextitle.text}"></title>
-    <link rel="icon" href="/images/icon.svg"/>
-    <!-- Link do bootstrap (CSS) bolado -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style/indexStyle.css">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="#{indextitle.text}"></title>
+        <link rel="icon" href="/images/icon.svg"/>
+        <!-- Google Fonts API -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"/>
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Our Custom CSS -->
+        <!-- href Correto = /style/homeStyle.css-->
+        <link rel="stylesheet" href="/style/indexStyle.css">
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+                integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+                integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+    </head>
+
+    <body>
 
 
-    <!-- teste-->
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="/style/homeStyle.css">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-            crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-            crossorigin="anonymous"></script>
+        <!-- HEADER -->
 
 
-</head>
-
-<body>
-<header>
-
-
-    <a class="icon-home" href="/"></a>
-    <div th:text="#{indextitle.text}" class="title-home"></div>
-    <a th:text="#{indexbutton.login}" class="entrar-btn" href="/login"></a>
-    <a th:text="#{indexbutton.signup}" class="cadastrar-btn" href="/cadastro"></a>
-
-    <select class="inter" id="locales">
-        <option value="" th:text="#{alllanguage.change}"></option>
-        <option value="en" th:text="#{alllanguage.english}"></option>
-        <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
-    </select>
-
-</header>
-<div id="content">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-        <div class="container container-fluid text-center">
-
-            <img src="/images/banner-home.png" class="img-fluid" alt="Responsive image">
-
-        </div>
-    </nav>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="jumbotron">
-
-
-            <selection class="jumbotron text-center">
-                <div class="container col-12">
-                    <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
-                    <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está
-                        utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS
-                        gratuitamente.</p>
-
-                </div>
-            </selection>
-        </div>
-
-    </nav>
-    <div class="line"></div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-        <div class="container-fluid">
-
-            <!-- funcionalidades -->
-            <!-- Notificações -->
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/images/notificacao.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Central de Notificações</h5>
-                    <p class="card-text">Mantém você sempre informado sobre os horários de seus remédios.</p>
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-            </div>
-
-            <!-- Controle de gastos -->
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/images/financeiro.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Controle de Gastos</h5>
-                    <p class="card-text">Permite que você controle seus gastos com remédios cadastrados.</p>
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-            </div>
-
-            <!-- Calendário -->
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/images/calcendario.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Calendário</h5>
-                    <p class="card-text">Para você visualizar seus agendamentos no calendário.</p>
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-            </div>
-
-            <!-- Categorização -->
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/images/remedio.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Categorização</h5>
-                    <p class="card-text">Permite que você categorize os remédios cadastrados.</p>
-                    <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
-                </div>
-            </div>
-
-        </div>
-    </nav>
-
-
-
-
-
-<!--
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container container-fluid text-center">
-                <div class="linha-func-home"></div>
-                <div class="func-home-1"></div>
-                <span th:text="#{indexfunctions.notifications}" class="func-1"></span>
-                <span th:text="#{indexnotifications.text}" class="text-func-home"></span>
+            <div>
+                <a class="navbar-brand" href="/">
+                    <img alt="logo-icon" width="150px" src="/images/icon-home.png">
+                </a>
+            </div>
+            <div th:text="#{indextitle.text}" class="title-home"></div>
 
-                <div class="func-home-2"></div>
-                <span th:text="#{indexfunctions.balance}" class="func-2"></span>
-                <span th:text="#{indexbalance.text}" class="text-func-home-2"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span  class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="func-home-3"></div>
-                <span th:text="#{indexfunctions.calendar}" class="func-3"></span>
-                <span th:text="#{indexcalendar.text}" class="text-func-home-3"></span>
-
-                <div class="func-home-4"></div>
-                <span th:text="#{indexfunctions.categories}" class="func-4"></span>
-                <span th:text="#{indexcategories.text}" class="text-func-home-4"></span>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <select class="inter" id="locales">
+                            <option value="" th:text="#{alllanguage.change}"></option>
+                            <option value="en" th:text="#{alllanguage.english}"></option>
+                            <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
+                        </select>
+                    </li>
+                    <li class="nav-item">
+                        <a th:text="#{indexbutton.signup}" class="nav-link cadastrar-btn" href="/cadastro"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:text="#{indexbutton.login}" class="nav-link cadastrar-btn" href="/login"></a>
+                    </li>
+                </ul>
             </div>
         </nav>
 
--->
 
-</div>
 
-<!-- Estes scripts tratam dos arquivos .jsp correspondentes a cada página html -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="/script/index.jsp"></script>
+        <!<!-- CONTENT -->
+        <div id="content">
 
-</body>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12">
+                        <img src="/images/banner-home.png" class="img-fluid" alt="Responsive image">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="jumbotron col-lg-12 col-md-12">
+                <selection class="jumbotron text-center">
+                    <div class="container col-12">
+                        <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
+                        <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está
+                            utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS
+                            gratuitamente.</p>
+
+                    </div>
+                </selection>
+            </div>
+
+
+
+            <div class="container">
+                
+                <!-- Funcionalidades -->
+                <div class="row">
+                    
+                    <!-- Notificações -->
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card">
+                            <img class="card-img-top" src="/images/notificacao.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Central de Notificações</h5>
+                                <p class="card-text">Mantém você sempre informado sobre os horários de seus remédios.</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controle de gastos -->
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card" >
+                            <img class="card-img-top" src="/images/financeiro.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Controle de Gastos</h5>
+                                <p class="card-text">Permite que você controle seus gastos com remédios cadastrados.</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calendário -->
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card" >
+                            <img class="card-img-top" src="/images/calcendario.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Calendário</h5>
+                                <p class="card-text">Para você visualizar seus agendamentos no calendário.</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categorização -->
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card" >
+                            <img class="card-img-top" src="/images/remedio.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Categorização</h5>
+                                <p class="card-text">Permite que você categorize os remédios cadastrados.</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
+                <!-- Fim da Row -->
+                </div>
+            </div>
+        </div>
+
+        <!-- correto =  /script/index.jsp-->
+        <script src="static/script/index.jsp"></script>
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
 
 
 </html>

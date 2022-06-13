@@ -1,5 +1,3 @@
-
-
 //Esta funcao se encarrega de trocar o idioma da p�gina
 $(document).ready(function () {
         
@@ -70,4 +68,6 @@ function validaData() {
     // se for maior que 60 não vai acontecer nada!
     return false;
 }
+
+
 

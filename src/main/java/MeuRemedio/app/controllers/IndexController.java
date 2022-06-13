@@ -1,4 +1,4 @@
-package MeuRemedio.app.controllers;
+package MeuRemedio.app.controllers.login;
 
 
 import MeuRemedio.app.service.utils.Authentication;
