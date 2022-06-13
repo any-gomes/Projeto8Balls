@@ -4,22 +4,49 @@ body{
 }
 /* Header */
 header{
-    background: #ffffff00;
-    height: 7vh;
+    position: fixed;
+    z-index: 1;
+    background: #ffffff;
+    padding: 35px;
+    width: calc(100% - 0%);
+    top: 0;
+    height: 30px;
 }
 /* Botões*/
 .idioma-btn {
+     font-family: 'Roboto';
+    font-style: normal;
     font-weight: 400;
     font-size: 17px;
     line-height: 27px;
-    text-decoration: none;
     text-align: center;
     margin: 5px;
     color: #081816;
     padding: 5px;
     height: 40px;
-    width: 114px;
+    width: 115px;
     border-radius: 117px;
+    right: 255px;
+    top: 10px;
+    position: absolute;
+    border: 3px solid #4FF4DB;
+}
+.inicio-btn {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    text-align: center;
+    margin: 5px;
+    color: #081816;
+    padding: 5px;
+    height: 40px;
+    width: 115px;
+    border-radius: 117px;
+    right: 130px;
+    top: 10px;
+    position: absolute;
     border: 3px solid #4FF4DB;
 }
 .login-btn {
@@ -34,6 +61,9 @@ header{
     height: 40px;
     width: 114px;
     border-radius: 117px;
+    right: 130px;
+    top: 10px;
+    position: absolute;
     border: 3px solid #4FF4DB;
 }
 /* Main */

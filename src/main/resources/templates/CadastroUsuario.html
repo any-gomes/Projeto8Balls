@@ -20,10 +20,10 @@
 
     <body>
     <!-- Menu Simples -->
-        <header>
-            <nav class="navbar fixed-top">
+    <header>
+            <nav class="navbar sticky-top">
                 <div class="ml-auto">
-                    <select class="idioma-btn " id="locales">
+                    <select class="idioma-btn" id="locales">
                         <option value="" th:text="#{alllanguage.change}">Idioma</option>
                         <option value="en" th:text="#{alllanguage.english}"></option>
                         <option value="pt_BR" th:text="#{alllanguage.portuguese}"></option>
@@ -31,7 +31,7 @@
                     <a class="login-btn" th:text="#{indexbutton.login}" href="/login">Entrar</a>
                 </div>
             </nav>
-        </header>
+       </header>
 
         <main>
                 <!-- Formulario do Login -->
