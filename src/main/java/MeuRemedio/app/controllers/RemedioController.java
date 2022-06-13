@@ -1,5 +1,8 @@
 package MeuRemedio.app.controllers;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 837c82d1776530e9c6a76d05cae479574b1e0d3a
 
 
 import MeuRemedio.app.models.remedios.Remedio;
