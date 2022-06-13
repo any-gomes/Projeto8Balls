@@ -61,7 +61,9 @@
                                    name="AG_DataInicio"
                                    onMouseOver="mensagemDataInicio()"
                                    onMouseOut = "retirarMensagemDataInicio()"
-                                   required="required">
+                                   required="required"
+                                   th:value="${agendamento.dataInicio}"
+                            >
 
                             <input id="AG_HoraInicio"
                                    type="time"
@@ -69,7 +71,8 @@
                                    value="00:00"
                                    onMouseOver="mensagemHora()"
                                    onMouseOut = "retirarMensagemHora()"
-                                   required="required">
+                                   required="required"
+                                   th:value="${agendamento.horaInicio}">
 
                             <input placeholder="Periodicidade"
                                    type="number"
@@ -77,14 +80,17 @@
                                    name="AG_Periodicidade"
                                    onMouseOver="mensagemPeriodicidade()"
                                    onMouseOut = "retirarMensagemPeriodicidade()"
+                                   th:value="${agendamento.periodicidade}"
+                                   required="required"
                             />
                             <input type="date"
                                    id="AG_DataFinal"
                                    name="AG_DataFinal"
-                                   required=""
+                                   required="required"
                                    placeholder="Data final"
                                    onMouseOver="mensagemDataFim()"
                                    onMouseOut = "retirarMensagemDataFim()"
+                                   th:value="${agendamento.dataFinal}"
 
                             >
                         </div>
@@ -103,6 +109,7 @@
                                        type="number"
                                        id="intervaloDias"
                                        name="intervaloDias"
+                                       th:value="${intervaloDias.isPresent() ? intervaloDias.get().intervaloDias: ''}"
                                        disabled/>
                             </div>
                         </div>
@@ -113,16 +120,9 @@
                             <option th:each  ="remedio : ${remedio}"
                                     th:value =" ${remedio.RM_ID}"
                                     th:text  =" ${remedio.RM_Nome}"
+                                    th:selected = "${agendamento.remedio.contains(remedio)}"
                             ></option>
                         </select>
-
-                        <div class="input-group number">
-                            <label><input type="checkbox" onclick="desabilitar('sim')"> Adicionar Intervalo</label></label>
-
-                            <input placeholder="Número de dias de intervalo" type="number" id="intervaloDias"
-                                   name="intervaloDias" disabled th:value="${intervaloDias.isPresent() ? intervaloDias.get().intervaloDias: ''}"/>
-                        </div>
-
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="/agendamentos" class="button cancel"></a>
                             <button name="action" id="confirmar" class="button save" type="submit">Atualizar</button>
