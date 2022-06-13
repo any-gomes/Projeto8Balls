@@ -1,5 +1,6 @@
 package MeuRemedio.app.controllers;
 
+
 import MeuRemedio.app.models.remedios.Remedio;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.RemedioRepository;
@@ -19,6 +20,11 @@ import java.sql.SQLException;
 
 @Controller
 public class RemedioController {
+
+    private String username;
+
+
+
     @Autowired
     EnvioEmailController emailController;
 
