@@ -7,6 +7,15 @@
 }*/
 
 
+header{
+    position: fixed;
+    z-index: 1;
+    background: #ffffff;
+    padding: 35px;
+    width: calc(100% - 0%);
+    top: 0;
+    height: 30px;
+}
 
 body {
     margin: 0;
@@ -30,13 +39,13 @@ body {
 
 .title-home {
     /* H4 - Regular */
-    font-style: normal;
+    font-family: "Roboto";
     font-weight: 400;
-    font-size: 4rem;
+    font-size: 2rem;
     line-height: 32px;
     text-align: justify;
-    color: #181A19;
-    margin-top: -15px;
+    color: #38CFB8;
+    margin-top: -25px;
 }
 
 .banner-home {
