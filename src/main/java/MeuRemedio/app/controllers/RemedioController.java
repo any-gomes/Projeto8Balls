@@ -24,7 +24,6 @@ public class RemedioController {
     private String username;
 
 
-
     @Autowired
     EnvioEmailController emailController;
 

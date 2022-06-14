@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 public class DataConfiguration {
 
 
-//    @Bean
+//    @Bean Metodo para base de dados locais
 //    public DataSource datasource() {
 //        try {
 //            DriverManagerDataSource driver = new DriverManagerDataSource();
@@ -35,7 +35,7 @@ public class DataConfiguration {
         try {
             HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
             adapter.setDatabase(Database.POSTGRESQL);
-            adapter.setShowSql(true);
+            adapter.setShowSql(false); //Desabilitado o log no console
             adapter.setGenerateDdl(true);
             adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL10Dialect");
             adapter.setPrepareConnection(true);
