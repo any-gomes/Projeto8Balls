@@ -51,7 +51,7 @@ public class UsuarioController {
         usuarioRepository.save(usuarioCadastro);
         emailCadastro.emailConfirmCadastro(usuarioCadastro);
 
-        return "redirect:/";
+        return "redirect:/login";
     }
     @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.GET)
     public String viewAtualizarUsuario(Model model){
