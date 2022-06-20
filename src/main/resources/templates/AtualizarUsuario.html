@@ -81,6 +81,8 @@
                             <select id="US_Sexo" name="US_Sexo" class="formulario-input">
                                 <option th:text="#{cadselect.female}" value="Feminino"></option>
                                 <option th:text="#{cadselect.male}" value="Masculino"></option>
+                                <option th:text="#{cadselect.other}" value="Outro"></option>
+                                <option th:text="#{cadselect.null}" value="Não informar"></option>
                             </select>
 
                             <input
@@ -104,8 +106,17 @@
                                    required
                             >
 
+                            <input th:placeholder="#{cadplaceholder.newpassword}"
+                                   type="password"
+                                   id="US_NovaSenha"
+                                   name="US_NovaSenha"
+                                   class="formulario-input"
+                                   minlength="8"
+                            >
+
                             <span id="error-email" style="color:#FF8A8A; display:block"></span>
                             <span id="error-date" style="color:#FF8A8A; display:block"></span>
+                            <small>Campo com * são obrigatórios</small>
 
                             <button th:text="#{alterarUsuarioCard.button}" id="cadastrar" name="action" class="formulario-button" type="submit"></button>
 

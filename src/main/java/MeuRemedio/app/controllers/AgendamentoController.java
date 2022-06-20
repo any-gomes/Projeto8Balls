@@ -71,14 +71,6 @@ public class AgendamentoController {
         usuarioID.setId(userSessionService.returnIdUsuarioLogado());
         List <Remedio> remedio  = remedioRepository.findAllByUsuario(usuarioID);
 
-        for (Remedio rm: remedio) {
-             List <String> rm_remediosNome = new ArrayList<>();
-             rm_remediosNome.add(rm.getRM_Nome());
-
-            Collections.sort(rm_remediosNome);
-            System.out.println(rm_remediosNome);
-        }
-
         model.addAttribute("remedio", remedio);
         return "CadastroAgendamento";
     }

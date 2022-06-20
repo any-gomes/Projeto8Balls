@@ -10,4 +10,6 @@ import java.util.List;
 public interface AgendamentoRepository extends CrudRepository<Agendamento, Long> {
     Agendamento findById (long id);
     List<Agendamento> findAllByUsuarioID(Long usuarioID);
+
+
 }
