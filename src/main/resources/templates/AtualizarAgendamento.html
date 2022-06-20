@@ -51,14 +51,15 @@
 
             <div class="modal">
                 <div class="text-center" id="form">
-                    <h2 class='form-h2' text="">Novo Agendamento</h2>
+                    <h2 class='form-h2' text="" th:text="#{attage.title}"></h2>
                     <form method="post" name="formCadastroAG">
 
-                        <h4 style="text-align: center">Informe o período e o horário do agendamento</h4>
+                        <h4 style="text-align: center" th:text="#{cadage.text}"></h4>
                         <div class="input-group " data-provide="datepicker" id="AgInicio">
                             <input type="date"
                                    id="AG_DataInicio"
                                    name="AG_DataInicio"
+                                   th:placeholder="#{cadageform.begindate}"
                                    onMouseOver="mensagemDataInicio()"
                                    onMouseOut = "retirarMensagemDataInicio()"
                                    required="required"
@@ -72,6 +73,7 @@
                                    onMouseOver="mensagemHora()"
                                    onMouseOut = "retirarMensagemHora()"
                                    required="required"
+                                   th:placeholder="#{cadageform.initialhour}"
                                    th:value="${agendamento.horaInicio}">
 
                             <input placeholder="Periodicidade"
@@ -80,6 +82,7 @@
                                    name="AG_Periodicidade"
                                    onMouseOver="mensagemPeriodicidade()"
                                    onMouseOut = "retirarMensagemPeriodicidade()"
+                                   th:placeholder="#{cadageform.frequency}"
                                    th:value="${agendamento.periodicidade}"
                                    required="required"
                             />
@@ -90,6 +93,7 @@
                                    placeholder="Data final"
                                    onMouseOver="mensagemDataFim()"
                                    onMouseOut = "retirarMensagemDataFim()"
+                                   th:placeholder="#{cadageform.finaldate}"
                                    th:value="${agendamento.dataFinal}"
 
                             >
@@ -101,11 +105,11 @@
 
                         <div id="intervaloDiasGrup" class="container">
                             <div>
-                                <h4><label><input type="checkbox" onclick="desabilitar('sim')">Adicionar Intervalo</label></h4>
+                                <h4><label><input type="checkbox" onclick="desabilitar('sim')" th:text="#{cadageform.text}" ></label></h4>
                             </div>
                             <div class="input-group">
                                 <input style="min-width:2px"
-                                       placeholder="Número de dias"
+                                       th:placeholder="#{cadageform.numberdays}"
                                        type="number"
                                        id="intervaloDias"
                                        name="intervaloDias"
@@ -114,8 +118,8 @@
                             </div>
                         </div>
 
-                        <h4 id="adcRemedioTitulo">Adicione o remédio ao agendamento</h4>
-                        <label class="sr-only">Escolha o Remédio</label>
+                        <h4 id="adcRemedioTitulo" th:text="#{cadageform.addremedy}"></h4>
+                        <label class="sr-only" th:text="#{cadageform.chooseremedy}"></label>
                         <select id="AG_Remedios" class="form-control" name="AG_Remedios" multiple>
                             <option th:each  ="remedio : ${remedio}"
                                     th:value =" ${remedio.RM_ID}"
@@ -125,7 +129,7 @@
                         </select>
                         <div class="input-group actions">
                             <a th:text="#{cadremform.cancel}" id="cancelar" href="/agendamentos" class="button cancel"></a>
-                            <button name="action" id="confirmar" class="button save" type="submit">Atualizar</button>
+                            <button name="action" id="confirmar" class="button save" type="submit" th:text="#{cadremform.submit}"></button>
                         </div>
                     </form>
                 </div>

@@ -51,10 +51,8 @@
 
             <selection class="jumbotron text-center">
                 <div class="container">
-                    <h1 class="jumbotron-heading footer">Bem Vindo ao Meu Remédio!</h1>
-                    <p class="lead text-muted footer">Aqui você conseguirá realizar o controle dos remédios que está
-                        utilizando, ver o quanto está gastando com eles e verificar se o medicamento está disponível no SUS
-                        gratuitamente.</p>
+                    <h1 class="jumbotron-heading footer" th:text="#{indexwelcome.text}"></h1>
+                    <p class="lead text-muted footer" th:text="#{indextext.text}"></p>
 
                 </div>
             </selection>
@@ -65,21 +63,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-lx-5 text-center">
-                    <h2>Notificações Ativas</h2>
+                    <h2 th:text="#{homenotification.text}"></h2>
                     <p></p>
 
                     <div class="text-center">
-                        <button type="button" class="btn btn-info"  onclick="location.href='/agendamentos'">Mais Detalhes</button>
+                        <button type="button" class="btn btn-info"  onclick="location.href='/agendamentos'" th:text="#{homedetails.text}"></button>
                     </div>
                 </div>
 
                 <!-- DIV 2 -->
                 <!--<div class="vl"></div> -->
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-lx-6">
-                    <h2 class="gastos text-center">Gastos mensais </h2>
+                    <h2 class="gastos text-center" th:text="#{homespending.text}"></h2>
                     <img src="/images/img1.jpg" style="width:100%">
                     <div class="text-center">
-                        <button type="button" class="btn btn-info">Mais Detalhes</button>
+                        <button type="button" class="btn btn-info" th:text="#{homedetails.text}"></button>
                     </div>
                 </div>
             </div>
@@ -88,10 +86,10 @@
         <!-- DIV 3-->
         <div class="line"></div>
         <div class="text-center">
-            <h2>Agenda</h2>
+            <h2 th:text="#{homecalendar.text}"></h2>
             <img src="/images/agenda.jpg" style="width:50%">
             <div class="text-center">
-                <button type="button" class="btn btn-info">Mais Detalhes</button>
+                <button type="button" class="btn btn-info" th:text="#{homedetails.text}"></button>
             </div>
 
 
@@ -109,7 +107,7 @@
                     <a href="mailto:8balls.integratedproject@gmail.com">8balls.integratedproject@gmail.com</a>
                 </h5>
                 <h5>
-                    Rua Um dois Três, 8 – Jardins – São Paulo (SP)
+                    R. Pedro Vicente, 625 - Canindé, São Paulo - SP, 01109-010
                 </h5>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <!-- Arquivo HTML para a página de cadastro de usuários -->
 
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:tg="https://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
                     <img alt="logo-icon" width="140px" src="/images/icon-home.png">
                 </a>
             </div>
-            <div th:text="#{indextitle.text}" class="title-home"></div>
+<!--            <div th:text="#{indextitle.text}" class="title-home"></div>-->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span  class="navbar-toggler-icon"></span>
@@ -34,17 +34,6 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>-->
                     <li>
                         <select class="inter" id="locales">
                             <option value="" th:text="#{alllanguage.change}"></option>
@@ -56,7 +45,7 @@
                         <a th:text="#{navbar.index}" class="nav-link inicio-btn" href="/"></a>
                     </li>
                     <li class="nav-item">
-                        <a th:text="#{indexbutton.login}" class="nav-link login-btn" href="/login"></a>
+                        <a th:text="#{indexbutton.login}" class="nav-link inicio-btn" href="/login"></a>
                     </li>
                 </ul>
             </div>
@@ -101,6 +90,8 @@
                         <select id="US_Sexo" name="US_Sexo" class="formulario-input" required="">
                             <option th:text="#{cadselect.female}" value="Feminino"></option>
                             <option th:text="#{cadselect.male}" value="Masculino"></option>
+                            <option th:text="#{cadselect.other}" value="Outro"></option>
+                            <option th:text="#{cadselect.null}" value="Não informar"></option>
 
                         </select>
 

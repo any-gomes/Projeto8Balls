@@ -1,22 +1,23 @@
 package MeuRemedio.app.controllers;
 
-import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsuarioController {
     @Autowired
     EnvioEmailController emailCadastro;
+
+
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -51,7 +52,7 @@ public class UsuarioController {
         usuarioRepository.save(usuarioCadastro);
         emailCadastro.emailConfirmCadastro(usuarioCadastro);
 
-        return "redirect:/";
+        return "redirect:/login";
     }
     @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.GET)
     public String viewAtualizarUsuario(Model model){
@@ -68,15 +69,24 @@ public class UsuarioController {
 
         String EmailUsuarioLogado = userSessionService.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
+        String passUserLogged = usuarioLogado.getPassword();
 
-        usuarioLogado.setNome(nome);
-        usuarioLogado.setSobrenome(sobrenome);
-        usuarioLogado.setSexo(sexo);
-        usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(senha));
 
-        usuarioRepository.save(usuarioLogado);
+        if (BCrypt.checkpw(senha, passUserLogged)) {
+            usuarioLogado.setNome(nome);
+            usuarioLogado.setSobrenome(sobrenome);
+            usuarioLogado.setSexo(sexo);
+            usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(senha));
 
-        return "redirect:/home";
+            usuarioRepository.save(usuarioLogado);
+
+            return "redirect:/home";
+        }else{
+            return "TemplateError";
+        }
+
     }
-
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

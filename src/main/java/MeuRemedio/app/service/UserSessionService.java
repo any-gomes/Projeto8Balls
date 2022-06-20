@@ -36,4 +36,12 @@ public class UserSessionService {
 
         return idUserLogado ;
     }
+    public String senha () {
+        String passUserLogado;
+
+        Usuario usuarioLogado = usuarioRepository.findByEmail(returnUsernameUsuario());
+        passUserLogado = usuarioLogado.getPassword();
+
+        return passUserLogado ;
+    }
 }
