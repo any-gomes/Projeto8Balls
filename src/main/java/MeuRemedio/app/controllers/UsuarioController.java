@@ -63,24 +63,32 @@ public class UsuarioController {
 
     @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.POST)
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
-                                   @RequestParam("US_Senha") String senha, @RequestParam(value = "US_NovaSenha", required = false) String novaSenha,
-                                   @RequestParam("US_Sexo") String sexo) {
+                                   @RequestParam("US_Senha") String senha, @RequestParam(value = "US_NovaSenha", required = false) String novaSenha,   @RequestParam("US_Sexo") String sexo){
 
         String EmailUsuarioLogado = userSessionService.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
-        String senhaAtualUsuario = usuarioLogado.getPassword();
+        String passUserLogged = usuarioLogado.getPassword();
 
+        boolean validarSenha = false;
 
-        if ((BCrypt.checkpw(senha, senhaAtualUsuario)) && (novaSenha == null || novaSenha.equals(""))) {
-            usuarioLogado.setNome(nome);
-            usuarioLogado.setSobrenome(sobrenome);
-            usuarioLogado.setSexo(sexo);
-            usuarioRepository.save(usuarioLogado);
+        if (BCrypt.checkpw(senha, passUserLogged)){
+            validarSenha = true;
 
-            return "redirect:/";
+            if (validarSenha && (novaSenha.isEmpty() || novaSenha == null)){
+                usuarioLogado.setNome(nome);
+                usuarioLogado.setSobrenome(sobrenome);
+                usuarioLogado.setSexo(sexo);
 
-        } else
-           usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
-            return "redirect:/";
-    }z
+                usuarioRepository.save(usuarioLogado);
+                return "redirect:/home";
+            }
+            if (!(novaSenha == null || novaSenha.isEmpty()) && (validarSenha)){ /*passUserLogged =! novaSenha*/
+                usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
+                usuarioRepository.save(usuarioLogado);
+
+                return "redirect:/home";
+            }
+        }
+        return "TemplateError";
+    }
 }
