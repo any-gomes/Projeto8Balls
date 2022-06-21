@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @Controller
 public class AgendamentoController {
@@ -70,10 +69,9 @@ public class AgendamentoController {
 
         Usuario usuarioID = new Usuario();
         usuarioID.setId(userSessionService.returnIdUsuarioLogado());
+        List <Remedio> remedio  = remedioRepository.findAllByUsuario(usuarioID);
 
-        Iterable <Remedio> remedio = remedioRepository.findAllByUsuario(usuarioID);
         model.addAttribute("remedio", remedio);
-
         return "CadastroAgendamento";
     }
 
@@ -181,4 +179,5 @@ public class AgendamentoController {
     public String templateError(){
         return "TemplateError";
     }
+
 }

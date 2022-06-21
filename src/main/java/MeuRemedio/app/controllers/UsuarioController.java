@@ -1,17 +1,16 @@
 package MeuRemedio.app.controllers;
 
-import MeuRemedio.app.controllers.EnvioEmailController;
 import MeuRemedio.app.models.usuarios.Usuario;
 import MeuRemedio.app.repository.UsuarioRepository;
 import MeuRemedio.app.service.UserSessionService;
 import MeuRemedio.app.service.utils.ValidateAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsuarioController {
@@ -64,19 +63,32 @@ public class UsuarioController {
 
     @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.POST)
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
-                                   @RequestParam("US_Senha") String senha, @RequestParam("US_Sexo") String sexo){
+                                   @RequestParam("US_Senha") String senha, @RequestParam(value = "US_NovaSenha", required = false) String novaSenha,   @RequestParam("US_Sexo") String sexo){
 
         String EmailUsuarioLogado = userSessionService.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
+        String passUserLogged = usuarioLogado.getPassword();
 
-        usuarioLogado.setNome(nome);
-        usuarioLogado.setSobrenome(sobrenome);
-        usuarioLogado.setSexo(sexo);
-        usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(senha));
+        boolean validarSenha = false;
 
-        usuarioRepository.save(usuarioLogado);
+        if (BCrypt.checkpw(senha, passUserLogged)){
+            validarSenha = true;
 
-        return "redirect:/home";
+            if (validarSenha && (novaSenha.isEmpty() || novaSenha == null)){
+                usuarioLogado.setNome(nome);
+                usuarioLogado.setSobrenome(sobrenome);
+                usuarioLogado.setSexo(sexo);
+
+                usuarioRepository.save(usuarioLogado);
+                return "redirect:/home";
+            }
+            if (!(novaSenha == null || novaSenha.isEmpty()) && (validarSenha)){ /*passUserLogged =! novaSenha*/
+                usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
+                usuarioRepository.save(usuarioLogado);
+
+                return "redirect:/home";
+            }
+        }
+        return "TemplateError";
     }
-
 }

@@ -11,8 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Setter
@@ -60,7 +59,6 @@ public class Remedio implements Serializable {
     @JoinColumn(name = "Usuario_FK_Usuario")
     private Usuario usuario;
 
-    @NotNull
     private LocalDate Criado_em = LocalDate.now();
 
     public Remedio(String RM_Nome, String RM_Dosagem, String RM_UnidadeDosagem, Boolean RM_RetiradoSus,
