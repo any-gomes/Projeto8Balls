@@ -33,7 +33,7 @@ public class DataConfiguration {
         try {
             HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
             adapter.setDatabase(Database.POSTGRESQL);
-            adapter.setShowSql(false); //Desabilitado o log no console
+            adapter.setShowSql(true); //Desabilitado o log no console
             adapter.setGenerateDdl(true);
             adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL10Dialect");
             adapter.setPrepareConnection(true);

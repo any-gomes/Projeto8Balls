@@ -61,26 +61,26 @@ public class UsuarioController {
         return "AtualizarUsuario";
     }
 
-        @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.POST)
+    @RequestMapping(value = "/atualizar_usuario", method = RequestMethod.POST)
     public String atualizarUsuario(@RequestParam("US_Nome") String nome, @RequestParam("US_Sobrenome") String sobrenome,
-                                   @RequestParam("US_Senha") String senha, @RequestParam(value = "US_NovaSenha", required = false) String novaSenha,   @RequestParam("US_Sexo") String sexo){
+                                   @RequestParam("US_Senha") String senha, @RequestParam(value = "US_NovaSenha", required = false) String novaSenha,
+                                   @RequestParam("US_Sexo") String sexo) {
 
         String EmailUsuarioLogado = userSessionService.returnUsernameUsuario();
         Usuario usuarioLogado = usuarioRepository.findByEmail(EmailUsuarioLogado);
-        String passUserLogged = usuarioLogado.getPassword();
+        String senhaAtualUsuario = usuarioLogado.getPassword();
 
 
-            if (!BCrypt.checkpw(senha, passUserLogged)) {
-                return "TemplateError";
-            }
-            if (novaSenha != null && (!BCrypt.checkpw(novaSenha, passUserLogged)) /*passUserLogged =! novaSenha*/  ){
-                usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
-            }
+        if ((BCrypt.checkpw(senha, senhaAtualUsuario)) && (novaSenha == null || novaSenha.equals(""))) {
             usuarioLogado.setNome(nome);
             usuarioLogado.setSobrenome(sobrenome);
             usuarioLogado.setSexo(sexo);
             usuarioRepository.save(usuarioLogado);
-            return "redirect:/home";
-        }
-    }
 
+            return "redirect:/";
+
+        } else
+           usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
+            return "redirect:/";
+    }z
+}
