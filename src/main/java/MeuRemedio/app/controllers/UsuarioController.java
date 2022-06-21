@@ -84,8 +84,11 @@ public class UsuarioController {
             }
             if (!(novaSenha == null || novaSenha.isEmpty()) && (validarSenha)){ /*passUserLogged =! novaSenha*/
                 usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
-                usuarioRepository.save(usuarioLogado);
+                usuarioLogado.setNome(nome);
+                usuarioLogado.setSobrenome(sobrenome);
+                usuarioLogado.setSexo(sexo);
 
+                usuarioRepository.save(usuarioLogado);
                 return "redirect:/home";
             }
         }
