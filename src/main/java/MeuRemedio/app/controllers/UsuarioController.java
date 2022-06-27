@@ -26,13 +26,15 @@ public class UsuarioController {
     @Autowired
     UserSessionService userSessionService;
 
+    final String REDIRECT="redirect:/home";
+
     @RequestMapping(value = "/cadastro")
     public String telaCadasUsuario() {
 
         if (!validateAuthentication.auth()){
             return "CadastroUsuario";
         }
-        return "redirect:/home";
+        return REDIRECT;
     }
 
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
@@ -80,7 +82,7 @@ public class UsuarioController {
                 usuarioLogado.setSexo(sexo);
 
                 usuarioRepository.save(usuarioLogado);
-                return "redirect:/home";
+                return REDIRECT;
             }
             if (!(novaSenha == null || novaSenha.isEmpty()) && (validarSenha)){ /*passUserLogged =! novaSenha*/
                 usuarioLogado.setSenha(new BCryptPasswordEncoder().encode(novaSenha));
@@ -89,7 +91,7 @@ public class UsuarioController {
                 usuarioLogado.setSexo(sexo);
 
                 usuarioRepository.save(usuarioLogado);
-                return "redirect:/home";
+                return REDIRECT;
             }
         }
         return "TemplateError";

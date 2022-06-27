@@ -41,6 +41,8 @@ public class AgendamentoController {
     @Autowired
     UserSessionService userSessionService;
 
+    final String REDIRECT="redirect:/agendamentos";
+
 
     @RequestMapping(value = "/agendamentos")
     public String viewAgendamentos(ModelMap model) {
@@ -93,7 +95,7 @@ public class AgendamentoController {
 
             agendamentoRepository.save(agendamento);
         }
-        return "redirect:/agendamentos";
+        return REDIRECT;
     }
 
 
@@ -102,7 +104,7 @@ public class AgendamentoController {
         Agendamento agendamento = agendamentoRepository.findById(id);
         agendamentoRepository.delete(agendamento);
 
-        return "redirect:/agendamentos";
+        return REDIRECT;
     }
 
     @RequestMapping(value = "/atualizar_agendamento/{id}", method = RequestMethod.GET)
@@ -170,7 +172,7 @@ public class AgendamentoController {
             agendamentoRepository.deleteById(id);
             intervaloDiasRepository.save(adicionarIntervalo);
         }
-            return "redirect:/agendamentos";
+            return REDIRECT;
         }
     public boolean verificarPorId (long id ) {
         return agendamentoRepository.existsById(id); //Falso se não achar o ID do remédio

@@ -38,11 +38,14 @@ public class NotificationService {
     @Autowired
     EnvioEmailController envioEmailController;
 
+
+    final String ZONEID = "America/Sao_Paulo";
+
     @Scheduled(fixedRate = 60000)
     public void enviarNotificacao(){
 
-        final var horaAgora = LocalTime.parse(LocalTime.now(ZoneId.of("America/Sao_Paulo")).format(horaFormatada()));
-        final var dataAgora = LocalDate.parse(LocalDate.now(ZoneId.of("America/Sao_Paulo")).format(dataFormatada()));
+        final var horaAgora = LocalTime.parse(LocalTime.now(ZoneId.of(ZONEID)).format(horaFormatada()));
+        final var dataAgora = LocalDate.parse(LocalDate.now(ZoneId.of(ZONEID)).format(dataFormatada()));
         Iterable<Agendamento> agendamentosAgora = agendamentoRepository.findAll();
 
         // Percorre todos os agendamentos registrados no banco de dados

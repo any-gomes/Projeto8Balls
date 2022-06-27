@@ -40,6 +40,8 @@ public class RemedioController {
     @Autowired
     UserSessionService userSessionService;
 
+    final String REDIRECT="redirect:/remedios";
+
     @RequestMapping(value = "/remedios_cadastro")
     public String telaCadastroRemedio() {
         if (!validateAuthentication.auth()) {
@@ -72,7 +74,7 @@ public class RemedioController {
         Usuario us = usuarioRepository.findByEmail(userSessionService.returnUsernameUsuario());
         emailController.emailCadastroRemedio(us, remedio);
 
-        return "redirect:/remedios";
+        return REDIRECT;
     }
 
     @RequestMapping(value = "/remedios")
@@ -95,7 +97,7 @@ public class RemedioController {
         //  Remedio remedio = remedioRepository.findById(id);
         remedioRepository.deleteById(id);
 
-        return "redirect:/remedios";
+        return REDIRECT;
     }
 
     @RequestMapping(value = "/atualizar_remedio/{id}", method = RequestMethod.GET)
@@ -130,7 +132,7 @@ public class RemedioController {
             remedio.setRM_RetiradoSus(auxRetiradoSUS);
             remedioRepository.save(remedio);
 
-            return "redirect:/remedios";
+            return REDIRECT;
         }
     }
     //função responsável por achar um id dentro do banco. Retorna true se encontrar
